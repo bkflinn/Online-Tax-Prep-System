@@ -1,7 +1,10 @@
+import LoginPage from "./pages/LoginPage";
+import '@trussworks/react-uswds/lib/index.css';
+
 export default function App() {
   return (
     <>
-      <h1>Online Tax Prep System</h1>
+      <LoginPage/>
     </>
   );
 }
