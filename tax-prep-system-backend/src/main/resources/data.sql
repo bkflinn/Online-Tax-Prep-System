@@ -1,0 +1,43 @@
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (1, 'Antoine', 'Ivanikhin', 'aivanikhin0@posterous.com', '646-741-6191', '81453 Sunnyside Crossing', 'New York City', 'NY', 10279, 'M');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (2, 'Hubie', 'Chinnock', 'hchinnock1@bloglines.com', '770-597-8961', '1 Thierer Parkway', 'Duluth', 'GA', 30026, 'S');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (3, 'Conrado', 'Mettetal', 'cmettetal2@scribd.com', '775-862-3604', '2344 Corry Junction', 'Carson City', 'NV', 89403, 'M');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (4, 'Elliot', 'Stent', 'estent3@columbia.edu', '713-908-8035', '6 Bellgrove Place', 'Houston', 'TX', 77001, 'S');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (5, 'Bonita', 'Rendbaek', 'brendbaek4@ox.ac.uk', '901-470-3251', '18731 Heath Plaza', 'Memphis', 'TN', 37501, 'M');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (6, 'Beauregard', 'Warricker', 'bwarricker5@nytimes.com', '972-956-3320', '4 Fallview Drive', 'Dallas', 'TX', 75001, 'S');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (7, 'Daisi', 'Roft', 'droft6@merriam-webster.com', '859-913-4652', '209 Waxwing Circle', 'Lexington', 'KY', 40502, 'M');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (8, 'Corilla', 'Ickovicz', 'cickovicz7@histats.com', '850-438-6926', '5 Eliot Junction', 'Panama City', 'FL', 32401, 'S');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (9, 'Darnall', 'Eyckel', 'deyckel8@umn.edu', '303-154-9918', '046 Vahlen Park', 'Denver', 'CO', 80014, 'M');
+insert into USERS (social, first_name, last_name, email, phone, street_address, city, state, zip, status) values (10, 'Jenn', 'Cregin', 'jcregin9@mozilla.com', '843-637-3623', '779 Doe Crossing Trail', 'Beaufort', 'SC', 29901, 'S');
+
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (1, 324029631, 'Rhycero', 1000.00, 1000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (2, 274634782, 'Muxo', 2000.00, 2000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (3, 451788361, 'Chatterpoint', 3000.00, 3000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (4, 832441464, 'Quatz', 4000.00, 4000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (5, 598750978, 'Divanoodle', 5000.00, 5000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (6, 167658686, 'Edgetag', 6000.00, 6000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (7, 135210031, 'Yakijo', 7000.00, 7000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (8, 164345555, 'Browsecat', 8000.00, 8000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (9, 684432578, 'Browseblab', 9000.00, 9000.00);
+insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (10, 206783731, 'Kwilith', 10000.00, 10000.00);
+
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (1, 878036208, 1000.00, 1000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (2, 138904458, 2000.00, 2000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (3, 315445839, 3000.00, 3000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (4, 747924151, 4000.00, 4000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (5, 732247062, 5000.00, 5000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (6, 664877418, 6000.00, 6000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (7, 233834398, 7000.00, 7000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (8, 368199704, 8000.00, 8000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (9, 707623797, 9000.00, 9000.00);
+insert into NEC (social, payer_tin, compensation, fed_withheld) values (10, 778633861, 10000.00, 10000.00);
+
+insert into RESULTS (social, owed) values (1, 1000.00);
+insert into RESULTS (social, owed) values (2, 2000.00);
+insert into RESULTS (social, owed) values (3, 3000.00);
+insert into RESULTS (social, owed) values (4, 4000.00);
+insert into RESULTS (social, owed) values (5, 5000.00);
+insert into RESULTS (social, owed) values (6, 6000.00);
+insert into RESULTS (social, owed) values (7, 7000.00);
+insert into RESULTS (social, owed) values (8, 8000.00);
+insert into RESULTS (social, owed) values (9, 9000.00);
+insert into RESULTS (social, owed) values (10, 10000.00);
