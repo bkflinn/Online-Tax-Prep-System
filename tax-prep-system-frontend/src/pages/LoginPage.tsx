@@ -64,10 +64,6 @@ const LoginPage = (): React.ReactElement => {
                                             </p>
 
                                             <Button type="submit">Sign in</Button>
-
-                                            <p>
-                                                <Link href="javascript:void();">Forgot password?</Link>
-                                            </p>
                                         </Fieldset>
                                     </Form>
                                 </div>
