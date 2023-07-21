@@ -1,4 +1,4 @@
-import { GovBanner, Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link  } from '@trussworks/react-uswds';
+import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link  } from '@trussworks/react-uswds';
 import React, { useState } from 'react';
 
 const LoginPage = (): React.ReactElement => {
