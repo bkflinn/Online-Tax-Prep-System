@@ -8,6 +8,9 @@ import com.skillstorm.taxprepsystembackend.models.W2;
 
 public interface W2Repository extends JpaRepository<W2, Integer>{
 
+    @Transactional
+    public W2 getBySocial(int social);
+
     @Modifying
     @Transactional
     public void deleteAllBySocial(int social);
