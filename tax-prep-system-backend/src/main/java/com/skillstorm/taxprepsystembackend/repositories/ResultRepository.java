@@ -8,6 +8,9 @@ import com.skillstorm.taxprepsystembackend.models.Result;
 
 public interface ResultRepository extends JpaRepository<Result, Integer>{
 
+    @Transactional
+    public Result getBySocial(int social);
+
     @Modifying
     @Transactional
     public void deleteAllBySocial(int social);
