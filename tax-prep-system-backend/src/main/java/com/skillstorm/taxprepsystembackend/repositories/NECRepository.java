@@ -8,6 +8,9 @@ import com.skillstorm.taxprepsystembackend.models.NEC;
 
 public interface NECRepository extends JpaRepository<NEC, Integer>{
 
+    @Transactional
+    public NEC getBySocial(int social);
+
     @Modifying
     @Transactional
     public void deleteAllBySocial(int social);

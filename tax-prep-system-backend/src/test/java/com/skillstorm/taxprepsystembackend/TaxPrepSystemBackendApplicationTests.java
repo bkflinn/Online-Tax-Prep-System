@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import com.skillstorm.taxprepsystembackend.models.NEC;
 import com.skillstorm.taxprepsystembackend.models.User;
 import com.skillstorm.taxprepsystembackend.models.W2;
+import com.skillstorm.taxprepsystembackend.services.NECService;
 import com.skillstorm.taxprepsystembackend.services.UserService;
 import com.skillstorm.taxprepsystembackend.services.W2Service;
 
@@ -26,6 +28,9 @@ class TaxPrepSystemBackendApplicationTests {
 	@Autowired
 	W2Service w2Service;
 
+	@Autowired
+	NECService necService;
+
 	User user1;
 	User user2;
 	User user3;
@@ -36,6 +41,12 @@ class TaxPrepSystemBackendApplicationTests {
 	W2 user2W2;
 	W2 user3W2;
 	W2 newUserW2;
+
+	NEC user1NEC;
+	NEC user2NEC;
+	NEC user3NEC;
+	NEC newUserNEC;
+
 
 	@BeforeEach
 	public void setup() {
@@ -52,6 +63,12 @@ class TaxPrepSystemBackendApplicationTests {
 		user2W2 = new W2(2, 274634782, "Muxo", 2000.00, 2000.00);
 		user3W2 = new W2(3, 451788361, "Chatterpoint", 3000.00, 3000.00);
 		newUserW2 = new W2(20, 451788361, "Chatterpoint", 3000.00, 3000.00);
+
+		// NECs
+		user1NEC = new NEC(1, 878036208, 1000.00, 1000.00);
+		user2NEC = new NEC(2, 138904458, 2000.00, 2000.00);
+		user3NEC = new NEC(3, 315445839, 3000.00, 3000.00);
+		newUserNEC = new NEC(20, 747924152, 4000.00, 4000.00);
 		
 	}
 
@@ -77,6 +94,14 @@ class TaxPrepSystemBackendApplicationTests {
 
 		// testing non-existent W2
 		assertEquals(w2Service.getW2BySocial(11), null);
+
+		// testing existing NECs
+		assertEquals(necService.getNECBySocial(1), user1NEC);
+		assertEquals(necService.getNECBySocial(2), user2NEC);
+		assertEquals(necService.getNECBySocial(3), user3NEC);
+
+		// testing non-existent NEC
+		assertEquals(necService.getNECBySocial(11), null);
 	}
 
 	// test create and update user, W2, NEC, and result
@@ -103,6 +128,14 @@ class TaxPrepSystemBackendApplicationTests {
 		assertEquals(w2Service.saveW2(user2W2), user2W2);
 		assertEquals(w2Service.saveW2(user3W2), user3W2);
 
+		// testing create valid NEC
+		assertEquals(necService.saveNEC(newUserNEC), newUserNEC);
+
+		// testing update NECs
+		assertEquals(necService.saveNEC(user1NEC), user1NEC);
+		assertEquals(necService.saveNEC(user2NEC), user2NEC);
+		assertEquals(necService.saveNEC(user3NEC), user3NEC);
+
 	}
 
 	// test delete user, W2, NEC, and result
@@ -121,6 +154,13 @@ class TaxPrepSystemBackendApplicationTests {
 		w2Service.deleteW2(user2W2);
 		// checks if user2W2 is in database
 		assertFalse(w2Service.getAllW2s().contains(user2W2));
+
+		// checks if user2W2 is in database
+		assertTrue(necService.getAllNECs().contains(user2NEC));
+		// deletes user1W2 from database
+		necService.deleteNEC(user2NEC);
+		// checks if user2W2 is in database
+		assertFalse(necService.getAllNECs().contains(user2NEC));
 	}
 
 	@AfterEach
@@ -137,6 +177,13 @@ class TaxPrepSystemBackendApplicationTests {
 		user1W2 = null;
 		user2W2 = null;
 		user3W2 = null;
+		newUserW2 = null;
+
+		user1NEC = null;
+		user2NEC = null;
+		user3NEC = null;
+		newUserNEC = null;
+
 	}
 
 }
