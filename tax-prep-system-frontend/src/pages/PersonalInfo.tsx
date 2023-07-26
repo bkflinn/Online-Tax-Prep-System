@@ -2,6 +2,7 @@ import { Accordion, Grid, GridContainer, Header, Link, Title } from '@trussworks
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import { useState } from 'react';
 import AddressForm from '../components/AddressForm';
+import W2Form from '../components/W2Form';
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
@@ -14,7 +15,7 @@ const PersonalInfo = (): React.ReactElement =>{
         },
         { 
             title: 'W2 Form', 
-            content: 'W2 form here',
+            content: <W2Form/>,
             expanded: false,
             id: 'accordion-W2',
             headingLevel: 'h1',
