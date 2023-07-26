@@ -1,8 +1,8 @@
-import { Accordion, Grid, GridContainer, Header, Link, Title } from '@trussworks/react-uswds';
+import { Accordion, Grid, GridContainer, Header, Link, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import { useState } from 'react';
-import AddressForm from '../components/AddressForm';
-import W2Form from '../components/W2Form';
+import AddressForm from '../components/Address/AddressForm';
+import W2Form from '../components/W2/W2Form';
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
@@ -46,7 +46,19 @@ const PersonalInfo = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                     <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
-                                    <p> Open each tab to begin filling in your information</p>
+                                    <SummaryBox>
+                                        <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
+                                        <SummaryBoxContent>
+                                            <ul>
+                                                <li>For each tab, fill in your information.</li>
+                                                <li>
+                                                    Additional information on the <a href="https://www.irs.gov/forms-pubs/about-form-w-2">W2 form</a> and <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec">1099 form</a> can 
+                                                    be found on the IRS website.
+                                                </li>
+                                                <li>When done, proceed to the results page to see your returns.</li>
+                                            </ul>
+                                        </SummaryBoxContent>
+                                    </SummaryBox>
                                     <br></br>
 
                                     <Accordion bordered={true} items={userInfo}></Accordion>

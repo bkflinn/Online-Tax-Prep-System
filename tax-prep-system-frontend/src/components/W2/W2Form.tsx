@@ -11,7 +11,7 @@ const W2Form = (): React.ReactElement => {
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend="W2 Form" legendStyle="large">
 
-                <Label htmlFor="tin">Tax Identification Number (TIN)</Label>
+                <Label htmlFor="tin">Employer Tax Identification Number (TIN)</Label>
                 <TextInput id="tin" name="tin" type="number" />
 
                 <Label htmlFor="employer">Employer</Label>
