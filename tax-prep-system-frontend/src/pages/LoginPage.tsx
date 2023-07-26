@@ -1,5 +1,5 @@
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link  } from '@trussworks/react-uswds';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const LoginPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false)

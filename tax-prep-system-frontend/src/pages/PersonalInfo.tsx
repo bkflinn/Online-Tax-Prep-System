@@ -1,12 +1,13 @@
 import { Accordion, Grid, GridContainer, Header, Link, Title } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import AddressForm from '../components/AddressForm';
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
         { 
             title: 'Address', 
-            content: 'Address form here',
+            content: <AddressForm/>,
             expanded: false,
             id: 'accordion-address',
             headingLevel: 'h1',
@@ -43,7 +44,7 @@ const PersonalInfo = (): React.ReactElement =>{
                         <Grid row={true} className="flex-justify-center">
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                                    <h1 className="margin-bottom-0">Personal Information</h1>
+                                    <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
                                     <p> Open each tab to begin filling in your information</p>
                                     <br></br>
 
