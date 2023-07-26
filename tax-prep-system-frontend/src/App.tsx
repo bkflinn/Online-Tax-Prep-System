@@ -1,13 +1,15 @@
 import CreateAccount from "./pages/CreateAccount";
 import LoginPage from "./pages/LoginPage";
+import PersonalInfo from "./pages/PersonalInfo";
 
 
 
 export default function App() {
   return (
     <>
-      {/**<LoginPage/> */}
-      <CreateAccount/>
+      <PersonalInfo/>
+      {/**<CreateAccount/>*/}
+      {/**<LoginPage/>*/}
     </>
   );
 }
