@@ -1,6 +1,6 @@
 import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
 
-const W2Form = (): React.ReactElement => {
+const NECForm = (): React.ReactElement => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -9,15 +9,12 @@ const W2Form = (): React.ReactElement => {
     return(
         <>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="W2 Form" legendStyle="large">
+                <Fieldset legend="1099 Form" legendStyle="large">
 
-                <Label htmlFor="tin">Employer Tax Identification Number (TIN)</Label>
+                <Label htmlFor="tin">Payer Tax Identification Number (TIN)</Label>
                 <TextInput id="tin" name="tin" type="number" />
 
-                <Label htmlFor="employer">Employer</Label>
-                <TextInput id="employer" name="employer" type="text" />
-
-                <Label htmlFor="wages">Wages</Label>
+                <Label htmlFor="wages">Compensation</Label>
                 <TextInput id="wages" name="wages" type="number" />
 
                 <Label htmlFor="fed-withholding">Federal Withholding</Label>
@@ -30,4 +27,4 @@ const W2Form = (): React.ReactElement => {
     );
 }
 
-export default W2Form;
+export default NECForm;

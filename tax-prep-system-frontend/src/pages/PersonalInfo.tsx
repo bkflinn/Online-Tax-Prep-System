@@ -3,6 +3,7 @@ import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accor
 import { useState } from 'react';
 import AddressForm from '../components/Address/AddressForm';
 import W2Form from '../components/W2/W2Form';
+import NECForm from '../components/1099/NECForm';
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
@@ -21,8 +22,8 @@ const PersonalInfo = (): React.ReactElement =>{
             headingLevel: 'h1',
         },
         { 
-            title: '1099 Forms', 
-            content: '1099 table with modal that lets you add new 1099s here',
+            title: '1099 Form', 
+            content: <NECForm/>,
             expanded: false,
             id: 'accordion-1099',
             headingLevel: 'h1',
