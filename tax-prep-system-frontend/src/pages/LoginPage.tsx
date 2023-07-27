@@ -1,9 +1,12 @@
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link  } from '@trussworks/react-uswds';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 
 const LoginPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false)
+    const { t } = useTranslation();
 
     const navigate = useNavigate();
 
@@ -22,7 +25,7 @@ const LoginPage = (): React.ReactElement => {
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                            {t("title")}
                         </a>
                     </Title>
                 </div>
@@ -33,10 +36,10 @@ const LoginPage = (): React.ReactElement => {
                         <Grid row={true} className="flex-justify-center">
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                                    <h1 className="margin-bottom-0">Sign in</h1>
+                                    <h1 className="margin-bottom-0">{t("sign-in")}</h1>
                                     <Form onSubmit={handleSubmit}>
                                         <Fieldset legend="Access your account" legendStyle="large">
-                                            <Label htmlFor="email">Email address</Label>
+                                            <Label htmlFor="email">{t("email")}</Label>
                                             <TextInput
                                                 id="email"
                                                 name="email"
@@ -46,7 +49,7 @@ const LoginPage = (): React.ReactElement => {
                                                 required={true}
                                             />
 
-                                            <Label htmlFor="email">Password</Label>
+                                            <Label htmlFor="email">{t("password")}</Label>
                                             <TextInput
                                                 id="password-sign-in"
                                                 name="password"
@@ -58,25 +61,25 @@ const LoginPage = (): React.ReactElement => {
 
                                             <p className="usa-form__note">
                                                 <a
-                                                    title="Show password"
+                                                    title={t("show-password")}
                                                     href="javascript:void(0);"
                                                     className="usa-show-password"
                                                     aria-controls="password-create-account password-create-account-confirm"
                                                     onClick={(): void =>
                                                         setShowPassword((showPassword) => !showPassword)
                                                     }>
-                                                    {showPassword ? 'Hide password' : 'Show password'}
+                                                    {showPassword ? t("hide-password") : t("show-password")}
                                                 </a>
                                             </p>
 
-                                            <Button type="submit">Sign in</Button>
+                                            <Button type="submit">{t("sign-in")}</Button>
                                         </Fieldset>
                                     </Form>
                                 </div>
 
                                 <p className="text-center">
-                                    {"Don't have an account? "}
-                                    <Link href="/create-account">Create your account now</Link>
+                                    {t("dontHaveAccount")}
+                                    <Link href="/create-account">{t("createAccount")}</Link>
                                 </p>
                             </Grid>
                         </Grid>

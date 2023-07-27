@@ -1,0 +1,11 @@
+{
+    "title": "Sistema de preparación de impuestos",
+    "sign-in": "Iniciar sesión",
+    "access": "Acceder a su cuenta",
+    "email": "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "show-password": "Mostrar contraseña",
+    "hide-password": "Ocultar contraseña",
+    "dontHaveAccount": "¿No tiene cuenta?",
+    "createAccount": "Cree su cuenta ahora"
+}
