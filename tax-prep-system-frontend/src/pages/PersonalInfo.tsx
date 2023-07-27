@@ -1,4 +1,4 @@
-import { Accordion, Grid, GridContainer, Header, Link, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
+import { Accordion, Button, Grid, GridContainer, Header, Link, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import { useState } from 'react';
 import AddressForm from '../components/Address/AddressForm';
@@ -40,12 +40,19 @@ const PersonalInfo = (): React.ReactElement =>{
                     </Title>
                 </div>
             </Header>
+
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">
+                        
                         <Grid row={true} className="flex-justify-center">
+                            
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
+                                <StepIndicator centered headingLevel="h4">
+                                    <StepIndicatorStep label="Documents" status="current" />
+                                    <StepIndicatorStep label="Review and submit" />
+                                </StepIndicator>
                                     <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
                                     <SummaryBox>
                                         <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
@@ -63,7 +70,10 @@ const PersonalInfo = (): React.ReactElement =>{
                                     <br></br>
 
                                     <Accordion bordered={true} items={userInfo}></Accordion>
+                                    
+                                    <Button className="margin-top-3" type="button">Next</Button>
                                 </div>
+                                
                             </Grid>
                         </Grid>
                     </GridContainer>
