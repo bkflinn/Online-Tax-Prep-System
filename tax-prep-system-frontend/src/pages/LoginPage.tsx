@@ -1,12 +1,18 @@
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link  } from '@trussworks/react-uswds';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false)
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         // Handle form submission logic here
+
+        //After form submission, navigate to PersonalInfo page (actually change this to results page)
+        navigate('/personal-info');
     };
 
     return (
@@ -70,7 +76,7 @@ const LoginPage = (): React.ReactElement => {
 
                                 <p className="text-center">
                                     {"Don't have an account? "}
-                                    <Link href="javascript:void();">Create your account now</Link>
+                                    <Link href="/create-account">Create your account now</Link>
                                 </p>
                             </Grid>
                         </Grid>

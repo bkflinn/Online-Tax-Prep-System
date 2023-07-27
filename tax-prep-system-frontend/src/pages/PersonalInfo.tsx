@@ -1,8 +1,9 @@
-import { Accordion, Grid, GridContainer, Header, Link, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
+import { Accordion, Grid, GridContainer, Header, Link, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title, Button } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import { useState } from 'react';
 import AddressForm from '../components/Address/AddressForm';
 import W2Form from '../components/W2/W2Form';
+import { useNavigate } from "react-router-dom";
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
@@ -27,7 +28,17 @@ const PersonalInfo = (): React.ReactElement =>{
             id: 'accordion-1099',
             headingLevel: 'h1',
         }
+        
     ];
+
+    const navigate = useNavigate();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        // Handle form submission logic here
+
+        //After form submission, navigate to Login page
+        navigate('/login');
+    };
     return (
         <>
              <Header extended>
@@ -62,6 +73,11 @@ const PersonalInfo = (): React.ReactElement =>{
                                     <br></br>
 
                                     <Accordion bordered={true} items={userInfo}></Accordion>
+
+                                    <br></br>
+                                    <form onSubmit={handleSubmit}>
+                                    <Button type="submit">Submit</Button>
+                                    </form>
                                 </div>
                             </Grid>
                         </Grid>
