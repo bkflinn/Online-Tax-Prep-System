@@ -1,6 +1,5 @@
-import { Accordion, Button, Grid, GridContainer, Header, Link, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
+import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
-import { useState } from 'react';
 import AddressForm from '../components/Address/AddressForm';
 import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
