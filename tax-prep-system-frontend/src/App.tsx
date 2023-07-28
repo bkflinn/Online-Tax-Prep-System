@@ -1,14 +1,19 @@
-import CreateAccount from "./pages/CreateAccount";
+import CreateAccountPage from "./pages/CreateAccountPage";
+import DocumentsPage from "./pages/DocumentsPage";
 import LoginPage from "./pages/LoginPage";
-import PersonalInfo from "./pages/PersonalInfoPage";
+import PersonalInfoPage from "./pages/PersonalInfoPage";
+
 
 
 
 export default function App() {
   return (
     <>
+
       <PersonalInfoPage/>
-      {/**<CreateAccount/>*/}
+      {/**<DocumentsPage/> */}
+      {/** <PersonalInfoPage/> */}
+      {/**<CreateAccountPage/>*/}
       {/**<LoginPage/>*/}
     </>
   );

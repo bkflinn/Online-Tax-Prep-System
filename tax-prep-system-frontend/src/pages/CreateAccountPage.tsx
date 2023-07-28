@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button, Link} from '@trussworks/react-uswds';
 
-const CreateAccount = (): React.ReactElement => {
+const CreateAccountPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -159,4 +159,4 @@ const CreateAccount = (): React.ReactElement => {
     );
 };
 
-export default CreateAccount;
+export default CreateAccountPage;

@@ -1,26 +1,26 @@
 import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
-import AddressForm from '../components/Address/AddressForm';
-import FilingStatusForm from '../components/Status/FilingStatusForm';
+import W2Form from '../components/W2/W2Form';
+import NECForm from '../components/1099/NECForm';
 
-const PersonalInfoPage = (): React.ReactElement =>{
+
+const DocumentsPage = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
         { 
-            title: 'Address', 
-            content: <AddressForm/>,
+            title: 'W2 Form', 
+            content: <W2Form/>,
             expanded: false,
-            id: 'accordion-address',
+            id: 'accordion-W2',
             headingLevel: 'h1',
         },
         { 
-            title: 'Filing Status', 
-            content: <FilingStatusForm/>,
+            title: '1099 Form', 
+            content: <NECForm/>,
             expanded: false,
-            id: 'accordion-status',
+            id: 'accordion-1099',
             headingLevel: 'h1',
         }
     ];
-
     return (
         <>
              <Header extended>
@@ -42,26 +42,34 @@ const PersonalInfoPage = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 <StepIndicator centered headingLevel="h4">
-                                    <StepIndicatorStep label="Personal Information" status="current" />
-                                    <StepIndicatorStep label="Documents"/>
-                                    <StepIndicatorStep label="Review and submit" />
+                                    <StepIndicatorStep label="Personal Information" status="complete" />
+                                    <StepIndicatorStep label="Documents" status="current" />
+                                    <StepIndicatorStep label="Review and submit"/>
                                 </StepIndicator>
-                                    <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
+
+                                    <h1 className="margin-bottom-0 font-heading-2xl">Documents</h1>
                                     <SummaryBox>
                                         <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
                                         <SummaryBoxContent>
                                             <ul>
                                                 <li>For each tab, fill in your information.</li>
-        
-                                                <li>When done, proceed to the next step.</li>
+                                                <li>
+                                                    Additional information on the <a href="https://www.irs.gov/forms-pubs/about-form-w-2">W2 form</a> and <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec">1099 form</a> can 
+                                                    be found on the IRS website.
+                                                </li>
+                                                <li>When done, proceed to the next page to review your information.</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
                                     <br></br>
 
                                     <Accordion bordered={true} items={userInfo}></Accordion>
+
+                                    <div className="mobile-lg:grid-col-4">
+                                        <Button className="margin-top-3" type="button">Prev</Button>
+                                        <Button className="margin-top-3" type="button">Next</Button>
+                                    </div>
                                     
-                                    <Button className="margin-top-3" type="button">Next</Button>
                                 </div>
                                 
                             </Grid>
@@ -73,4 +81,4 @@ const PersonalInfoPage = (): React.ReactElement =>{
     );
 }
 
-export default PersonalInfoPage;
+export default DocumentsPage;
