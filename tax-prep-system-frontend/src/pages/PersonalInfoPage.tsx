@@ -44,7 +44,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                                 <StepIndicator centered headingLevel="h4">
                                     <StepIndicatorStep label="Personal Information" status="current" />
                                     <StepIndicatorStep label="Documents"/>
-                                    <StepIndicatorStep label="Review and submit" />
+                                    <StepIndicatorStep label="Review and Submit" />
                                 </StepIndicator>
                                     <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
                                     <SummaryBox>
