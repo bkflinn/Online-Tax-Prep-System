@@ -16,9 +16,6 @@ const NECForm = (): React.ReactElement => {
 
                 <Label htmlFor="wages">Compensation</Label>
                 <TextInput id="wages" name="wages" type="number" />
-
-                <Label htmlFor="fed-withholding">Federal Withholding</Label>
-                <TextInput id="fed-withholding" name="fed-withholding" type="number" />
                 
                 </Fieldset>
                 <Button type="submit">Save</Button>

@@ -3,6 +3,7 @@ import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accor
 import AddressForm from '../components/Address/AddressForm';
 import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
+import FilingStatusForm from '../components/Status/FilingStatusForm';
 
 const PersonalInfo = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
@@ -11,6 +12,13 @@ const PersonalInfo = (): React.ReactElement =>{
             content: <AddressForm/>,
             expanded: false,
             id: 'accordion-address',
+            headingLevel: 'h1',
+        },
+        { 
+            title: 'Filing Status', 
+            content: <FilingStatusForm/>,
+            expanded: false,
+            id: 'accordion-status',
             headingLevel: 'h1',
         },
         { 
