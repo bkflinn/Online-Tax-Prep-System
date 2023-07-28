@@ -5,7 +5,7 @@ import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
 import FilingStatusForm from '../components/Status/FilingStatusForm';
 
-const PersonalInfo = (): React.ReactElement =>{
+const PersonalInfoPage = (): React.ReactElement =>{
     const userInfo: AccordionItemProps[] = [
         { 
             title: 'Address', 
@@ -90,4 +90,4 @@ const PersonalInfo = (): React.ReactElement =>{
     );
 }
 
-export default PersonalInfo;
+export default PersonalInfoPage;
