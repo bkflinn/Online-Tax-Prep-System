@@ -20,14 +20,49 @@
     "convienient-desc": "Create an account to securely store and access your personal and tax information. Change your information at any time and get fast and easy access to your tax preparation.",
     "have-account": "Already have an account?",
 
-    "have-account": "Documents",
-    "have-account": "Instructions",
-    "have-account": "For each tab, fill in your information.",
-    "have-account": "Already have an account?",
-    "have-account": "Already have an account?",
-    "have-account": "Already have an account?"
+    "documents": "Documents",
+    "insturctions": "Instructions",
+    "instruc-pt1": "For each tab, fill in your information.",
+    "instruc-pt2-1": "Additional information on the ",
+    "instruc-pt2-2": "W2 form ",
+    "instruc-pt2-3": "and ",
+    "instruc-pt2-4": "1099 form ",
+    "instruc-pt2-5": "can be found on the IRS website.",
+    "instruc-pt3": "When done, proceed to the next page to review your information.",
+    "prev": "Prev",
+    "next": "Next",
 
-    
+    "personal-info": "Personal Information",
+    "proceed": "When done, proceed to the next step.",
 
+    "review": "Review and Submit",
+    "review-desc": "Review your information to ensure that it is accurate.",
+    "submit": "Submit",
+
+    "payer-tin": "Payer Tax Information Number (TIN)",
+    "compensation": "compensation",
+    "save": "save",
+
+    "af-america": "AA - Armed Forces Americas",
+    "af-europe": "AE -  Forces Europe",
+    "af-canada": "AE -  Forces Canada",
+    "af-africa": "AE - Forces Africa",
+    "af-middle-east": "AE - Armed Forces Middle East",
+    "af-pacific": "AP - Armed Forces Pacific",
+
+    "street1": "Street Address 1",
+    "street2": "Street Address 2",
+    "city": "City",
+    "state": "State",
+    "zip": "ZIP",
+
+    "state-refund": "State Refund",
+    "federal-refund": "Federal Refund",
+    "total-refund": "Total Refund",
+
+    "employer-tin": "Empolyer Tax Information Number (TIN)",
+    "employer": "Employer",
+    "wages": "Wages",
+    "withholding": "Withholding"
 
 }

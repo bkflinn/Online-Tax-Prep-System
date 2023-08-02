@@ -1,6 +1,8 @@
 import { Button, Fieldset, Form, Radio,} from "@trussworks/react-uswds";
+import { useTranslation } from 'react-i18next';
 
 const FilingStatusForm = (): React.ReactElement => {
+    const { t } = useTranslation();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

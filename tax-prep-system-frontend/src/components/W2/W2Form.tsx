@@ -1,6 +1,8 @@
 import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
+import { useTranslation } from 'react-i18next';
 
 const W2Form = (): React.ReactElement => {
+    const { t } = useTranslation();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

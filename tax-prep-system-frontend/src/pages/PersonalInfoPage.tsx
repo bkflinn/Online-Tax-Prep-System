@@ -58,14 +58,14 @@ const PersonalInfoPage = (): React.ReactElement =>{
                                     <StepIndicatorStep label="Documents"/>
                                     <StepIndicatorStep label="Review and Submit" />
                                 </StepIndicator>
-                                    <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
+                                    <h1 className="margin-bottom-0 font-heading-2xl">{t("personal-info")}</h1>
                                     <SummaryBox>
-                                        <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
+                                        <SummaryBoxHeading headingLevel="h2">{t("instructions")}</SummaryBoxHeading>
                                         <SummaryBoxContent>
                                             <ul>
-                                                <li>For each tab, fill in your information.</li>
+                                                <li>{t("instruc-pt1")}</li>
         
-                                                <li>When done, proceed to the next step.</li>
+                                                <li>{t("proceed")}</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
@@ -74,7 +74,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                                     <Accordion bordered={true} items={userInfo}></Accordion>
                                     
                                     <Button className="margin-top-3" type="button" onClick={handleNext}>
-                                        Next
+                                    {t("next")}
                                     </Button>
                                 </div>
                                 

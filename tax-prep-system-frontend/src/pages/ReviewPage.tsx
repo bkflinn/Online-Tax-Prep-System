@@ -32,12 +32,12 @@ const ReviewPage = (): React.ReactElement =>{
                                     <StepIndicatorStep label="Review and Submit" status= "current"/>
                                 </StepIndicator>
 
-                                    <h1 className="margin-bottom-0 font-heading-2xl">Review and Submit</h1>
+                                    <h1 className="margin-bottom-0 font-heading-2xl">{t("review")}</h1>
                                     <SummaryBox>
-                                        <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
+                                        <SummaryBoxHeading headingLevel="h2">{t("instructions")}</SummaryBoxHeading>
                                         <SummaryBoxContent>
                                             <ul>
-                                                <li>Review your information to ensure that it is accurate.</li>
+                                                <li>{t("review-desc")}</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
@@ -46,8 +46,8 @@ const ReviewPage = (): React.ReactElement =>{
                                     
 
                                     <div className="mobile-lg:grid-col-4">
-                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">Prev</Button>
-                                        <Button className="margin-top-3" type="button">Submit</Button>
+                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">{t("prev")}</Button>
+                                        <Button className="margin-top-3" type="button">{t("submit")}</Button>
                                     </div>
                                     
                                 </div>

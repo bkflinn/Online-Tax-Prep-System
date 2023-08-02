@@ -1,7 +1,8 @@
 import { Table } from "@trussworks/react-uswds";
-
+import { useTranslation } from 'react-i18next';
 
 const ResultsTable = (): React.ReactElement => {
+    const { t } = useTranslation();
 
     return (
         <>
