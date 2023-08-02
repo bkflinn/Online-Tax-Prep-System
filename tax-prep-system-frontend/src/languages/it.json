@@ -1,11 +1,11 @@
 {
     "title": "Sistema di preparazione fiscale",
-    "sign-in": "Sign in",
-    "access": "Access your account",
+    "sign-in": "Accedi",
+    "access": "Accedi al tuo account",
     "email": "Email adress",
     "password": "Password",
-    "show-password": "Show password",
-    "hide-password": "Hide password",
-    "dontHaveAccount": "Don't have and account?",
-    "createAccount": "Create your account now"
+    "show-password": "Mostra password",
+    "hide-password": "Nascondi password",
+    "dontHaveAccount": "Non hai un account?",
+    "createAccount": "Crea subito il tuo account"
 }

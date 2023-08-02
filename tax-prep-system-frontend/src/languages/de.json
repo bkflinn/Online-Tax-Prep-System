@@ -1,11 +1,11 @@
 {
     "title": "Steuererstellungssystem",
-    "sign-in": "Sign in",
-    "access": "Access your account",
-    "email": "Email adress",
-    "password": "Password",
-    "show-password": "Show password",
-    "hide-password": "Hide password",
-    "dontHaveAccount": "Don't have and account?",
-    "createAccount": "Create your account now"
+    "sign-in": "Anmelden",
+    "access": "Zugriff auf Ihr Konto",
+    "email": "E-Mail Adresse",
+    "password": "Kennwort",
+    "show-password": "Passwort anzeigen",
+    "hide-password": "Kennwort verbergen",
+    "dontHaveAccount": "Sie haben kein Konto?",
+    "createAccount": "Erstellen Sie jetzt Ihr Konto"
 }

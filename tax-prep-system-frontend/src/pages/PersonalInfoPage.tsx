@@ -3,10 +3,13 @@ import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accor
 import AddressForm from '../components/Address/AddressForm';
 import FilingStatusForm from '../components/Status/FilingStatusForm';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const PersonalInfoPage = (): React.ReactElement =>{
 
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
 
     const userInfo: AccordionItemProps[] = [
         { 
@@ -36,7 +39,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                        {t("title")}
                         </a>
                     </Title>
                 </div>

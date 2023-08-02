@@ -1,7 +1,10 @@
 import { Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from "@trussworks/react-uswds";
+import { useTranslation } from 'react-i18next';
 
 
 const ReviewPage = (): React.ReactElement =>{
+    const { t } = useTranslation();
+
    
     return (
         <>
@@ -9,7 +12,7 @@ const ReviewPage = (): React.ReactElement =>{
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                        {t("title")}
                         </a>
                     </Title>
                 </div>

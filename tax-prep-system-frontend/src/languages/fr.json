@@ -1,11 +1,11 @@
 {
     "title": "Système de préparation des déclarations fiscales",
-    "sign-in": "Sign in",
-    "access": "Access your account",
-    "email": "Email adress",
-    "password": "Password",
-    "show-password": "Show password",
-    "hide-password": "Hide password",
-    "dontHaveAccount": "Don't have and account?",
-    "createAccount": "Create your account now"
+    "sign-in": "S'identifier",
+    "access": "Accédez à votre compte",
+    "email": "Adresse électronique",
+    "password": "Mot de passe",
+    "show-password": "Afficher le mot de passe",
+    "hide-password": "Masquer le mot de passe",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "createAccount": "Créez votre compte maintenant"
 }

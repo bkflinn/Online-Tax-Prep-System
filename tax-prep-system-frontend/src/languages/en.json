@@ -1,5 +1,6 @@
 {
     "title": "Tax Preparation System",
+
     "sign-in": "Sign in",
     "access": "Access your account",
     "email": "Email adress",
@@ -7,5 +8,26 @@
     "show-password": "Show password",
     "hide-password": "Hide password",
     "dontHaveAccount": "Don't have and account?",
-    "createAccount": "Create your account now"
+    "createAccount": "Create your account now",
+
+    "create": "Create Account",
+    "get-started": "Get started with an account.",
+    "indicate": " indicates a required field.",
+    "create-password": "Create password",
+    "retype-password": "Re-type password",
+    "agree": "I agree to the terms and conditions",
+    "convienient": "Conveniently store and access your information.",
+    "convienient-desc": "Create an account to securely store and access your personal and tax information. Change your information at any time and get fast and easy access to your tax preparation.",
+    "have-account": "Already have an account?",
+
+    "have-account": "Documents",
+    "have-account": "Instructions",
+    "have-account": "For each tab, fill in your information.",
+    "have-account": "Already have an account?",
+    "have-account": "Already have an account?",
+    "have-account": "Already have an account?"
+
+    
+
+
 }

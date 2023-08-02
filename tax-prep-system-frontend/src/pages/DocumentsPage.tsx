@@ -2,9 +2,12 @@ import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndi
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
+import { useTranslation } from 'react-i18next';
 
 
 const DocumentsPage = (): React.ReactElement =>{
+    const { t } = useTranslation();
+
     const userInfo: AccordionItemProps[] = [
         { 
             title: 'W2 Form', 
@@ -27,7 +30,7 @@ const DocumentsPage = (): React.ReactElement =>{
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                        {t("title")}
                         </a>
                     </Title>
                 </div>

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button, Link} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const CreateAccountPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false);
+    const { t } = useTranslation();
+
 
     const navigate = useNavigate();
 
@@ -24,7 +27,7 @@ const CreateAccountPage = (): React.ReactElement => {
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                        {t("title")}
                         </a>
                     </Title>
                 </div>
@@ -41,24 +44,24 @@ const CreateAccountPage = (): React.ReactElement => {
                             desktop={{ col: 6 }}
                             className="padding-x-205 margin-bottom-4">
                             <h1 className="desktop:display-none font-sans-lg margin-bottom-4 tablet:margin-top-neg-3">
-                                Conveniently store and access your information.
+                                {t("convienient")}
                             </h1>
 
                             <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                            <h1 className="margin-bottom-0">Create account</h1>
+                            <h1 className="margin-bottom-0">{t("create")}</h1>
                             <Form onSubmit={handleSubmit}>
-                                <Fieldset legend="Get started with an account.">
+                                <Fieldset legend={t("get-started")}>
                                 <p>
                                     <abbr
                                     title="required"
                                     className="usa-hint usa-hint--required">
                                     *
                                     </abbr>{' '}
-                                    indicates a required field.
+                                    {t("indicate")}
                                 </p>
 
                                 <Label htmlFor="email">
-                                    Email address{' '}
+                                    {t("email")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -73,7 +76,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                 />
 
                                 <Label htmlFor="password-create-account">
-                                    Create password{' '}
+                                    {t("create-password")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -96,12 +99,12 @@ const CreateAccountPage = (): React.ReactElement => {
                                     onClick={(): void =>
                                         setShowPassword((showPassword) => !showPassword)
                                     }>
-                                    {showPassword ? 'Hide password' : 'Show password'}
+                                    {showPassword ? t("hide-password") : t("show-password")}
                                     </a>
                                 </p>
 
                                 <Label htmlFor="password-create-account-confirm">
-                                    Re-type password{' '}
+                                     {t("retype-password")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -123,14 +126,14 @@ const CreateAccountPage = (): React.ReactElement => {
                                     label={checkboxLabel}
                                 />
 
-                                <Button type="submit">Create account</Button>
+                                <Button type="submit">{t("create")}</Button>
                                 </Fieldset>
                             </Form>
                             </div>
 
                             <p className="text-center">
-                            Already have an account?{' '}
-                            <Link href="/login">Sign in</Link>.
+                            {t("have-account")}{' '}
+                            <Link href="/login">{t("sign-in")}</Link>.
                             </p>
                         </Grid>
 
@@ -142,14 +145,12 @@ const CreateAccountPage = (): React.ReactElement => {
                             className="padding-x-205">
                             <div className="border-top border-base-lighter padding-top-4 desktop:border-0 desktop:padding-top-0">
                                 <h2 className="display-none desktop:display-block">
-                                    Conveniently store and access your information.
+                                    {t("convienient")}
                                 </h2>
 
                                 <div className="usa-prose">
                                     <p>
-                                         Create an account to securely store and access your personal and tax
-                                         information. Change your information at any time and get fast and easy
-                                         access to your tax preparation.
+                                         {t("convienient-desc")}
                                     </p>
                                 </div>
 
