@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button, Link} from '@trussworks/react-uswds';
+import { useNavigate } from "react-router-dom";
 
 const CreateAccountPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         // Handle form submission logic here
+
+        //After form submission, navigate to PersonalInfo page 
+        navigate('/personal-info');
     };
 
     // Define the label content for the checkbox
@@ -124,7 +130,7 @@ const CreateAccountPage = (): React.ReactElement => {
 
                             <p className="text-center">
                             Already have an account?{' '}
-                            <Link href="javascript:void(0);">Sign in</Link>.
+                            <Link href="/login">Sign in</Link>.
                             </p>
                         </Grid>
 

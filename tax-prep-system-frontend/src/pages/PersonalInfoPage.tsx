@@ -2,8 +2,12 @@ import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndi
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import AddressForm from '../components/Address/AddressForm';
 import FilingStatusForm from '../components/Status/FilingStatusForm';
+import { useNavigate } from "react-router-dom";
 
 const PersonalInfoPage = (): React.ReactElement =>{
+
+    const navigate = useNavigate();
+
     const userInfo: AccordionItemProps[] = [
         { 
             title: 'Address', 
@@ -19,7 +23,12 @@ const PersonalInfoPage = (): React.ReactElement =>{
             id: 'accordion-status',
             headingLevel: 'h1',
         }
+        
     ];
+
+    const handleNext = () => {
+        navigate('/documents');
+    }
 
     return (
         <>
@@ -61,7 +70,9 @@ const PersonalInfoPage = (): React.ReactElement =>{
 
                                     <Accordion bordered={true} items={userInfo}></Accordion>
                                     
-                                    <Button className="margin-top-3" type="button">Next</Button>
+                                    <Button className="margin-top-3" type="button" onClick={handleNext}>
+                                        Next
+                                    </Button>
                                 </div>
                                 
                             </Grid>
