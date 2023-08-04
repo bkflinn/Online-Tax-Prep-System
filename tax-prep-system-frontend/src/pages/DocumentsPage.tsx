@@ -45,22 +45,21 @@ const DocumentsPage = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 <StepIndicator centered headingLevel="h4">
-                                    <StepIndicatorStep label="Personal Information" status="complete" />
-                                    <StepIndicatorStep label="Documents" status="current" />
-                                    <StepIndicatorStep label="Review and Submit"/>
+                                    <StepIndicatorStep label={t("personal-info")} status="complete" />
+                                    <StepIndicatorStep label={t("documents")} status="current" />
+                                    <StepIndicatorStep label={t("review")}/>
                                 </StepIndicator>
 
-                                    <h1 className="margin-bottom-0 font-heading-2xl">Documents</h1>
+                                    <h1 className="margin-bottom-0 font-heading-2xl">{t("documents")}</h1>
                                     <SummaryBox>
-                                        <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
+                                        <SummaryBoxHeading headingLevel="h2">{t("instructions")}</SummaryBoxHeading>
                                         <SummaryBoxContent>
                                             <ul>
-                                                <li>For each tab, fill in your information.</li>
+                                                <li>{t("instruc-pt1")}</li>
                                                 <li>
-                                                    Additional information on the <a href="https://www.irs.gov/forms-pubs/about-form-w-2">W2 form</a> and <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec">1099 form</a> can 
-                                                    be found on the IRS website.
+                                                {t("instruc-pt2-1")} <a href="https://www.irs.gov/forms-pubs/about-form-w-2">{t("instruc-pt2-2")}</a> {t("instruc-pt2-3")} <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec">{t("instruc-pt2-4")}</a> {t("instruc-pt2-5")}
                                                 </li>
-                                                <li>When done, proceed to the next page to review your information.</li>
+                                                <li>{t("instruc-pt3")}</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
@@ -69,8 +68,8 @@ const DocumentsPage = (): React.ReactElement =>{
                                     <Accordion bordered={true} items={userInfo}></Accordion>
 
                                     <div className="mobile-lg:grid-col-4">
-                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">Prev</Button>
-                                        <Button className="margin-top-3" type="button">Next</Button>
+                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">{t("prev")}</Button>
+                                        <Button className="margin-top-3" type="button">{t("next")}</Button>
                                     </div>
                                     
                                 </div>

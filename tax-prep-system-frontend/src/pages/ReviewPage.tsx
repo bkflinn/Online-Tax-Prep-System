@@ -27,9 +27,9 @@ const ReviewPage = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 <StepIndicator centered headingLevel="h4">
-                                    <StepIndicatorStep label="Personal Information" status="complete" />
-                                    <StepIndicatorStep label="Documents" status="complete" />
-                                    <StepIndicatorStep label="Review and Submit" status= "current"/>
+                                    <StepIndicatorStep label={t("personal-info")} status="complete" />
+                                    <StepIndicatorStep label={t("documents")} status="complete" />
+                                    <StepIndicatorStep label={t("review")} status= "current"/>
                                 </StepIndicator>
 
                                     <h1 className="margin-bottom-0 font-heading-2xl">{t("review")}</h1>

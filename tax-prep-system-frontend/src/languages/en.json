@@ -21,7 +21,7 @@
     "have-account": "Already have an account?",
 
     "documents": "Documents",
-    "insturctions": "Instructions",
+    "instructions": "Instructions",
     "instruc-pt1": "For each tab, fill in your information.",
     "instruc-pt2-1": "Additional information on the ",
     "instruc-pt2-2": "W2 form ",
@@ -40,9 +40,10 @@
     "submit": "Submit",
 
     "payer-tin": "Payer Tax Information Number (TIN)",
-    "compensation": "compensation",
+    "compensation": "Compensation",
     "save": "save",
 
+    "select": "Select",
     "af-america": "AA - Armed Forces Americas",
     "af-europe": "AE -  Forces Europe",
     "af-canada": "AE -  Forces Canada",
@@ -50,6 +51,8 @@
     "af-middle-east": "AE - Armed Forces Middle East",
     "af-pacific": "AP - Armed Forces Pacific",
 
+    "mailing-address": "Mailing Address",
+    "address": "Address",
     "street1": "Street Address 1",
     "street2": "Street Address 2",
     "city": "City",
@@ -63,6 +66,14 @@
     "employer-tin": "Empolyer Tax Information Number (TIN)",
     "employer": "Employer",
     "wages": "Wages",
-    "withholding": "Withholding"
+    "withholding": "Withholding",
+
+    
+    "filing-status": "Filing Status",
+    "single": "Single",
+    "married": "Married Filing Jointly",
+    "head": "Head of Household"
+
+
 
 }

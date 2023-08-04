@@ -13,14 +13,14 @@ const PersonalInfoPage = (): React.ReactElement =>{
 
     const userInfo: AccordionItemProps[] = [
         { 
-            title: 'Address', 
+            title: t("address"), 
             content: <AddressForm/>,
             expanded: false,
             id: 'accordion-address',
             headingLevel: 'h1',
         },
         { 
-            title: 'Filing Status', 
+            title: t("filing-status"), 
             content: <FilingStatusForm/>,
             expanded: false,
             id: 'accordion-status',
@@ -54,9 +54,9 @@ const PersonalInfoPage = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 <StepIndicator centered headingLevel="h4">
-                                    <StepIndicatorStep label="Personal Information" status="current" />
-                                    <StepIndicatorStep label="Documents"/>
-                                    <StepIndicatorStep label="Review and Submit" />
+                                    <StepIndicatorStep label={t("personal-info")} status="current" />
+                                    <StepIndicatorStep label={t("documents")}/>
+                                    <StepIndicatorStep label={t("review")} />
                                 </StepIndicator>
                                     <h1 className="margin-bottom-0 font-heading-2xl">{t("personal-info")}</h1>
                                     <SummaryBox>

@@ -11,24 +11,24 @@ const AddressForm = (): React.ReactElement => {
     return(
         <>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="Mailing address" legendStyle="large">
-                <Label htmlFor="mailing-address-1">Street address 1</Label>
+                <Fieldset legend={t("mailing-address")} legendStyle="large">
+                <Label htmlFor="mailing-address-1">{t("street1")}</Label>
                 <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
 
                 <Label htmlFor="mailing-address-2" hint=" (optional)">
-                    Street address 2
+                {t("street2")}
                 </Label>
                 <TextInput id="mailing-address-2" name="mailing-address-2" type="text" />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="city">{t("city")}</Label>
                     <TextInput id="city" name="city" type="text" />
                     </div>
                     <div className="mobile-lg:grid-col-4">
-                        <Label htmlFor="state">State</Label>
+                        <Label htmlFor="state">{t("state")}</Label>
                         <Dropdown id="state" name="state">
-                            <option>- Select -</option>
+                            <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -80,17 +80,17 @@ const AddressForm = (): React.ReactElement => {
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
-                            <option value="AA">AA - Armed Forces Americas</option>
-                            <option value="AE">AE - Armed Forces Africa</option>
-                            <option value="AE">AE - Armed Forces Canada</option>
-                            <option value="AE">AE - Armed Forces Europe</option>
-                            <option value="AE">AE - Armed Forces Middle East</option>
-                            <option value="AP">AP - Armed Forces Pacific</option>
+                            <option value="AA">{t("af-america")}</option>
+                            <option value="AE">{t("af-africa")}</option>
+                            <option value="AE">{t("af-canada")}</option>
+                            <option value="AE">{t("af-europe")}</option>
+                            <option value="AE">{t("af-middle-east")}</option>
+                            <option value="AP">{t("af-pacific")}</option>
                         </Dropdown>
                     </div>
                 </div>
 
-                <Label htmlFor="zip">ZIP</Label>
+                <Label htmlFor="zip">{t("zip")}</Label>
                 <TextInput
                     id="zip"
                     name="zip"
@@ -99,7 +99,7 @@ const AddressForm = (): React.ReactElement => {
                     pattern="[\d]{5}(-[\d]{4})?"
                 />
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
     );

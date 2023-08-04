@@ -19,7 +19,7 @@ const CreateAccountPage = (): React.ReactElement => {
     };
 
     // Define the label content for the checkbox
-    const checkboxLabel = "I agree to the terms and conditions";
+    const checkboxLabel = t("agree");
 
     return (
         <>

@@ -13,14 +13,14 @@ const NECForm = (): React.ReactElement => {
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend="1099 Form" legendStyle="large">
 
-                <Label htmlFor="tin">Payer Tax Identification Number (TIN)</Label>
+                <Label htmlFor="tin">{t("payer-tin")}</Label>
                 <TextInput id="tin" name="tin" type="number" />
 
-                <Label htmlFor="wages">Compensation</Label>
+                <Label htmlFor="wages">{t("compensation")}</Label>
                 <TextInput id="wages" name="wages" type="number" />
                 
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
     );

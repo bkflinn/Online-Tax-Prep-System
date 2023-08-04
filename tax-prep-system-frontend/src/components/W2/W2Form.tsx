@@ -13,20 +13,20 @@ const W2Form = (): React.ReactElement => {
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend="W2 Form" legendStyle="large">
 
-                <Label htmlFor="tin">Employer Tax Identification Number (TIN)</Label>
+                <Label htmlFor="tin">{t("employer-tin")}</Label>
                 <TextInput id="tin" name="tin" type="number" />
 
-                <Label htmlFor="employer">Employer</Label>
+                <Label htmlFor="employer">{t("employer")}</Label>
                 <TextInput id="employer" name="employer" type="text" />
 
-                <Label htmlFor="wages">Wages</Label>
+                <Label htmlFor="wages">{t("wages")}</Label>
                 <TextInput id="wages" name="wages" type="number" />
 
-                <Label htmlFor="fed-withholding">Federal Withholding</Label>
+                <Label htmlFor="fed-withholding">{t("withholding")}</Label>
                 <TextInput id="fed-withholding" name="fed-withholding" type="number" />
                 
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
     );

@@ -11,30 +11,30 @@ const FilingStatusForm = (): React.ReactElement => {
     return(
         <>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="Filing Status" legendStyle="large">
+                <Fieldset legend={t("filing-status")} legendStyle="large">
 
                 <Radio
                     id="single"
                     name="filing-status"
                     defaultChecked
-                    label="Single"
+                    label={t("single")}
                     value="s"
                 />
                 <Radio
                     id="married"
                     name="filing-status"
-                    label="Married Filing Jointly"
+                    label={t("married")}
                     value="m"
                 />
                 <Radio
                     id="head"
                     name="filing-status"
-                    label="Head of Household"
+                    label={t("head")}
                     value="h"
                 />
                 
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
     );

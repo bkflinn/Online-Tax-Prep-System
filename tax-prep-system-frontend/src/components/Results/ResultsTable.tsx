@@ -9,9 +9,9 @@ const ResultsTable = (): React.ReactElement => {
             <Table>
             <thead>
                 <tr>
-                    <th>State Refund</th>
-                    <th>Federal Refund</th>
-                    <th>Total Refund</th>
+                    <th>{t("state-refund")}</th>
+                    <th>{t("federal-refund")}</th>
+                    <th>{t("total-refund")}</th>
                 </tr>
             </thead>
             </Table>
