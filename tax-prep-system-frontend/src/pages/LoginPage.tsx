@@ -78,8 +78,7 @@ const LoginPage = (): React.ReactElement => {
                                 </div>
 
                                 <p className="text-center">
-                                    {t("dontHaveAccount")}
-                                    <Link href="/create-account">{t("createAccount")}</Link>
+                                    {t("dontHaveAccount")} <Link href="/create-account">{t("createAccount")}</Link>
                                 </p>
                             </Grid>
                         </Grid>
