@@ -1,29 +1,18 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
-@Entity
-@Table
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "W2")
 public class W2 {
     
     @Id
-    @JoinColumn
     private int social;
 
-    @Column
     private int emp_tin;
-
-    @Column
     private String employer;
-
-    @Column
     private double wages;
-
-    @Column
     private double fed_withheld;
 
     public W2() {

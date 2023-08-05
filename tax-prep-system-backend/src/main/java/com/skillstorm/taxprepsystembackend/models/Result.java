@@ -1,20 +1,15 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "RESULTS")
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "RESULTS")
 public class Result {
     
     @Id
-    @JoinColumn
     private int social;
 
-    @Column
     private double owed;
 
     public Result() {

@@ -1,26 +1,17 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
-@Entity
-@Table
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "NEC")
 public class NEC {
     
     @Id
-    @JoinColumn
     private int social;
 
-    @Column
     private int payer_tin;
-
-    @Column
     private double compensation;
-
-    @Column
     private double fed_withheld;
 
     public NEC() {

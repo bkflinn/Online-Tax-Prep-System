@@ -1,43 +1,23 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "USERS")
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "USERS")
 public class User {
     
     @Id
-    @Column
     private int social;
 
-    @Column
     private String first_name;
-
-    @Column
     private String last_name;
-
-    @Column
     private String email;
-
-    @Column
     private String phone;
-
-    @Column
     private String street_address;
-
-    @Column
     private String city;
-
-    @Column
     private String state;
-
-    @Column
     private int zip;
-
-    @Column
     private char status;
 
     public User() {
