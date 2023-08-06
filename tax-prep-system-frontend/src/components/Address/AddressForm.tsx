@@ -1,33 +1,70 @@
 import { Button, Dropdown, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
+import { useState } from "react";
 import { useTranslation } from 'react-i18next';
+import { User, useFindUserBySocialQuery, useUpdateUserMutation, userApi } from "../../api/userApi";
+
 
 const AddressForm = (): React.ReactElement => {
     const { t } = useTranslation();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-        // Handle form submission logic here
+    const socialValue = 1; // placeholder for social number set by login
+    const { data: user } = useFindUserBySocialQuery(socialValue);
+
+    const [formData, setFormData] = useState({
+        'street_address': user?.street_address || '',
+        'city': user?.city || '',
+        'state': user?.state || '',
+        'zip': user?.zip || '',
+    });
+
+    const [updateUser] = useUpdateUserMutation();
+
+    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        event.preventDefault();
+
+        // Make sure user is not null before merging
+        if (user) {
+            // Convert the JSON object to the User type
+            const updatedUser = {
+                ...user,
+                ...formData,
+                zip: Number(formData.zip),
+            };
+
+            try {
+                await updateUser(updatedUser);
+
+                // Optionally, you can refetch user data to update the form and Redux store
+                // userApi.endpoints.findUserBySocial.initiate(socialValue);
+            } catch (error) {
+                // Handle error
+            }
+        }
+    };
+   
     return(
         <>
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend={t("mailing-address")} legendStyle="large">
-                <Label htmlFor="mailing-address-1">{t("street1")}</Label>
-                <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
-
-                <Label htmlFor="mailing-address-2" hint=" (optional)">
-                {t("street2")}
-                </Label>
-                <TextInput id="mailing-address-2" name="mailing-address-2" type="text" />
+                <Label htmlFor="street_address">{t("street1")}</Label>
+                <TextInput id="street_address" name="street_address" type="text" onChange={handleFormChange} />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
                     <Label htmlFor="city">{t("city")}</Label>
-                    <TextInput id="city" name="city" type="text" />
+                    <TextInput id="city" name="city" type="text" onChange={handleFormChange}/>
                     </div>
                     <div className="mobile-lg:grid-col-4">
                         <Label htmlFor="state">{t("state")}</Label>
-                        <Dropdown id="state" name="state">
+                        <Dropdown id="state" name="state" onChange={handleFormChange}>
                             <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -97,6 +134,7 @@ const AddressForm = (): React.ReactElement => {
                     type="text"
                     inputSize="medium"
                     pattern="[\d]{5}(-[\d]{4})?"
+                    onChange={handleFormChange}
                 />
                 </Fieldset>
                 <Button type="submit">{t("save")}</Button>

@@ -15,7 +15,7 @@ export type User = {
 
 export const userApi = createApi({
     reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8282/users' }), // Adjust the URL as needed
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/users' }), // Adjust the URL as needed
     endpoints: (builder) => ({
         findAllUsers: builder.query<User[], void>({
             query: () => '/',

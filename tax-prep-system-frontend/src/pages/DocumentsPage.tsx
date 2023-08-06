@@ -3,9 +3,11 @@ import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accor
 import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 
 const DocumentsPage = (): React.ReactElement =>{
+    const navigate = useNavigate();
     const { t } = useTranslation();
 
     const userInfo: AccordionItemProps[] = [
@@ -24,6 +26,14 @@ const DocumentsPage = (): React.ReactElement =>{
             headingLevel: 'h1',
         }
     ];
+
+    const handlePrev = () => {
+        navigate('/personal-info');
+    }
+
+    const handleNext = () => {
+        navigate('/review');
+    }
     return (
         <>
              <Header extended>
@@ -68,8 +78,8 @@ const DocumentsPage = (): React.ReactElement =>{
                                     <Accordion bordered={true} items={userInfo}></Accordion>
 
                                     <div className="mobile-lg:grid-col-4">
-                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">{t("prev")}</Button>
-                                        <Button className="margin-top-3" type="button">{t("next")}</Button>
+                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button" onClick={handlePrev}>{t("prev")}</Button>
+                                        <Button className="margin-top-3" type="button" onClick={handleNext}>{t("next")}</Button>
                                     </div>
                                     
                                 </div>

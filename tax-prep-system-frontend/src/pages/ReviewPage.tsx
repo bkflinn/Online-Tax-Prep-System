@@ -1,9 +1,19 @@
 import { Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
 
 
 const ReviewPage = (): React.ReactElement =>{
+    const navigate = useNavigate();
     const { t } = useTranslation();
+
+    const handlePrev = () => {
+        navigate('/documents');
+    }
+
+    const handleNext = () => {
+        navigate('/results');
+    }
 
    
     return (
@@ -46,8 +56,8 @@ const ReviewPage = (): React.ReactElement =>{
                                     
 
                                     <div className="mobile-lg:grid-col-4">
-                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button">{t("prev")}</Button>
-                                        <Button className="margin-top-3" type="button">{t("submit")}</Button>
+                                        <Button className="margin-top-3 usa-button usa-button--outline" type="button" onClick={handlePrev}>{t("prev")}</Button>
+                                        <Button className="margin-top-3" type="button" onClick={handleNext}>{t("submit")}</Button>
                                     </div>
                                     
                                 </div>

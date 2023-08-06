@@ -4,6 +4,7 @@ import DocumentsPage from "./pages/DocumentsPage";
 import ReviewPage from "./pages/ReviewPage";
 import LoginPage from "./pages/LoginPage";
 import PersonalInfoPage from "./pages/PersonalInfoPage";
+import ResultsPage from "./pages/ResultsPage";
 
 //router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -50,7 +51,8 @@ export default function App() {
           <LanguageToggleButton />
           <Routes>
             {/* Default route to LoginPage */}
-            <Route path="/" element={<LoginPage />} />
+            {/**<Route path="/" element={<LoginPage />} /> */}
+            <Route path="/" element={<PersonalInfoPage />} />
 
             {/* Other routes */}
             <Route path="/create-account" element={<CreateAccountPage />} />
@@ -58,6 +60,7 @@ export default function App() {
             <Route path="/personal-info" element={<PersonalInfoPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/review" element={<ReviewPage />} />
+            <Route path="/results" element={<ResultsPage />} />
           </Routes>
        </Router>
     </>

@@ -31,7 +31,7 @@ export const w2Api = createApi({
         updateW2: builder.mutation<W2, W2>({
             query: (updatedW2) => ({
                 method: 'PUT',
-                url: '/W2',
+                url: '/W2/',
                 body: updatedW2,
             }),
         }),
