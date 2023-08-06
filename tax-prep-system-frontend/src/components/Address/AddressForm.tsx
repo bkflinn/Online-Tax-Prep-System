@@ -1,23 +1,35 @@
 import { Button, Dropdown, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { useTranslation } from 'react-i18next';
-import { User, useFindUserBySocialQuery, useUpdateUserMutation, userApi } from "../../api/userApi";
+import { useFindUserBySocialQuery, useUpdateUserMutation} from "../../api/userApi";
 
 
-const AddressForm = (): React.ReactElement => {
+const AddressForm = (): React.ReactNode => {
     const { t } = useTranslation();
 
     const socialValue = 1; // placeholder for social number set by login
     const { data: user } = useFindUserBySocialQuery(socialValue);
 
     const [formData, setFormData] = useState({
-        'street_address': user?.street_address || '',
-        'city': user?.city || '',
-        'state': user?.state || '',
-        'zip': user?.zip || '',
+        'street_address': '',
+        'city': '',
+        'state': '',
+        'zip': '',
     });
 
     const [updateUser] = useUpdateUserMutation();
+
+    useEffect(() => {
+        if (user) {
+            setFormData((prevData) => ({
+                ...prevData,
+                'street_address': user.street_address || '',
+                'city': user.city || '',
+                'state': user.state || '',
+                'zip': user.zip.toString() || '',
+            }));
+        }
+    }, [user]);
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
@@ -41,30 +53,27 @@ const AddressForm = (): React.ReactElement => {
 
             try {
                 await updateUser(updatedUser);
-
-                // Optionally, you can refetch user data to update the form and Redux store
-                // userApi.endpoints.findUserBySocial.initiate(socialValue);
             } catch (error) {
                 // Handle error
             }
         }
     };
    
-    return(
+    return user ? (
         <>
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend={t("mailing-address")} legendStyle="large">
                 <Label htmlFor="street_address">{t("street1")}</Label>
-                <TextInput id="street_address" name="street_address" type="text" onChange={handleFormChange} />
+                <TextInput id="street_address" name="street_address" type="text" value={formData.street_address} onChange={handleFormChange} />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
                     <Label htmlFor="city">{t("city")}</Label>
-                    <TextInput id="city" name="city" type="text" onChange={handleFormChange}/>
+                    <TextInput id="city" name="city" type="text" value={formData.city} onChange={handleFormChange}/>
                     </div>
                     <div className="mobile-lg:grid-col-4">
                         <Label htmlFor="state">{t("state")}</Label>
-                        <Dropdown id="state" name="state" onChange={handleFormChange}>
+                        <Dropdown id="state" name="state" value={formData.state} onChange={handleFormChange}>
                             <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -132,6 +141,7 @@ const AddressForm = (): React.ReactElement => {
                     id="zip"
                     name="zip"
                     type="text"
+                    value={formData.zip}
                     inputSize="medium"
                     pattern="[\d]{5}(-[\d]{4})?"
                     onChange={handleFormChange}
@@ -140,7 +150,7 @@ const AddressForm = (): React.ReactElement => {
                 <Button type="submit">{t("save")}</Button>
             </Form>
         </>
-    );
-}
+    ) : null;
+};
 
 export default AddressForm;

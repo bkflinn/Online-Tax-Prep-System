@@ -34,6 +34,7 @@ const DocumentsPage = (): React.ReactElement =>{
     const handleNext = () => {
         navigate('/review');
     }
+    
     return (
         <>
              <Header extended>

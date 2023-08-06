@@ -74,7 +74,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                                     <Accordion bordered={true} items={userInfo}></Accordion>
                                     
                                     <Button className="margin-top-3" type="button" onClick={handleNext}>
-                                    {t("next")}
+                                        {t("next")}
                                     </Button>
                                 </div>
                                 
