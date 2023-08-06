@@ -55,7 +55,7 @@ const AddressForm = (): React.ReactNode => {
                 await updateUser(updatedUser);
             } catch (error) {
                 // Handle error
-            }
+            };
         }
     };
    

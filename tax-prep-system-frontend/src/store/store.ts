@@ -12,7 +12,13 @@ const store = configureStore({
         [userApi.reducerPath] : userApi.reducer,
         [resultApi.reducerPath] : resultApi.reducer,
     },
-    middleware : (defaultMiddleWare) => defaultMiddleWare().concat(userApi.middleware)
+    middleware : (defaultMiddleWare) => 
+        defaultMiddleWare()
+            .concat(necApi.middleware) // Add necApi middleware
+            .concat(w2Api.middleware)  // Add w2Api middleware
+            .concat(userApi.middleware)  // Add userApi middleware
+            .concat(resultApi.middleware),  // Add resultApi middleware
+    
 });
 
 export default store;
