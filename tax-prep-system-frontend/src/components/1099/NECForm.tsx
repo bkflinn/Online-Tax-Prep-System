@@ -38,7 +38,6 @@ const NECForm = (): React.ReactNode => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        console.log({nec});
         if (nec) {
             const updatedNEC = {
                 ...nec,
