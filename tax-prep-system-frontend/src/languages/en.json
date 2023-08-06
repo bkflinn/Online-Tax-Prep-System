@@ -37,6 +37,7 @@
 
     "review": "Review and Submit",
     "review-desc": "Review your information to ensure that it is accurate.",
+    "review-done": "When finished, press the submit button to calculate results.",
     "submit": "Submit",
 
     "payer-tin": "Payer Tax Information Number (TIN)",

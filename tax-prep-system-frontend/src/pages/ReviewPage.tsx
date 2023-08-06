@@ -1,11 +1,22 @@
 import { Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
+import AddressTable from "../components/Address/AddressTable";
+import { useFindUserBySocialQuery } from "../api/userApi";
+import NECTable from "../components/1099/NECTable";
+import { useFindNECBySocialQuery } from "../api/necApi";
+import { useFindW2BySocialQuery } from "../api/w2Api";
+import W2Table from "../components/W2/W2Table";
 
 
-const ReviewPage = (): React.ReactElement =>{
+const ReviewPage = (): React.ReactNode =>{
     const navigate = useNavigate();
     const { t } = useTranslation();
+
+    const socialValue = 1; // placeholder for social number set by login
+    const { data: user } = useFindUserBySocialQuery(socialValue);
+    const { data: w2 } = useFindW2BySocialQuery(socialValue);
+    const { data: nec} = useFindNECBySocialQuery(socialValue);
 
     const handlePrev = () => {
         navigate('/documents');
@@ -48,12 +59,25 @@ const ReviewPage = (): React.ReactElement =>{
                                         <SummaryBoxContent>
                                             <ul>
                                                 <li>{t("review-desc")}</li>
+                                                <li>{t("review-done")}</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
                                     <br></br>
 
-                                    
+                                    <h2>{t("address")}</h2>
+                                    {user && 
+                                        <AddressTable user={user}></AddressTable>
+                                    }
+
+                                    <h2>W2 Form</h2>
+                                    {w2 && 
+                                        <W2Table w2={w2}></W2Table>
+                                    }
+                                    <h2>1099 Form</h2>
+                                    {nec && 
+                                        <NECTable nec={nec}></NECTable>
+                                    }
 
                                     <div className="mobile-lg:grid-col-4">
                                         <Button className="margin-top-3 usa-button usa-button--outline" type="button" onClick={handlePrev}>{t("prev")}</Button>

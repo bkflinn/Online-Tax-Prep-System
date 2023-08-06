@@ -36,6 +36,7 @@
 
     "review": "Revisar y Enviar",
     "review-desc": "Revisa tu información para asegurarte de que es correcta.",
+    "review-done": "Cuando haya terminado, presione el botón Enviar para calcular los resultados.",
     "submit": "Enviar",
 
     "payer-tin": "Número de información fiscal (TIN) del pagador",
