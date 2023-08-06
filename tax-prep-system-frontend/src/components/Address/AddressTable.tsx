@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 const AddressTable = (): React.ReactElement => {
-    const { t } = useTranslation();
+    //const { t } = useTranslation();
 
     
     return(
