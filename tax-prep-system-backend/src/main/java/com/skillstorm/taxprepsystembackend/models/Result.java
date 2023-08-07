@@ -6,6 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "RESULTS")
 public class Result {
+
+    // _id used by MongoDB
+    @Id
+    private String _id;
     
     @Id
     private int social;
@@ -18,6 +22,14 @@ public class Result {
     public Result(int social, double owed) {
         this.social = social;
         this.owed = owed;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {

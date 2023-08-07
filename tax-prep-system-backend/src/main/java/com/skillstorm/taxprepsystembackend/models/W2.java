@@ -6,6 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "W2")
 public class W2 {
+
+    // _id used by MongoDB
+    @Id
+    private String _id;
     
     @Id
     private int social;
@@ -24,6 +28,14 @@ public class W2 {
         this.employer = employer;
         this.wages = wages;
         this.fed_withheld = fed_withheld;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {

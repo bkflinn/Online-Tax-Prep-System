@@ -6,6 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "USERS")
 public class User {
+
+    // _id used by MongoDB
+    @Id
+    private String _id;
     
     @Id
     private int social;
@@ -35,6 +39,14 @@ public class User {
         this.state = state;
         this.zip = zip;
         this.status = status;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {
