@@ -26,6 +26,19 @@ const ReviewPage = (): React.ReactNode =>{
         navigate('/results');
     }
 
+    const getStatusLabel = (status: string, t: (key: string) => string) => {
+        switch (status) {
+            case 'S':
+                return t('single');
+            case 'M':
+                return t('married');
+            case 'H':
+                return t('head');
+            default:
+                return '';
+        }
+    };
+
    
     return (
         <>
@@ -69,6 +82,9 @@ const ReviewPage = (): React.ReactNode =>{
                                     {user && 
                                         <AddressTable user={user}></AddressTable>
                                     }
+
+                                    <h2>Filing Status</h2>
+                                    <p>{user ? getStatusLabel(user.status, t) : ''}</p>
 
                                     <h2>W2 Form</h2>
                                     {w2 && 
