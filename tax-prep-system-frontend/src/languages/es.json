@@ -9,7 +9,11 @@
     "dontHaveAccount": "¿No tiene cuenta?",
     "createAccount": "Cree su cuenta ahora",
 
-    "create": "Crear cuenta",
+    "ssn" : "Número de Seguro Social",
+    "phone" : "Número de teléfono",
+    "confirm" : "Confirmar",
+    "create": "Configuración de Usuario",
+    
     "get-started": "Empezar con una cuenta",
     "indicate": " indica un campo obligatorio.",
     "create-password": "Crear contraseña",

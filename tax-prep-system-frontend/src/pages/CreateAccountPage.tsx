@@ -48,10 +48,10 @@ const CreateAccountPage = (): React.ReactElement => {
                             </h1>
 
                             <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                            <h1 className="margin-bottom-0">{t("create")}</h1>
+                            <h1 className="margin-bottom-1">{t("create")}</h1>
                             <Form onSubmit={handleSubmit}>
                                 <Fieldset legend={t("get-started")}>
-                                <p>
+                                <p className="margin-bottom-0">
                                     <abbr
                                     title="required"
                                     className="usa-hint usa-hint--required">
@@ -59,62 +59,50 @@ const CreateAccountPage = (): React.ReactElement => {
                                     </abbr>{' '}
                                     {t("indicate")}
                                 </p>
+                            
+                                 <Grid row gap>
+                                    <Grid col tablet={{ col: 6 }}>
+                                        <Label htmlFor="first-name">
+                                            First Name
+                                            {' '}
+                                            <abbr title="required" className="usa-label--required">
+                                                *
+                                            </abbr>
+                                        </Label>
+                                        <TextInput id="first-name" name="first-name" type="text" />
+                                    </Grid>
+                                    <Grid col tablet={{ col: 6 }}>
+                                        <Label htmlFor="last-name">
+                                            Last Name
+                                            {' '}
+                                            <abbr title="required" className="usa-label--required">
+                                                *
+                                            </abbr>
+                                        </Label>
+                                        <TextInput id="last-name" name="last-name" type="text" />
+                                    </Grid>
+                                </Grid>
 
-                                <Label htmlFor="email">
-                                    {t("email")}{' '}
+                                <Label htmlFor="ssn">
+                                    {t("ssn")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
                                 </Label>
                                 <TextInput
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoCapitalize="off"
-                                    autoCorrect="off"
+                                    id="ssn"
+                                    name="ssn"
+                                    type="number"
                                     required={true}
                                 />
 
-                                <Label htmlFor="password-create-account">
-                                    {t("create-password")}{' '}
-                                    <abbr title="required" className="usa-label--required">
-                                    *
-                                    </abbr>
+                                <Label htmlFor="phone">
+                                    {t("phone")}
                                 </Label>
                                 <TextInput
-                                    id="password-create-account"
-                                    name="password"
-                                    type={showPassword ? 'text' : 'password'}
-                                    autoCapitalize="off"
-                                    autoCorrect="off"
-                                    required={true}
-                                />
-
-                                <p className="usa-form__note">
-                                    <a
-                                    title="Show password"
-                                    href="javascript:void(0);"
-                                    className="usa-show-password"
-                                    aria-controls="password-create-account password-create-account-confirm"
-                                    onClick={(): void =>
-                                        setShowPassword((showPassword) => !showPassword)
-                                    }>
-                                    {showPassword ? t("hide-password") : t("show-password")}
-                                    </a>
-                                </p>
-
-                                <Label htmlFor="password-create-account-confirm">
-                                     {t("retype-password")}{' '}
-                                    <abbr title="required" className="usa-label--required">
-                                    *
-                                    </abbr>
-                                </Label>
-                                <TextInput
-                                    id="password-create-account-confirm"
-                                    name="password-confirm"
-                                    type={showPassword ? 'text' : 'password'}
-                                    autoCapitalize="off"
-                                    autoCorrect="off"
+                                    id="phone"
+                                    name="phone"
+                                    type="number"
                                     required={true}
                                 />
 
@@ -126,15 +114,11 @@ const CreateAccountPage = (): React.ReactElement => {
                                     label={checkboxLabel}
                                 />
 
-                                <Button type="submit">{t("create")}</Button>
+                                <Button type="submit">{t("confirm")}</Button>
                                 </Fieldset>
                             </Form>
                             </div>
 
-                            <p className="text-center">
-                            {t("have-account")}{' '}
-                            <Link href="/login">{t("sign-in")}</Link>.
-                            </p>
                         </Grid>
 
                         <Grid
