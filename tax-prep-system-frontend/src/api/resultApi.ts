@@ -7,7 +7,10 @@ export type Result = {
 
 export const resultApi = createApi({
     reducerPath: 'resultApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/results' }), // Adjust the URL as needed
+    baseQuery: fetchBaseQuery({ 
+        baseUrl: 'http://localhost:8080/results',
+        credentials: 'include', // Include credentials for cross-origin requests 
+    }), // Adjust the URL as needed
     endpoints: (builder) => ({
         findAllResults: builder.query<Result[], void>({
             query: () => '/',

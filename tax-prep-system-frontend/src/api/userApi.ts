@@ -25,6 +25,10 @@ export const userApi = createApi({
             query: (social) => `/user/${social}`,
         }),
 
+        findUserByEmail: builder.query<User, string>({
+            query: (email) => `/user/email/${email}`,
+        }),
+
         createUser: builder.mutation<User, User>({
             query: (newUser) => ({
                 method: 'POST',
@@ -55,6 +59,7 @@ export const userApi = createApi({
 export const {
     useFindAllUsersQuery,
     useFindUserBySocialQuery,
+    useFindUserByEmailQuery,
     useCreateUserMutation,
     useUpdateUserMutation,
     useDeleteUserMutation,
