@@ -5,10 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { useFindUserByEmailQuery } from '../api/userApi';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../store/userSlice';
 
 
 const LoginPage = (): React.ReactElement => {
     const [userEmail, setUserEmail] = useState('');
+
+    const dispatch = useDispatch();
    
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -38,8 +42,9 @@ const LoginPage = (): React.ReactElement => {
                 const { data: user } = useFindUserByEmailQuery(userEmail);
                 
                 if (user) {
+                    dispatch(setUser(user)); // Dispatch action to update the store
                     // Email exists, route to landing page
-                    navigate('/landing');
+                    navigate('/landing'); 
                 } else {
                     // Email doesn't exist, route to user setup page
                     navigate('/create-account');
