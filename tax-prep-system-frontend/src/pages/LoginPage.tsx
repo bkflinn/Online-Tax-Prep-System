@@ -49,7 +49,7 @@ const LoginPage = (): React.ReactElement => {
                                                 required={true}
                                             />
 
-                                            <Label htmlFor="email">{t("password")}</Label>
+                                            <Label htmlFor="password-sign-in">{t("password")}</Label>
                                             <TextInput
                                                 id="password-sign-in"
                                                 name="password"
