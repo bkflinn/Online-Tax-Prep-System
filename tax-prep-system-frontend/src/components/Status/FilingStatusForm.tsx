@@ -2,12 +2,18 @@ import { useState, useEffect} from 'react';
 import { Button, Fieldset, Form, Radio,} from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
 import { useFindUserBySocialQuery, useUpdateUserMutation} from "../../api/userApi";
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const FilingStatusForm = (): React.ReactNode => {
     const { t } = useTranslation();
 
-    const socialValue = 1; // Placeholder for social number set by login
-    const { data: user } = useFindUserBySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+    const { data: user, refetch} = useFindUserBySocialQuery(validSocialValue);
 
     const [formData, setFormData] = useState({
         'filing-status': user?.status || '',
@@ -35,7 +41,9 @@ const FilingStatusForm = (): React.ReactNode => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
 
+
         if (user) {
+            console.log(user)
             const updatedUser = {
                 ...user,
                 status: formData['filing-status'],
@@ -43,6 +51,7 @@ const FilingStatusForm = (): React.ReactNode => {
 
             try {
                 await updateUser(updatedUser);
+                refetch();
             } catch (error) {
                 // Handle error
             }

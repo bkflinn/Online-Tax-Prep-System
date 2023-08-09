@@ -7,16 +7,23 @@ import NECTable from "../components/1099/NECTable";
 import { useFindNECBySocialQuery } from "../api/necApi";
 import { useFindW2BySocialQuery } from "../api/w2Api";
 import W2Table from "../components/W2/W2Table";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 
 const ReviewPage = (): React.ReactNode =>{
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const socialValue = 1; // placeholder for social number set by login
-    const { data: user } = useFindUserBySocialQuery(socialValue);
-    const { data: w2 } = useFindW2BySocialQuery(socialValue);
-    const { data: nec} = useFindNECBySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: user } = useFindUserBySocialQuery(validSocialValue);
+    const { data: w2 } = useFindW2BySocialQuery(validSocialValue);
+    const { data: nec} = useFindNECBySocialQuery(validSocialValue);
 
     const handlePrev = () => {
         navigate('/documents');

@@ -1,20 +1,76 @@
 import {Header, Title, GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { useCreateUserMutation } from '../api/userApi';
+import { setUser } from '../store/userSlice';
+import { useDispatch } from 'react-redux';
+import { useCreateW2Mutation } from '../api/w2Api';
+import { useCreateNECMutation } from '../api/necApi';
 
 const CreateAccountPage = (): React.ReactElement => {
+    const dispatch = useDispatch();
     
     const { t } = useTranslation();
-
-
     const navigate = useNavigate();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-        // Handle form submission logic here
+    const [createUser, { isLoading: isCreating }] = useCreateUserMutation();
+    const [createW2] = useCreateW2Mutation();
+    const [createNEC] = useCreateNECMutation();
 
-        //After form submission, navigate to PersonalInfo page 
-        navigate('/personal-info');
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        event.preventDefault();
+        
+        // Form data collection
+        const formData = new FormData(event.currentTarget);
+
+        const newUser = {
+            social: formData.get("ssn") ? Number(formData.get("ssn")) : 0,
+            first_name: formData.get("first-name") as string,
+            last_name: formData.get("last-name") as string,
+            email: '', //placeholder
+            phone: '',
+            street_address: '',
+            city: '',
+            state: '',
+            zip: 0,
+            status: 'S',
+        };
+
+        const newW2 = {
+            social : formData.get("ssn") ? Number(formData.get("ssn")) : 0,
+            emp_tin : 0,
+            employer : '',
+            wages : 0,
+            fed_withheld : 0,
+        };
+
+
+        const newNEC = {
+            social : formData.get("ssn") ? Number(formData.get("ssn")) : 0,
+            payer_tin: 0,
+            compensation: 0,
+            fed_withheld: 0,
+        }
+
+        try {
+            // Use the createUser mutation to create a new user
+            const userResult = await createUser(newUser);
+            await createW2(newW2);
+            await createNEC(newNEC);
+    
+            // Check if the userResult contains an error
+            if ('error' in userResult) {
+                console.error("Error creating user:", userResult.error);
+            } else {
+                // Handle success (e.g., show success message, navigate to next page)
+                console.log("User created successfully:", userResult.data);
+                dispatch(setUser(userResult.data)); // Dispatch action to update the store
+                navigate('/personal-info');
+            }
+        } catch (error) {
+            // Handle unexpected error
+            console.error("Error creating user:", error);
+        }
     };
 
     // Define the label content for the checkbox
@@ -68,7 +124,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                                 *
                                             </abbr>
                                         </Label>
-                                        <TextInput id="first-name" name="first-name" type="text" />
+                                        <TextInput id="first-name" name="first-name" type="text" required={true} />
                                     </Grid>
                                     <Grid col tablet={{ col: 6 }}>
                                         <Label htmlFor="last-name">
@@ -78,7 +134,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                                 *
                                             </abbr>
                                         </Label>
-                                        <TextInput id="last-name" name="last-name" type="text" />
+                                        <TextInput id="last-name" name="last-name" type="text" required={true} />
                                     </Grid>
                                 </Grid>
 
@@ -113,7 +169,9 @@ const CreateAccountPage = (): React.ReactElement => {
                                     label={checkboxLabel}
                                 />
 
-                                <Button type="submit">{t("confirm")}</Button>
+                                <Button type="submit">
+                                    {isCreating ? "Creating..." : t("confirm")}
+                                </Button>
                                 </Fieldset>
                             </Form>
                             </div>

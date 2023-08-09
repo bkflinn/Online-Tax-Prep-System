@@ -2,12 +2,21 @@ import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswd
 import { useTranslation } from 'react-i18next';
 import { useFindW2BySocialQuery, useUpdateW2Mutation } from "../../api/w2Api";
 import { useState,useEffect} from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const W2Form = (): React.ReactNode => {
     const { t } = useTranslation();
 
-    const socialValue = 1;
-    const { data : w2 } = useFindW2BySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    console.log(socialValue);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data : w2, refetch} = useFindW2BySocialQuery(validSocialValue);
 
     const [formData, setFormData] = useState({
         'emp_tin' : '',
@@ -52,6 +61,7 @@ const W2Form = (): React.ReactNode => {
 
             try {
                 await updateW2(updatedW2);
+                refetch();
             } catch (error) {
                 // Handle error
             };
@@ -65,25 +75,29 @@ const W2Form = (): React.ReactNode => {
                 <Label htmlFor="tin">{t("employer-tin")}</Label>
                 <TextInput 
                     id="tin" name="emp_tin" type="number" 
-                    value={formData.emp_tin}
+                    value={Number(formData.emp_tin) === 0 ? '' : formData.emp_tin}
+                    required={true}
                     onChange={handleFormChange}/>
 
                 <Label htmlFor="employer">{t("employer")}</Label>
                 <TextInput 
                     id="employer" name="employer" type="text"
                     value={formData.employer}
+                    required={true}
                     onChange={handleFormChange}/>
 
                 <Label htmlFor="wages">{t("wages")}</Label>
                 <TextInput 
                     id="wages" name="wages" type="number"
                     value={formData.wages}
+                    required={true}
                     onChange={handleFormChange}/>
 
                 <Label htmlFor="fed-withholding">{t("withholding")}</Label>
                 <TextInput 
                     id="fed-withholding" name="fed_withheld" type="number" 
                     value={formData.fed_withheld}
+                    required={true}
                     onChange={handleFormChange}/>
                 
                 </Fieldset>

@@ -2,13 +2,24 @@ import { Button, Dropdown, Fieldset, Form, Label, TextInput } from "@trussworks/
 import { useState,useEffect} from "react";
 import { useTranslation } from 'react-i18next';
 import { useFindUserBySocialQuery, useUpdateUserMutation} from "../../api/userApi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+
 
 
 const AddressForm = (): React.ReactNode => {
     const { t } = useTranslation();
+    
 
-    const socialValue = 1; // placeholder for social number set by login
-    const { data: user } = useFindUserBySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: user, refetch } = useFindUserBySocialQuery(validSocialValue);
+
+    //console.log(user)
 
     const [formData, setFormData] = useState({
         'street_address': '',
@@ -50,9 +61,10 @@ const AddressForm = (): React.ReactNode => {
                 ...formData,
                 zip: Number(formData.zip),
             };
-
+            
             try {
                 await updateUser(updatedUser);
+                refetch();
             } catch (error) {
                 // Handle error
             };
@@ -64,16 +76,17 @@ const AddressForm = (): React.ReactNode => {
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend={t("mailing-address")} legendStyle="large">
                 <Label htmlFor="street_address">{t("street1")}</Label>
-                <TextInput id="street_address" name="street_address" type="text" value={formData.street_address} onChange={handleFormChange} />
+                <TextInput 
+                    id="street_address" name="street_address" type="text" value={formData.street_address} required={true} onChange={handleFormChange} />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
                     <Label htmlFor="city">{t("city")}</Label>
-                    <TextInput id="city" name="city" type="text" value={formData.city} onChange={handleFormChange}/>
+                    <TextInput id="city" name="city" type="text" value={formData.city} required={true} onChange={handleFormChange}/>
                     </div>
                     <div className="mobile-lg:grid-col-4">
                         <Label htmlFor="state">{t("state")}</Label>
-                        <Dropdown id="state" name="state" value={formData.state} onChange={handleFormChange}>
+                        <Dropdown id="state" name="state" value={formData.state} required={true} onChange={handleFormChange}>
                             <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -141,8 +154,9 @@ const AddressForm = (): React.ReactNode => {
                     id="zip"
                     name="zip"
                     type="text"
-                    value={formData.zip}
+                    value={Number(formData.zip) === 0 ? '' : formData.zip}
                     inputSize="medium"
+                    required={true}
                     pattern="[\d]{5}(-[\d]{4})?"
                     onChange={handleFormChange}
                 />

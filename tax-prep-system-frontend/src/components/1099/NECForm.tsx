@@ -2,12 +2,21 @@ import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswd
 import { useTranslation } from 'react-i18next';
 import { useFindNECBySocialQuery, useUpdateNECMutation } from "../../api/necApi";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const NECForm = (): React.ReactNode => {
     const { t } = useTranslation();
 
-    const socialValue = 1; //placeholder
-    const { data: nec } = useFindNECBySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    console.log(socialValue);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: nec, refetch } = useFindNECBySocialQuery(validSocialValue);
 
     const [formData, setFormData] = useState({
         'payer_tin' : '',
@@ -48,6 +57,7 @@ const NECForm = (): React.ReactNode => {
 
             try {
                 await updateNec(updatedNEC);
+                refetch();
             } catch (error) {
                 //handle error
             };
@@ -62,14 +72,16 @@ const NECForm = (): React.ReactNode => {
                     <Label htmlFor="tin">{t("payer-tin")}</Label>
                     <TextInput 
                         id="tin" name="payer_tin" type="number"
-                        value={formData.payer_tin}
-                        onChange={handleFormChange}/>
+                        value={Number(formData.payer_tin) === 0 ? '' : formData.payer_tin}
+                        onChange={handleFormChange}
+                        required={true}/>
 
                     <Label htmlFor="compensation">{t("compensation")}</Label>
                     <TextInput 
                         id="wages" name="compensation" type="number" 
                         value={formData.compensation}
-                        onChange={handleFormChange}/>
+                        onChange={handleFormChange}
+                        required={true}/>
                 
                 </Fieldset>
                 <Button type="submit">{t("save")}</Button>

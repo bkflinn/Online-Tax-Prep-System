@@ -8,6 +8,8 @@ import { Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels'; // Import the datalabels plugin
 
 import 'chart.js/auto';
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 // Create data for the chart
 const createChartData = (totalIncome: number, taxLiability: number, totalWithholding: number, refundOrOwedAmount: number, refundOrOwedLabel: string) => ({
@@ -25,10 +27,15 @@ const ResultsPage = (): React.ReactElement =>{
     const { t } = useTranslation();
 
 
-    const socialValue = 1; // placeholder for social number set by login
-    const { data: user } = useFindUserBySocialQuery(socialValue);
-    const { data: w2 } = useFindW2BySocialQuery(socialValue);
-    const { data: nec } = useFindNECBySocialQuery(socialValue);
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: user } = useFindUserBySocialQuery(validSocialValue);
+    const { data: w2 } = useFindW2BySocialQuery(validSocialValue);
+    const { data: nec } = useFindNECBySocialQuery(validSocialValue);
 
     // Calculate total income
     const calculateTotalIncome = () => (w2?.wages || 0) + (nec?.compensation || 0);
