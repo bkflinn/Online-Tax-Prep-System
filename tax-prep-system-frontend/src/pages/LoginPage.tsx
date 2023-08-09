@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 
 const LoginPage = (): React.ReactElement => {
-    const [accessToken, setAccessToken] = useState('');
     const [userEmail, setUserEmail] = useState('');
    
     const { t } = useTranslation();
