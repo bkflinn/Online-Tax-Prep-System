@@ -6,6 +6,13 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 653928261139-q9dm9oml81rqufab4ufgvetjri78b2ji.apps.googleusercontent.com
+            clientSecret: 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
 
 javax:
   net:
