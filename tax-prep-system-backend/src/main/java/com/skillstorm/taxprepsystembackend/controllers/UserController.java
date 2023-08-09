@@ -42,6 +42,13 @@ public class UserController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
+    @GetMapping("user/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.getUserByEmail(email);
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User newUser = userService.saveUser(user);

@@ -36,6 +36,11 @@ public class UserService {
         return userRepository.getBySocial(social);
     }
 
+    // retrieves the user with the given email
+    public User getUserByEmail(String email) {
+        return userRepository.getByEmail(email);
+    }
+
     // create new user or update existing user
     public User saveUser(User user) {
         return userRepository.save(user);
