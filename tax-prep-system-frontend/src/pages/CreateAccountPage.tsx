@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button} from '@trussworks/react-uswds';
+import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button, Header} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useCreateUserMutation } from '../api/userApi';
@@ -77,7 +77,14 @@ const CreateAccountPage = (): React.ReactElement => {
     const checkboxLabel = t("agree");
 
     return (
-        <>
+        <>    
+            <Header extended className='bg-primary-dark'>
+                <div className="usa-navbar">
+                    <h3 className='margin-0'>
+                        <p></p>
+                    </h3>
+                </div>
+            </Header>
             <main id="main-content">
                 <div className="bg-base-lightest">
                 <GridContainer className="usa-section">
