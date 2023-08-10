@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Button, Link  } from '@trussworks/react-uswds';
+import {GridContainer, Grid, Button, Link, Header, Alert  } from '@trussworks/react-uswds';
 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -30,6 +30,11 @@ const LoginPage = (): React.ReactElement => {
             });
     }
 
+    //temporary route to bypass oauth
+    const temporaryBypass = () => {
+        navigate('/homepage')
+    }
+
     
     function handleLogin() {
         // Perform OAuth login
@@ -57,62 +62,44 @@ const LoginPage = (): React.ReactElement => {
     }
 
     return (
-        <>
-            <main id="main-content">
-                <div className="bg-base-lightest">
-                    <GridContainer className="usa-section">
-                        <Grid row={true} className="flex-justify-center">
-                            <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
-                                <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
-                                    <h1 className="margin-bottom-2">{t("sign-in")}</h1>
-                                    <div className="usa-prose">
-                                        <p className="margin-top-1">
-                                            You can access your account through our secure sign in.
-                                        </p>
-                                    </div>
-
-                                            <Label htmlFor="password-sign-in">{t("password")}</Label>
-                                            <TextInput
-                                                id="password-sign-in"
-                                                name="password"
-                                                type={showPassword ? 'text' : 'password'}
-                                                autoCorrect="off"
-                                                autoCapitalize="off"
-                                                required={true}
-                                            />
-
-                                            <p className="usa-form__note">
-                                                <a
-                                                    title={t("show-password")}
-                                                    href="javascript:void(0);"
-                                                    className="usa-show-password"
-                                                    aria-controls="password-create-account password-create-account-confirm"
-                                                    onClick={(): void =>
-                                                        setShowPassword((showPassword) => !showPassword)
-                                                    }>
-                                                    {showPassword ? t("hide-password") : t("show-password")}
-                                                </a>
-                                            </p>
-
-                                            <Button type="submit">{t("sign-in")}</Button>
-                                        </Fieldset>
-                                    </Form>
-                                    <p>
-                                        <Button type="button" outline={true} className="width-full" onClick={handleLogin}>
-                                            Sign in with Google
-                                        </Button>
-                                    </p>
-                                </div>
-
-                                <p className="text-center">
-                                    {t("dontHaveAccount")} <Link href="https://accounts.google.com/signup/v2/createaccount?flowName=GlifWebSignIn&flowEntry=SignUp">
-                                    {t("createAccount")}</Link>
-                                </p>
-                            </Grid>
-                        </Grid>
-                    </GridContainer>
+        <>  
+            <Header extended className='bg-primary-dark'>
+                <div className="usa-navbar">
+                    <h3 className='margin-0'>
+                        <p></p>
+                    </h3>
                 </div>
-            </main>
+            </Header>
+         
+            <GridContainer className="usa-section">
+                <Grid row={true} className="flex-justify-center">
+                    <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
+                        <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
+                            <Alert type="info" role="alert" slim className="margin-bottom-2" headingLevel={'h1'}>
+                                User authentication is required
+                            </Alert>
+                            <h1 className="margin-bottom-2">{t("sign-in")}</h1>
+                            <div className="usa-prose">
+                                <p className="margin-top-1">
+                                    To access the tax preparation system, you must be signed in. Please sign in with your Google account.
+                                </p>
+                            </div>
+
+                            <p>
+                                <Button type="button" outline={true} className="width-full" onClick={temporaryBypass}>
+                                    Sign in with Google
+                                </Button>
+                            </p>
+                        </div>
+
+                        <p className="text-center">
+                            {t("dontHaveAccount")} <Link href="https://accounts.google.com/signup/v2/createaccount?flowName=GlifWebSignIn&flowEntry=SignUp" target="_blank">
+                            {t("createAccount")}</Link>
+                        </p>
+                    </Grid>
+                </Grid>
+            </GridContainer>
+            
         </>
     )
 };
