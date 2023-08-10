@@ -77,8 +77,6 @@ export default function App() {
             <Route path="/results" element={<ResultsPage />} />
           </Routes>
        </Router>
-
-    
     </>
   );
 }
