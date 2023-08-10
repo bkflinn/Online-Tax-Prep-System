@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Button, Link  } from '@trussworks/react-uswds';
+import {GridContainer, Grid, Button, Link, Header, Alert  } from '@trussworks/react-uswds';
 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -28,6 +28,11 @@ const LoginPage = (): React.ReactElement => {
                 console.error('Error fetching user email:', error);
                 throw error; // Rethrow the error to propagate it
             });
+    }
+
+    //temporary route to bypass oauth
+    const temporaryBypass = () => {
+        navigate('/homepage')
     }
 
     
@@ -111,8 +116,44 @@ const LoginPage = (): React.ReactElement => {
                             </Grid>
                         </Grid>
                     </GridContainer>
+        <>  
+            <Header extended className='bg-primary-dark'>
+                <div className="usa-navbar">
+                    <h3 className='margin-0'>
+                        <p></p>
+                    </h3>
                 </div>
-            </main>
+            </Header>
+         
+            <GridContainer className="usa-section">
+                <Grid row={true} className="flex-justify-center">
+                    <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 6 }}>
+                        <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
+                            <Alert type="info" role="alert" slim className="margin-bottom-2" headingLevel={'h1'}>
+                                User authentication is required
+                            </Alert>
+                            <h1 className="margin-bottom-2">{t("sign-in")}</h1>
+                            <div className="usa-prose">
+                                <p className="margin-top-1">
+                                    To access the tax preparation system, you must be signed in. Please sign in with your Google account.
+                                </p>
+                            </div>
+
+                            <p>
+                                <Button type="button" outline={true} className="width-full" onClick={temporaryBypass}>
+                                    Sign in with Google
+                                </Button>
+                            </p>
+                        </div>
+
+                        <p className="text-center">
+                            {t("dontHaveAccount")} <Link href="https://accounts.google.com/signup/v2/createaccount?flowName=GlifWebSignIn&flowEntry=SignUp" target="_blank">
+                            {t("createAccount")}</Link>
+                        </p>
+                    </Grid>
+                </Grid>
+            </GridContainer>
+            
         </>
     )
 };
