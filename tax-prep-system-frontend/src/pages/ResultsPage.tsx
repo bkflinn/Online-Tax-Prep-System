@@ -126,7 +126,7 @@ const ResultsPage = (): React.ReactElement =>{
                 <div className="usa-navbar">
                     <h3 className='margin-0'>
                         <a href="/homepage" title="Home" aria-label="Home" className='text-base-lightest usa-footer__primary-link'>
-                            {t("Home")}
+                            {t("home")}
                         </a>
                     </h3>
                 </div>
