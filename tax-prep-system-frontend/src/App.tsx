@@ -65,7 +65,7 @@ export default function App() {
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<HomePage/>} />
 
             {/* Other routes */}
             <Route path="/homepage" element = {<HomePage/>} />
@@ -77,6 +77,8 @@ export default function App() {
             <Route path="/results" element={<ResultsPage />} />
           </Routes>
        </Router>
+
+    
     </>
   );
 }
