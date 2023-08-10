@@ -77,16 +77,16 @@ const AddressForm = (): React.ReactNode => {
                 <Fieldset legend={t("mailing-address")} legendStyle="large">
                 <Label htmlFor="street_address">{t("street1")}</Label>
                 <TextInput 
-                    id="street_address" name="street_address" type="text" data-testid="street_address" value={formData.street_address} required={true} onChange={handleFormChange} />
+                    id="street_address" name="street_address" type="text" value={formData.street_address} required={true} onChange={handleFormChange} />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
                     <Label htmlFor="city">{t("city")}</Label>
-                    <TextInput id="city" name="city" type="text"  data-testid="city" value={formData.city} required={true} onChange={handleFormChange}/>
+                    <TextInput id="city" name="city" type="text" value={formData.city} required={true} onChange={handleFormChange}/>
                     </div>
                     <div className="mobile-lg:grid-col-4">
                         <Label htmlFor="state">{t("state")}</Label>
-                        <Dropdown id="state" name="state" data-testid="state" value={formData.state} required={true} onChange={handleFormChange}>
+                        <Dropdown id="state" name="state" value={formData.state} required={true} onChange={handleFormChange}>
                             <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -154,7 +154,6 @@ const AddressForm = (): React.ReactNode => {
                     id="zip"
                     name="zip"
                     type="text"
-                    data-testid="zip"
                     value={Number(formData.zip) === 0 ? '' : formData.zip}
                     inputSize="medium"
                     required={true}

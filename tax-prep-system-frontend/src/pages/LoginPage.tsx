@@ -71,32 +71,6 @@ const LoginPage = (): React.ReactElement => {
                                         </p>
                                     </div>
 
-                                            <Label htmlFor="password-sign-in">{t("password")}</Label>
-                                            <TextInput
-                                                id="password-sign-in"
-                                                name="password"
-                                                type={showPassword ? 'text' : 'password'}
-                                                autoCorrect="off"
-                                                autoCapitalize="off"
-                                                required={true}
-                                            />
-
-                                            <p className="usa-form__note">
-                                                <a
-                                                    title={t("show-password")}
-                                                    href="javascript:void(0);"
-                                                    className="usa-show-password"
-                                                    aria-controls="password-create-account password-create-account-confirm"
-                                                    onClick={(): void =>
-                                                        setShowPassword((showPassword) => !showPassword)
-                                                    }>
-                                                    {showPassword ? t("hide-password") : t("show-password")}
-                                                </a>
-                                            </p>
-
-                                            <Button type="submit">{t("sign-in")}</Button>
-                                        </Fieldset>
-                                    </Form>
                                     <p>
                                         <Button type="button" outline={true} className="width-full" onClick={handleLogin}>
                                             Sign in with Google

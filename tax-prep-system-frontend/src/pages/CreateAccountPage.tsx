@@ -114,7 +114,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                                 *
                                             </abbr>
                                         </Label>
-                                        <TextInput id="first-name" name="first-name" type="text"  data-testid="first-name-input" required={true} />
+                                        <TextInput id="first-name" name="first-name" type="text" required={true} />
                                     </Grid>
                                     <Grid col tablet={{ col: 6 }}>
                                         <Label htmlFor="last-name">
@@ -124,7 +124,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                                 *
                                             </abbr>
                                         </Label>
-                                        <TextInput id="last-name" name="last-name" type="text"  data-testid="last-name-input" required={true} />
+                                        <TextInput id="last-name" name="last-name" type="text" required={true} />
                                     </Grid>
                                 </Grid>
 
@@ -138,7 +138,6 @@ const CreateAccountPage = (): React.ReactElement => {
                                     id="ssn"
                                     name="ssn"
                                     type="number"
-                                    data-testid="ssn-input"
                                     required={true}
                                 />
 
@@ -149,7 +148,6 @@ const CreateAccountPage = (): React.ReactElement => {
                                     id="phone"
                                     name="phone"
                                     type="number"
-                                    data-testid="phone-input"
                                     required={true}
                                 />
 
@@ -157,12 +155,11 @@ const CreateAccountPage = (): React.ReactElement => {
                                     id="terms-and-conditions"
                                     name="terms-and-conditions"
                                     className="margin-y-3"
-                                    data-testid="terms-checkbox"
                                     required={true}
                                     label={checkboxLabel}
                                 />
 
-                                <Button type="submit"  data-testid="submit-button">
+                                <Button type="submit">
                                     {isCreating ? "Creating..." : t("confirm")}
                                 </Button>
                                 </Fieldset>
