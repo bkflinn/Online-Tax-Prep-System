@@ -3,21 +3,24 @@ import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accor
 import AddressForm from '../components/Address/AddressForm';
 import FilingStatusForm from '../components/Status/FilingStatusForm';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const PersonalInfoPage = (): React.ReactElement =>{
 
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
 
     const userInfo: AccordionItemProps[] = [
         { 
-            title: 'Address', 
+            title: t("address"), 
             content: <AddressForm/>,
             expanded: false,
             id: 'accordion-address',
             headingLevel: 'h1',
         },
         { 
-            title: 'Filing Status', 
+            title: t("filing-status"), 
             content: <FilingStatusForm/>,
             expanded: false,
             id: 'accordion-status',
@@ -36,7 +39,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                 <div className="usa-navbar">
                     <Title id="extended-logo">
                         <a href="/" title="Home" aria-label="Home">
-                            Tax Preparation System
+                        {t("title")}
                         </a>
                     </Title>
                 </div>
@@ -51,18 +54,18 @@ const PersonalInfoPage = (): React.ReactElement =>{
                             <Grid col={12} tablet={{ col: 8 }} desktop={{ col: 12 }}>
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 <StepIndicator centered headingLevel="h4">
-                                    <StepIndicatorStep label="Personal Information" status="current" />
-                                    <StepIndicatorStep label="Documents"/>
-                                    <StepIndicatorStep label="Review and Submit" />
+                                    <StepIndicatorStep label={t("personal-info")} status="current" />
+                                    <StepIndicatorStep label={t("documents")}/>
+                                    <StepIndicatorStep label={t("review")} />
                                 </StepIndicator>
-                                    <h1 className="margin-bottom-0 font-heading-2xl">Personal Information</h1>
+                                    <h1 className="margin-bottom-0 font-heading-2xl">{t("personal-info")}</h1>
                                     <SummaryBox>
-                                        <SummaryBoxHeading headingLevel="h2">Instructions</SummaryBoxHeading>
+                                        <SummaryBoxHeading headingLevel="h2">{t("instructions")}</SummaryBoxHeading>
                                         <SummaryBoxContent>
                                             <ul>
-                                                <li>For each tab, fill in your information.</li>
+                                                <li>{t("instruc-pt1")}</li>
         
-                                                <li>When done, proceed to the next step.</li>
+                                                <li>{t("proceed")}</li>
                                             </ul>
                                         </SummaryBoxContent>
                                     </SummaryBox>
@@ -71,7 +74,7 @@ const PersonalInfoPage = (): React.ReactElement =>{
                                     <Accordion bordered={true} items={userInfo}></Accordion>
                                     
                                     <Button className="margin-top-3" type="button" onClick={handleNext}>
-                                        Next
+                                        {t("next")}
                                     </Button>
                                 </div>
                                 

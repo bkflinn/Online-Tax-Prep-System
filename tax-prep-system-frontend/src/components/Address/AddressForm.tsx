@@ -1,32 +1,93 @@
 import { Button, Dropdown, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
+import { useState,useEffect} from "react";
+import { useTranslation } from 'react-i18next';
+import { useFindUserBySocialQuery, useUpdateUserMutation} from "../../api/userApi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
-const AddressForm = (): React.ReactElement => {
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-        // Handle form submission logic here
+
+const AddressForm = (): React.ReactNode => {
+    const { t } = useTranslation();
+    
+
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: user, refetch } = useFindUserBySocialQuery(validSocialValue);
+
+    //console.log(user)
+
+    const [formData, setFormData] = useState({
+        'street_address': '',
+        'city': '',
+        'state': '',
+        'zip': '',
+    });
+
+    const [updateUser] = useUpdateUserMutation();
+
+    useEffect(() => {
+        if (user) {
+            setFormData((prevData) => ({
+                ...prevData,
+                'street_address': user.street_address || '',
+                'city': user.city || '',
+                'state': user.state || '',
+                'zip': user.zip.toString() || '',
+            }));
+        }
+    }, [user]);
+
+    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
-    return(
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        event.preventDefault();
+
+        // Make sure user is not null before merging
+        if (user) {
+            // Convert the JSON object to the User type
+            const updatedUser = {
+                ...user,
+                ...formData,
+                zip: Number(formData.zip),
+            };
+            
+            try {
+                await updateUser(updatedUser);
+                refetch();
+            } catch (error) {
+                // Handle error
+            };
+        }
+    };
+   
+    return user ? (
         <>
             <Form onSubmit={handleSubmit} large>
-                <Fieldset legend="Mailing address" legendStyle="large">
-                <Label htmlFor="mailing-address-1">Street address 1</Label>
-                <TextInput id="mailing-address-1" name="mailing-address-1" type="text" />
-
-                <Label htmlFor="mailing-address-2" hint=" (optional)">
-                    Street address 2
-                </Label>
-                <TextInput id="mailing-address-2" name="mailing-address-2" type="text" />
+                <Fieldset legend={t("mailing-address")} legendStyle="large">
+                <Label htmlFor="street_address">{t("street1")}</Label>
+                <TextInput 
+                    id="street_address" name="street_address" type="text" value={formData.street_address} required={true} onChange={handleFormChange} />
 
                 <div className="grid-row grid-gap">
                     <div className="mobile-lg:grid-col-8">
-                    <Label htmlFor="city">City</Label>
-                    <TextInput id="city" name="city" type="text" />
+                    <Label htmlFor="city">{t("city")}</Label>
+                    <TextInput id="city" name="city" type="text" value={formData.city} required={true} onChange={handleFormChange}/>
                     </div>
                     <div className="mobile-lg:grid-col-4">
-                        <Label htmlFor="state">State</Label>
-                        <Dropdown id="state" name="state">
-                            <option>- Select -</option>
+                        <Label htmlFor="state">{t("state")}</Label>
+                        <Dropdown id="state" name="state" value={formData.state} required={true} onChange={handleFormChange}>
+                            <option>- {t("select")} -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -78,29 +139,32 @@ const AddressForm = (): React.ReactElement => {
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
-                            <option value="AA">AA - Armed Forces Americas</option>
-                            <option value="AE">AE - Armed Forces Africa</option>
-                            <option value="AE">AE - Armed Forces Canada</option>
-                            <option value="AE">AE - Armed Forces Europe</option>
-                            <option value="AE">AE - Armed Forces Middle East</option>
-                            <option value="AP">AP - Armed Forces Pacific</option>
+                            <option value="AA">{t("af-america")}</option>
+                            <option value="AE">{t("af-africa")}</option>
+                            <option value="AE">{t("af-canada")}</option>
+                            <option value="AE">{t("af-europe")}</option>
+                            <option value="AE">{t("af-middle-east")}</option>
+                            <option value="AP">{t("af-pacific")}</option>
                         </Dropdown>
                     </div>
                 </div>
 
-                <Label htmlFor="zip">ZIP</Label>
+                <Label htmlFor="zip">{t("zip")}</Label>
                 <TextInput
                     id="zip"
                     name="zip"
                     type="text"
+                    value={Number(formData.zip) === 0 ? '' : formData.zip}
                     inputSize="medium"
+                    required={true}
                     pattern="[\d]{5}(-[\d]{4})?"
+                    onChange={handleFormChange}
                 />
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
-    );
-}
+    ) : null;
+};
 
 export default AddressForm;

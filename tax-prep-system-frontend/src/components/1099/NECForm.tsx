@@ -1,27 +1,93 @@
 import { Button, Fieldset, Form, Label, TextInput } from "@trussworks/react-uswds";
+import { useTranslation } from 'react-i18next';
+import { useFindNECBySocialQuery, useUpdateNECMutation } from "../../api/necApi";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
-const NECForm = (): React.ReactElement => {
+const NECForm = (): React.ReactNode => {
+    const { t } = useTranslation();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-        // Handle form submission logic here
+    // Retrieve the user's social security number from the Redux store
+    const socialValue = useSelector((state: RootState) => state.user.user?.social);
+
+    console.log(socialValue);
+
+    // Ensure socialValue is a valid number, or a default value
+    const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    const { data: nec, refetch } = useFindNECBySocialQuery(validSocialValue);
+
+    const [formData, setFormData] = useState({
+        'payer_tin' : '',
+        'compensation' : '',
+    });
+
+    const [updateNec] = useUpdateNECMutation();
+
+    useEffect(() => {
+        if (nec) {
+            setFormData((prevData) => ({
+                ...prevData,
+                'payer_tin' : nec.payer_tin.toString() || '',
+                'compensation' : nec.compensation.toString() || '',
+            }));
+        }
+    }, [nec]);
+
+
+    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = event.target;
+        
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
-    return(
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        event.preventDefault();
+        if (nec) {
+            const updatedNEC = {
+                ...nec,
+                ...formData,
+                payer_tin: Number(formData.payer_tin),
+                compensation: Number(formData.compensation),
+            };
+
+            try {
+                await updateNec(updatedNEC);
+                refetch();
+            } catch (error) {
+                //handle error
+            };
+        }
+    };
+
+    return nec ? (
         <>
             <Form onSubmit={handleSubmit} large>
                 <Fieldset legend="1099 Form" legendStyle="large">
 
-                <Label htmlFor="tin">Payer Tax Identification Number (TIN)</Label>
-                <TextInput id="tin" name="tin" type="number" />
+                    <Label htmlFor="tin">{t("payer-tin")}</Label>
+                    <TextInput 
+                        id="tin" name="payer_tin" type="number"
+                        value={Number(formData.payer_tin) === 0 ? '' : formData.payer_tin}
+                        onChange={handleFormChange}
+                        required={true}/>
 
-                <Label htmlFor="wages">Compensation</Label>
-                <TextInput id="wages" name="wages" type="number" />
+                    <Label htmlFor="compensation">{t("compensation")}</Label>
+                    <TextInput 
+                        id="wages" name="compensation" type="number" 
+                        value={formData.compensation}
+                        onChange={handleFormChange}
+                        required={true}/>
                 
                 </Fieldset>
-                <Button type="submit">Save</Button>
+                <Button type="submit">{t("save")}</Button>
             </Form>
         </>
-    );
+    ) : null;
 }
 
 export default NECForm;

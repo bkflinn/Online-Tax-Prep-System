@@ -1,11 +1,84 @@
 {
     "title": "Tax Preparation System",
+
     "sign-in": "Sign in",
     "access": "Access your account",
-    "email": "Email adress",
+    "email": "Email address",
     "password": "Password",
     "show-password": "Show password",
     "hide-password": "Hide password",
-    "dontHaveAccount": "Don't have and account?",
-    "createAccount": "Create your account now"
+    "dontHaveAccount": "Don't have an account?",
+    "createAccount": "Create your account now",
+
+    "ssn" : "Social Security Number",
+    "phone" : "Phone Number",
+    "confirm" : "Confirm",
+    "create": "User Setup",
+
+    "get-started": "Get started by providing some basic information",
+    "indicate": " indicates a required field.",
+    "create-password": "Create password",
+    "retype-password": "Re-type password",
+    "agree": "I agree to the terms and conditions",
+    "convienient": "Conveniently store and access your information.",
+    "convienient-desc": "Create a user profile to securely store and access your personal and tax information. Change your information at any time and get fast and easy access to your tax preparation.",
+    "have-account": "Already have an account?",
+
+    "documents": "Documents",
+    "instructions": "Instructions",
+    "instruc-pt1": "For each tab, fill in your information.",
+    "instruc-pt2-1": "Additional information on the ",
+    "instruc-pt2-2": "W2 form ",
+    "instruc-pt2-3": "and ",
+    "instruc-pt2-4": "1099 form ",
+    "instruc-pt2-5": "can be found on the IRS website.",
+    "instruc-pt3": "When done, proceed to the next page to review your information.",
+    "prev": "Prev",
+    "next": "Next",
+
+    "personal-info": "Personal Information",
+    "proceed": "When done, proceed to the next step.",
+
+    "review": "Review and Submit",
+    "review-desc": "Review your information to ensure that it is accurate.",
+    "review-done": "When finished, press the submit button to calculate results.",
+    "submit": "Submit",
+
+    "payer-tin": "Payer Tax Information Number (TIN)",
+    "compensation": "Compensation",
+    "save": "Save",
+
+    "select": "Select",
+    "af-america": "AA - Armed Forces Americas",
+    "af-europe": "AE -  Forces Europe",
+    "af-canada": "AE -  Forces Canada",
+    "af-africa": "AE - Forces Africa",
+    "af-middle-east": "AE - Armed Forces Middle East",
+    "af-pacific": "AP - Armed Forces Pacific",
+
+    "mailing-address": "Mailing Address",
+    "address": "Address",
+    "street1": "Street Address 1",
+    "street2": "Street Address 2",
+    "city": "City",
+    "state": "State",
+    "zip": "ZIP",
+
+    "state-refund": "State Refund",
+    "federal-refund": "Federal Refund",
+    "total-refund": "Total Refund",
+
+    "employer-tin": "Employer Tax Information Number (TIN)",
+    "employer": "Employer",
+    "wages": "Wages",
+    "withholding": "Federal Withholding",
+
+    
+    "filing-status": "Filing Status",
+    "single": "Single",
+    "married": "Married Filing Jointly",
+    "head": "Head of Household"
+
+
+
 }

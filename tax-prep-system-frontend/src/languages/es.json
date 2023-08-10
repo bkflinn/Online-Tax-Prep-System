@@ -7,5 +7,74 @@
     "show-password": "Mostrar contraseña",
     "hide-password": "Ocultar contraseña",
     "dontHaveAccount": "¿No tiene cuenta?",
-    "createAccount": "Cree su cuenta ahora"
+    "createAccount": "Cree su cuenta ahora",
+
+    "ssn" : "Número de Seguro Social",
+    "phone" : "Número de teléfono",
+    "confirm" : "Confirmar",
+    "create": "Configuración de Usuario",
+    
+    "get-started": "Empezar con una cuenta",
+    "indicate": " indica un campo obligatorio.",
+    "create-password": "Crear contraseña",
+    "retype-password": "Vuelva a escribir la contraseña",
+    "agree": "Acepto los términos y condiciones",
+    "convienient": "Almacena y accede cómodamente a tu información",
+    "convienient-desc": "Crea una cuenta para almacenar y acceder de forma segura a tu información personal y fiscal. Cambia tu información en cualquier momento y accede rápida y fácilmente a tu preparación de impuestos.",
+    "have-account": "¿Ya tienes una cuenta?",
+
+    "documents": "Documentos",
+    "instructions": "Instrucciones",
+    "instruc-pt1": "Para cada ficha, rellena tus datos",
+    "instruc-pt2-1": "Información adicional sobre el ",
+    "instruc-pt2-2": "formulario W2 ",
+    "instruc-pt2-3": "y ",
+    "instruc-pt2-4": "formulario 1099",
+    "instruc-pt2-5": "se puede encontrar en el sitio web del IRS.",
+    "instruc-pt3": "Cuando haya terminado, pase a la página siguiente para revisar su información.",
+    "prev": "Anterior",
+    "next": "Siguiente",
+
+    "personal-info": "Información personal",
+    "proceed": "Cuando haya terminado, continúe con el siguiente paso.",
+
+    "review": "Revisar y Enviar",
+    "review-desc": "Revisa tu información para asegurarte de que es correcta.",
+    "review-done": "Cuando haya terminado, presione el botón Enviar para calcular los resultados.",
+    "submit": "Enviar",
+
+    "payer-tin": "Número de información fiscal (TIN) del pagador",
+    "compensation": "Compensación",
+    "save": "Guardar",
+
+    "select": "Seleccione",
+    "af-america": "AA - Fuerzas Armadas de las Américas",
+    "af-europe": "AE -  Fuerzas Europa",
+    "af-canada": "AE -  Fuerzas Canadá",
+    "af-africa": "AE - Fuerzas Africa",
+    "af-middle-east": "AE - Fuerzas Armadas Oriente Medio",
+    "af-pacific": "AP - Fuerzas Armadas Pacífico",
+
+    "mailing-address": "Dirección Postal",
+    "address": "Dirección",
+    "street1": "Dirección de la calle 1",
+    "street2": "Dirección de la calle 2",
+    "city": "Ciudad",
+    "state": "Estado",
+    "zip": "ZIP",
+
+    "state-refund": "Devolución Estatal",
+    "federal-refund": "Devolución Federal",
+    "total-refund": "Devolución Total",
+
+    "employer-tin": "Número de información fiscal (TIN) del empleador",
+    "employer": "Empresario",
+    "wages": "Salarios",
+    "withholding": "Retención",
+
+    "filing-status": "Estado Civil",
+    "single": "Solo",
+    "married": "Casado con Declaración Conjunta",
+    "head": "Cabeza de Familia"
+
 }
