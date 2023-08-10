@@ -71,14 +71,14 @@ const NECForm = (): React.ReactNode => {
 
                     <Label htmlFor="tin">{t("payer-tin")}</Label>
                     <TextInput 
-                        id="tin" name="payer_tin" type="number"
+                        id="tin" name="payer_tin" type="number" data-testid="textInput-payer_tin"
                         value={Number(formData.payer_tin) === 0 ? '' : formData.payer_tin}
                         onChange={handleFormChange}
                         required={true}/>
 
                     <Label htmlFor="compensation">{t("compensation")}</Label>
                     <TextInput 
-                        id="wages" name="compensation" type="number" 
+                        id="wages" name="compensation" type="number" data-testid="textInput-compensation"
                         value={formData.compensation}
                         onChange={handleFormChange}
                         required={true}/>
