@@ -78,16 +78,6 @@ const CreateAccountPage = (): React.ReactElement => {
 
     return (
         <>
-            <Header extended>
-                <div className="usa-navbar">
-                    <Title id="extended-logo">
-                        <a href="/" title="Home" aria-label="Home">
-                        {t("title")}
-                        </a>
-                    </Title>
-                </div>
-            </Header>
-
             <main id="main-content">
                 <div className="bg-base-lightest">
                 <GridContainer className="usa-section">

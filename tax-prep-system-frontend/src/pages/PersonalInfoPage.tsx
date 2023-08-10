@@ -35,13 +35,13 @@ const PersonalInfoPage = (): React.ReactElement =>{
 
     return (
         <>
-             <Header extended>
+             <Header extended className='bg-primary-dark'>
                 <div className="usa-navbar">
-                    <Title id="extended-logo">
-                        <a href="/" title="Home" aria-label="Home">
-                        {t("title")}
+                    <h3 className='margin-0'>
+                        <a href="/homepage" title="Home" aria-label="Home" className='text-base-lightest usa-footer__primary-link'>
+                            {t("Home")}
                         </a>
-                    </Title>
+                    </h3>
                 </div>
             </Header>
 

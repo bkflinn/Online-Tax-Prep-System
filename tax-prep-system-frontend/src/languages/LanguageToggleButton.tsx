@@ -6,19 +6,22 @@ import { Select } from '@trussworks/react-uswds';
 const LanguageToggleButton = (): React.ReactElement => {
   const { i18n } = useTranslation();
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    const newLanguage = event.target.value;
+  const handleLanguageChange = (newLanguage: string): void => {
     i18n.changeLanguage(newLanguage);
   };
 
   return (
-    <Select id="language-select" name="language-select" value={i18n.language} onChange={handleLanguageChange}>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="de">German</option>
-      <option value="fr">French</option>
-      <option value="it">Italian</option>
-    </Select>
+    <>
+      <div className='text-base-lightest'>
+          <span style={{ cursor: 'pointer' }} onClick={() => handleLanguageChange('en')}>
+              English
+          </span>{" | "}
+          <span style={{ cursor: 'pointer' }} onClick={() => handleLanguageChange('es')}>
+              Español
+          </span>
+      </div>
+    
+    </>
   );
 };
 

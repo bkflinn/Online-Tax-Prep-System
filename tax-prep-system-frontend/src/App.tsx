@@ -10,7 +10,7 @@ import ResultsPage from "./pages/ResultsPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //i18n
-import { initReactI18next } from 'react-i18next';
+import { initReactI18next, useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 import LanguageToggleButton from './languages/LanguageToggleButton'; // Import the LanguageToggleButton
 import enTranslations from './languages/en.json';
@@ -18,6 +18,7 @@ import esTranslations from './languages/es.json';
 import deTranslations from './languages/de.json';
 import frTranslations from './languages/fr.json';
 import itTranslations from './languages/it.json';
+import { Grid, GridContainer, Header, Title } from "@trussworks/react-uswds";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -45,14 +46,24 @@ i18n.use(initReactI18next).init({
 });
 
 export default function App() {
+  const { t } = useTranslation();
   return (
     <>
+      <Header extended className='bg-primary'>
+          <GridContainer>
+              <Grid row={true} className="flex-justify">
+                  <Title id="extended-logo" className='text-base-lightest'>
+                      {t("title")}
+                  </Title>
+                  <LanguageToggleButton/>
+              </Grid>
+          </GridContainer>
+      </Header>
       <Router>
-          <LanguageToggleButton />
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<CreateAccountPage />} />
+            <Route path="/" element={<PersonalInfoPage />} />
 
             {/* Other routes */}
             <Route path="/create-account" element={<CreateAccountPage />} />
