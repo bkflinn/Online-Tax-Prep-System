@@ -1,28 +1,87 @@
-import '@testing-library/jest-dom/extend-expect';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore, { MockStoreEnhanced } from 'redux-mock-store';
 import W2Form from './W2Form';
+import { useFindW2BySocialQuery, useUpdateW2Mutation } from '../../api/w2Api';
 
-test('renders W2 form and submits', async () => {
-  render(<W2Form />);
+// Mock react-i18next for translation
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
-  // Wait for the input fields to be rendered
-  await waitFor(() => {
-    const tinInput = screen.getByLabelText('Employer Tax Identification Number (TIN)') as HTMLInputElement;
-    const employerInput = screen.getByLabelText('Employer') as HTMLInputElement;
-    const wagesInput = screen.getByLabelText('Wages') as HTMLInputElement;
-    const fedWithholdingInput = screen.getByLabelText('Federal Withholding') as HTMLInputElement;
+// Mock w2Api hooks
+jest.mock('../../api/w2Api', () => ({
+  useFindW2BySocialQuery: jest.fn(),
+  useUpdateW2Mutation: jest.fn(),
+}));
 
-    // Fill out form fields
-    fireEvent.change(tinInput, { target: { value: '123456789' } });
-    fireEvent.change(employerInput, { target: { value: 'Company XYZ' } });
-    fireEvent.change(wagesInput, { target: { value: '50000' } });
-    fireEvent.change(fedWithholdingInput, { target: { value: '2500' } });
+describe('W2Form', () => {
+  const mockStore = configureStore([]);
 
-    const submitButton = screen.getByText('Save') as HTMLButtonElement;
+  it('should render the form and update data', async () => {
+    // Mocked user data
+    const mockSocial = 123456789;
 
-    // Simulate form submission
-    fireEvent.click(submitButton);
+    // Mock the useFindW2BySocialQuery response
+    useFindW2BySocialQuery.mockReturnValue({
+      data: {
+        emp_tin: 123,
+        employer: 'Example Employer',
+        wages: 50000,
+        fed_withheld: 2000,
+      },
+    });
 
-    // Add any additional assertions you need after the form submission
+    // Mock the useUpdateW2Mutation function
+    const mockUpdateW2Mutation = jest.fn();
+    useUpdateW2Mutation.mockReturnValue([mockUpdateW2Mutation]);
+
+    // Mock initial Redux state
+    const initialState = {
+      user: {
+        user: {
+          social: mockSocial,
+        },
+      },
+    };
+
+    const store = mockStore(initialState) as MockStoreEnhanced;
+
+    const { getByLabelText, getByText } = render(
+      <Provider store={store}>
+        <W2Form />
+      </Provider>
+    );
+
+    // Verify that the form fields are rendered
+    const employerInput = getByLabelText('employer');
+    const wagesInput = getByLabelText('wages');
+    const withholdingInput = getByLabelText('withholding');
+
+    // Simulate changing form input values
+    fireEvent.change(employerInput, { target: { value: 'Updated Employer' } });
+    fireEvent.change(wagesInput, { target: { value: '60000' } });
+    fireEvent.change(withholdingInput, { target: { value: '2500' } });
+
+    // Click the "save" button
+    const saveButton = getByText('save');
+    fireEvent.click(saveButton);
+
+    // Verify that updateW2 mutation was called with the updated data
+    await waitFor(() => {
+      expect(mockUpdateW2Mutation).toHaveBeenCalledWith({
+        emp_tin: 123,
+        employer: 'Updated Employer',
+        wages: 60000,
+        fed_withheld: 2500,
+      });
+    });
   });
+
+  // Add more test cases for different scenarios
+  // ...
+
 });

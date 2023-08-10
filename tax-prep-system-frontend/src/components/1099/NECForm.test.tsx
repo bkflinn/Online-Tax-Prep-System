@@ -1,30 +1,48 @@
-//import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import NECForm from './NECForm'; // Import the correct component
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import store from '../../store/store';
+import NECForm from './NECForm';
+import { mockUseFindNECBySocialQuery, mockUseUpdateNECMutation, mockNECData } from '../../api/necApi.mock'; // Corrected import path
 
-test('renders NEC form', () => {
-  render(<NECForm />);
-  
-  // Check if important elements are present
-  expect(screen.getByLabelText(/Payer Tax Identification Number \(TIN\)/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Compensation/i)).toBeInTheDocument();
-  expect(screen.getByText(/Save/i)).toBeInTheDocument();
-});
+// Mock the react-i18next useTranslation hook
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
-test('submit NEC form', () => {
-  render(<NECForm />);
+// Mock the necApi module before importing the store (or any module that may use it)
+jest.mock('../../api/necApi', () => ({
+  useFindNECBySocialQuery: () => ({ data: mockNECData, refetch: jest.fn() }),
+  useUpdateNECMutation: mockUseUpdateNECMutation,
+}));
 
-  // Fill out form fields
-  const tinInput = screen.getByLabelText(/Payer Tax Identification Number \(TIN\)/i) as HTMLInputElement;
-  const wagesInput = screen.getByLabelText(/Compensation/i) as HTMLInputElement;
-  const submitButton = screen.getByText(/Save/i) as HTMLButtonElement;
+describe('NECForm', () => {
+  it('renders NECForm and handles form submission', async () => {
+    // Mock API call results
+    mockUseFindNECBySocialQuery.mockReturnValue({ data: mockNECData, refetch: jest.fn() });
+    mockUseUpdateNECMutation.mockReturnValue([() => {}, {}]);
 
-  fireEvent.change(tinInput, { target: { value: '12345' } });
-  fireEvent.change(wagesInput, { target: { value: '5000' } });
+    render(
+      <Provider store={store}>
+        <NECForm />
+      </Provider>
+    );
 
-  // Simulate form submission
-  fireEvent.click(submitButton);
+    const tinInput = screen.getByLabelText('payer-tin') as HTMLInputElement;
+    const compensationInput = screen.getByLabelText('compensation') as HTMLInputElement;
+    const saveButton = screen.getByText('save');
 
-  // You can add assertions here to check the form submission behavior
+    userEvent.type(tinInput, '54321');
+    userEvent.type(compensationInput, '98765');
+
+    fireEvent.click(saveButton);
+
+    await waitFor(() => {
+      // Add assertions here to check if the form submission behavior is correct
+      // For example, you can expect the mock updateNEC to have been called
+      expect(mockUseUpdateNECMutation).toHaveBeenCalledWith(expect.any(Object));
+    });
+  });
 });
