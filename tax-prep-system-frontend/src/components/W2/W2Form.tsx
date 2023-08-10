@@ -74,28 +74,31 @@ const W2Form = (): React.ReactNode => {
 
                 <Label htmlFor="tin">{t("employer-tin")}</Label>
                 <TextInput 
-                    id="tin" name="emp_tin" type="number" 
+                    id="tin" name="emp_tin" type="number"  data-testid="tin"
                     value={Number(formData.emp_tin) === 0 ? '' : formData.emp_tin}
                     required={true}
-                    onChange={handleFormChange}/>
+                    onChange={handleFormChange}
+                   />
 
                 <Label htmlFor="employer">{t("employer")}</Label>
                 <TextInput 
-                    id="employer" name="employer" type="text"
+                    id="employer" name="employer" type="text" data-testid="employer"
                     value={formData.employer}
                     required={true}
-                    onChange={handleFormChange}/>
+                    onChange={handleFormChange}
+                    />
 
                 <Label htmlFor="wages">{t("wages")}</Label>
                 <TextInput 
-                    id="wages" name="wages" type="number"
+                    id="wages" name="wages" type="number" data-testid="wages"
                     value={formData.wages}
                     required={true}
-                    onChange={handleFormChange}/>
+                    onChange={handleFormChange}
+                    />
 
                 <Label htmlFor="fed-withholding">{t("withholding")}</Label>
                 <TextInput 
-                    id="fed-withholding" name="fed_withheld" type="number" 
+                    id="fed-withholding" name="fed_withheld" type="number"  data-testid="fed-withholding"
                     value={formData.fed_withheld}
                     required={true}
                     onChange={handleFormChange}/>

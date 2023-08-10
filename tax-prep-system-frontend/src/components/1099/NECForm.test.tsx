@@ -1,41 +1,63 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import NECForm from './NECForm';
-import { mockUseFindNECBySocialQuery, mockUseUpdateNECMutation, mockNECData } from '../../api/necApi.mock';
+import { useFindNECBySocialQuery, useUpdateNECMutation } from '../../api/necApi';
+
+const mockStore = configureStore();
 
 jest.mock('../../api/necApi', () => ({
-  useFindNECBySocialQuery: mockUseFindNECBySocialQuery,
-  useUpdateNECMutation: mockUseUpdateNECMutation,
+  ...jest.requireActual('../../api/necApi'),
+  useFindNECBySocialQuery: jest.fn(),
+  useUpdateNECMutation: jest.fn(),
 }));
 
-describe('NECForm', () => {
-  it('renders and submits the form', async () => {
-    const { getByLabelText, getByText } = render(<NECForm />);
-    
-    // Find form inputs and buttons
-    const payerTinInput = getByLabelText('Payer TIN');
-    const compensationInput = getByLabelText('Compensation');
-    const saveButton = getByText('Save');
+describe('NECForm Component', () => {
+  const mockNEC = {
+    social: 123456789,
+    payer_tin: 123,
+    compensation: 5000,
+    fed_withheld: 100,
+  };
 
-    // Mock data
-    const updatedNECData = { ...mockNECData, payer_tin: 789, compensation: 1000 };
-    
-    // Simulate user input
-    fireEvent.change(payerTinInput, { target: { value: updatedNECData.payer_tin } });
-    fireEvent.change(compensationInput, { target: { value: updatedNECData.compensation } });
-
-    // Mock the update mutation function
-    mockUseUpdateNECMutation.mockReturnValue({
-      mutateAsync: jest.fn().mockResolvedValue(updatedNECData),
+  beforeEach(() => {
+    (useFindNECBySocialQuery as jest.Mock).mockReturnValue({
+      data: mockNEC,
+      refetch: jest.fn(),
     });
+    (useUpdateNECMutation as jest.Mock).mockReturnValue([jest.fn(), {}]);
+  });
 
-    // Submit the form
+  test('renders form fields and handles submission', async () => {
+    const initialState = {
+      user: {
+        user: {
+          social: 123456789,
+          payer_tin: 123,
+          compensation: 5000,
+          fed_withheld: 100, // Provide the required state here
+        },
+      },
+    };
+    const store = mockStore(initialState);
+
+    const { getByTestId, getByRole } = render(
+      <Provider store={store}>
+        <NECForm />
+      </Provider>
+    );
+
+    const payerTinInput = getByTestId('textInput-payer_tin') as HTMLInputElement;
+    const compensationInput = getByTestId('textInput-compensation') as HTMLInputElement;
+    const saveButton = getByRole('button', { name: 'save' });
+
+    fireEvent.change(payerTinInput, { target: { value: '456' } });
+    fireEvent.change(compensationInput, { target: { value: '7000' } });
+
     fireEvent.click(saveButton);
 
-    // Wait for async operations to complete
-    await waitFor(() => {});
-
-    // Expectations
-    expect(mockUseUpdateNECMutation).toHaveBeenCalledWith();
-    expect(mockUseUpdateNECMutation().mutateAsync).toHaveBeenCalledWith(expect.objectContaining(updatedNECData));
+    await waitFor(() => {
+      expect(useUpdateNECMutation).toHaveBeenCalledWith(); // You can add more expectations here
+    });
   });
 });

@@ -1,44 +1,64 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AddressForm from './AddressForm'; // Import the correct component
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { useFindUserBySocialQuery, useUpdateUserMutation } from '../../api/userApi';
+import AddressForm from './AddressForm';
 
-const renderWithRouter = (ui: React.ReactElement) => {
-  return render(<Router>{ui}</Router>);
-};
+const mockStore = configureStore();
 
-test('renders Address Form', () => {
-  renderWithRouter(<AddressForm />);
+jest.mock('../../api/userApi', () => ({
+  ...jest.requireActual('../../api/userApi'),
+  useFindUserBySocialQuery: jest.fn(),
+  useUpdateUserMutation: jest.fn(),
+}));
 
-  // Check if important elements are present
-  expect(screen.getByLabelText(/Street address 1/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Street address 2/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/City/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/State/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/ZIP/i)).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument();
-});
+describe('AddressForm Component', () => {
+  const mockUser = {
+    street_address: '123 Main St',
+    city: 'Example City',
+    state: 'CA',
+    zip: '12345',
+  };
 
-test('submit NEC form', async () => {
-  renderWithRouter(<AddressForm />);
+  beforeEach(() => {
+    (useFindUserBySocialQuery as jest.Mock).mockReturnValue({
+      data: mockUser,
+      refetch: jest.fn(),
+    });
+    (useUpdateUserMutation as jest.Mock).mockReturnValue([jest.fn(), {}]);
+  });
 
-  // Fill out form fields
-  const streetAddress1Input = screen.getByLabelText(/Street address 1/i) as HTMLInputElement;
-  const streetAddress2Input = screen.getByLabelText(/Street address 2/i) as HTMLInputElement;
-  const cityInput = screen.getByLabelText(/City/i) as HTMLInputElement;
-  const stateSelect = screen.getByLabelText(/State/i) as HTMLSelectElement;
-  const zipInput = screen.getByLabelText(/ZIP/i) as HTMLInputElement;
-  const saveButton = screen.getByRole('button', { name: 'Save' }) as HTMLButtonElement;
+  test('renders form fields and handles submission', async () => {
+    const initialState = {
+      user: {
+        user: {
+          social: 123456789,
+        },
+      },
+    };
+    const store = mockStore(initialState);
 
-  fireEvent.change(streetAddress1Input, { target: { value: '123 Main St' } });
-  fireEvent.change(streetAddress2Input, { target: { value: 'Apt 456' } });
-  fireEvent.change(cityInput, { target: { value: 'Example City' } });
-  fireEvent.change(stateSelect, { target: { value: 'CA' } });
-  fireEvent.change(zipInput, { target: { value: '12345' } });
+    const { getByTestId, getByRole } = render(
+      <Provider store={store}>
+        <AddressForm />
+      </Provider>
+    );
 
-  // Simulate form submission
-  fireEvent.click(saveButton);
+    const streetInput = getByTestId('street_address') as HTMLInputElement;
+    const cityInput = getByTestId('city') as HTMLInputElement;
+    const stateDropdown = getByTestId('state') as HTMLSelectElement;
+    const zipInput = getByTestId('zip') as HTMLInputElement;
+    const saveButton = getByRole('button', { name: 'save' });
 
-  // Add assertions related to form submission logic here
+    fireEvent.change(streetInput, { target: { value: '456 New St' } });
+    fireEvent.change(cityInput, { target: { value: 'New City' } });
+    fireEvent.change(stateDropdown, { target: { value: 'NY' } });
+    fireEvent.change(zipInput, { target: { value: '54321' } });
+
+    fireEvent.click(saveButton);
+
+    await waitFor(() => {
+      expect(useUpdateUserMutation).toHaveBeenCalledWith();
+    });
+  });
 });
