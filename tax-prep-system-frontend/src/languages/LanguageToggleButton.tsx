@@ -1,7 +1,7 @@
 // LanguageToggleButton.tsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Select } from '@trussworks/react-uswds';
+//import { Select } from '@trussworks/react-uswds';
 
 const LanguageToggleButton = (): React.ReactElement => {
   const { i18n } = useTranslation();

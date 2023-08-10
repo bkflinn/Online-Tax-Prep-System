@@ -10,7 +10,7 @@ export type NEC = {
 export const necApi = createApi({
     reducerPath: 'necApi',
     baseQuery: fetchBaseQuery({ 
-        baseUrl: 'http://75.101.219.66:8080/NECs',
+        baseUrl: 'http://75.101.219.66.nip.io:8080/NECs',
         //credentials: 'include', // Include credentials for cross-origin requests 
     }), // Adjust the URL as needed
     endpoints: (builder) => ({

@@ -1,4 +1,4 @@
-import { Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from "@trussworks/react-uswds";
+import { Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading} from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import AddressTable from "../components/Address/AddressTable";

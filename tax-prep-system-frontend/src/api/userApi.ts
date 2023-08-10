@@ -16,7 +16,7 @@ export type User = {
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({ 
-        baseUrl: 'http://75.101.219.66:8080/users', 
+        baseUrl: ' http://75.101.219.66.nip.io:8080/users', 
         //credentials: 'include', // Include credentials for cross-origin requests
     }), // Adjust the URL as needed
     endpoints: (builder) => ({

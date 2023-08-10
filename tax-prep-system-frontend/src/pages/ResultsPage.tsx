@@ -1,4 +1,4 @@
-import { Grid, GridContainer, Header, Title } from "@trussworks/react-uswds";
+import { Button, Card, CardBody, CardFooter, CardHeader, Grid, GridContainer, Header} from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
 import { useFindW2BySocialQuery } from "../api/w2Api";
 import { useFindNECBySocialQuery } from "../api/necApi";
@@ -10,6 +10,7 @@ import 'chartjs-plugin-datalabels'; // Import the datalabels plugin
 import 'chart.js/auto';
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { useNavigate } from "react-router-dom";
 
 // Create data for the chart
 const createChartData = (totalIncome: number, taxLiability: number, totalWithholding: number, refundOrOwedAmount: number, refundOrOwedLabel: string) => ({
@@ -25,7 +26,11 @@ const createChartData = (totalIncome: number, taxLiability: number, totalWithhol
 
 const ResultsPage = (): React.ReactElement =>{
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
+    const returnHome = () => {
+        navigate('/homepage');
+    }
 
     // Retrieve the user's social security number from the Redux store
     const socialValue = useSelector((state: RootState) => state.user.user?.social);
@@ -169,9 +174,27 @@ const ResultsPage = (): React.ReactElement =>{
                                         }}
                                     />
                                 </div>
+                                <Card gridLayout={{ tablet: { col: 12 } }} style={{ listStyle: 'none' }} className="margin-top-2">
+                                    <CardHeader>
+                                        <h3 className="usa-card__heading">These are your calculated results</h3>
+                                    </CardHeader>
+                                    
+                                    <CardBody>
+                                        <p>
+                                            Hover over each bar to see an exact breakdown of your tax calculations. To
+                                            file your taxes with the IRS visit the <a href="https://www.irs.gov/filing"> IRS filing page </a>. To check
+                                            on the status of your refund visit the <a href="https://www.irs.gov/refunds"> IRS refund page </a>. 
+                                        </p>
+                                    </CardBody>
+
+                                    <CardFooter>
+                                        <Button type="button" onClick={returnHome} >Return home</Button>
+                                    </CardFooter>
+                                </Card>
                             </Grid>
                         </Grid>
                     </GridContainer>
+        
                 </div>
             </main>
         </>

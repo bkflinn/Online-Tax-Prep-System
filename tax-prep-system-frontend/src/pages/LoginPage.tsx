@@ -1,4 +1,4 @@
-import {Header, Title, GridContainer, Grid, Button, Link  } from '@trussworks/react-uswds';
+import {GridContainer, Grid, Button, Link  } from '@trussworks/react-uswds';
 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const LoginPage = (): React.ReactElement => {
     const navigate = useNavigate();
 
     function getUserEmail() {
-        return fetch('http://75.101.219.66:8080/userEmail', { credentials: 'include', method: 'GET' })
+        return fetch(' http://75.101.219.66.nip.io:8080/userEmail', { credentials: 'include', method: 'GET' })
             .then(data => data.text())
             .then(userEmail => {
                 setUserEmail(userEmail);
@@ -33,7 +33,7 @@ const LoginPage = (): React.ReactElement => {
     
     function handleLogin() {
         // Perform OAuth login
-        window.location.replace('http://75.101.219.66:8080/signin'); // will this work???
+        window.location.replace(' http://75.101.219.66.nip.io:8080/signin'); // will this work???
 
         // Fetch the user's email after the OAuth login
         getUserEmail()

@@ -1,4 +1,4 @@
-import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading, Title } from '@trussworks/react-uswds';
+import { Accordion, Button, Grid, GridContainer, Header, StepIndicator, StepIndicatorStep, SummaryBox, SummaryBoxContent, SummaryBoxHeading} from '@trussworks/react-uswds';
 import { AccordionItemProps } from '@trussworks/react-uswds/lib/components/Accordion/Accordion';
 import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
@@ -68,7 +68,7 @@ const DocumentsPage = (): React.ReactElement =>{
                                             <ul>
                                                 <li>{t("instruc-pt1")}</li>
                                                 <li>
-                                                {t("instruc-pt2-1")} <a href="https://www.irs.gov/forms-pubs/about-form-w-2">{t("instruc-pt2-2")}</a> {t("instruc-pt2-3")} <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec">{t("instruc-pt2-4")}</a> {t("instruc-pt2-5")}
+                                                {t("instruc-pt2-1")} <a href="https://www.irs.gov/forms-pubs/about-form-w-2" target="_blank">{t("instruc-pt2-2")}</a> {t("instruc-pt2-3")} <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec" target="_blank">{t("instruc-pt2-4")}</a> {t("instruc-pt2-5")}
                                                 </li>
                                                 <li>{t("instruc-pt3")}</li>
                                             </ul>

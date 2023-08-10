@@ -5,6 +5,7 @@ import ReviewPage from "./pages/ReviewPage";
 import LoginPage from "./pages/LoginPage";
 import PersonalInfoPage from "./pages/PersonalInfoPage";
 import ResultsPage from "./pages/ResultsPage";
+import HomePage from "./pages/HomePage";
 
 //router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -18,7 +19,7 @@ import esTranslations from './languages/es.json';
 import deTranslations from './languages/de.json';
 import frTranslations from './languages/fr.json';
 import itTranslations from './languages/it.json';
-import { Grid, GridContainer, Header, Title } from "@trussworks/react-uswds";
+import {Grid, GridContainer, Header, Icon, Title } from "@trussworks/react-uswds";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -53,19 +54,21 @@ export default function App() {
           <GridContainer>
               <Grid row={true} className="flex-justify">
                   <Title id="extended-logo" className='text-base-lightest'>
-                      {t("title")}
+                      <Icon.AccountBalance className="padding-top-1"/> {t("title")} 
                   </Title>
                   <LanguageToggleButton/>
               </Grid>
           </GridContainer>
       </Header>
+
       <Router>
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<PersonalInfoPage />} />
+            <Route path="/" element={<HomePage/>} />
 
             {/* Other routes */}
+            <Route path="/homepage" element = {<HomePage/>} />
             <Route path="/create-account" element={<CreateAccountPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/personal-info" element={<PersonalInfoPage />} />
@@ -74,6 +77,8 @@ export default function App() {
             <Route path="/results" element={<ResultsPage />} />
           </Routes>
        </Router>
+
+    
     </>
   );
 }

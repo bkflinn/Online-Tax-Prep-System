@@ -8,7 +8,7 @@ export type Result = {
 export const resultApi = createApi({
     reducerPath: 'resultApi',
     baseQuery: fetchBaseQuery({ 
-        baseUrl: 'http://75.101.219.66:8080/results',
+        baseUrl: ' http://75.101.219.66.nip.io:8080/results',
         //credentials: 'include', // Include credentials for cross-origin requests 
     }), // Adjust the URL as needed
     endpoints: (builder) => ({
