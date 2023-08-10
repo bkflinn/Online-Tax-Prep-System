@@ -77,7 +77,7 @@ const LoginPage = (): React.ReactElement => {
                                     <h1 className="margin-bottom-2">{t("sign-in")}</h1>
                                     <div className="usa-prose">
                                         <p className="margin-top-1">
-                                        You can access your account through our secure sign in.
+                                            You can access your account through our secure sign in.
                                         </p>
                                     </div>
 
