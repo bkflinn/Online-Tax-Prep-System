@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Grid, GridContainer, Header} from "@trussworks/react-uswds";
+import { Button, Card, CardBody, CardFooter, CardHeader, Grid, GridContainer} from "@trussworks/react-uswds";
 import { useTranslation } from 'react-i18next';
 import { useFindW2BySocialQuery } from "../api/w2Api";
 import { useFindNECBySocialQuery } from "../api/necApi";

@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Button, Link, Header, Alert  } from '@trussworks/react-uswds';
+import {GridContainer, Grid, Button, Link, Alert  } from '@trussworks/react-uswds';
 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -63,13 +63,6 @@ const LoginPage = (): React.ReactElement => {
 
     return (
         <>  
-            <Header extended className='bg-primary-dark'>
-                <div className="usa-navbar">
-                    <h3 className='margin-0'>
-                        <p></p>
-                    </h3>
-                </div>
-            </Header>
          
             <GridContainer className="usa-section">
                 <Grid row={true} className="flex-justify-center">

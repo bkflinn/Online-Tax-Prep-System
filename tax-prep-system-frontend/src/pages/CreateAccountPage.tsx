@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button, Header} from '@trussworks/react-uswds';
+import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useCreateUserMutation } from '../api/userApi';
