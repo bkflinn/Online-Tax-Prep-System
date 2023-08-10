@@ -18,7 +18,7 @@ const LoginPage = (): React.ReactElement => {
     const navigate = useNavigate();
 
     function getUserEmail() {
-        return fetch('http://localhost:8080/userEmail', { credentials: 'include', method: 'GET' })
+        return fetch('http://75.101.219.66:8080/userEmail', { credentials: 'include', method: 'GET' })
             .then(data => data.text())
             .then(userEmail => {
                 setUserEmail(userEmail);
@@ -33,7 +33,7 @@ const LoginPage = (): React.ReactElement => {
     
     function handleLogin() {
         // Perform OAuth login
-        window.location.replace('http://localhost:8080/signin'); // will this work???
+        window.location.replace('http://75.101.219.66:8080/signin'); // will this work???
 
         // Fetch the user's email after the OAuth login
         getUserEmail()

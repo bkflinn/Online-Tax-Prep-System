@@ -11,8 +11,8 @@ export type W2 = {
 export const w2Api = createApi({
     reducerPath : 'w2Api',
     baseQuery : fetchBaseQuery({ 
-        baseUrl : 'http://localhost:8080/W2s',
-        credentials: 'include', // Include credentials for cross-origin requests
+        baseUrl : 'http://75.101.219.66:8080/W2s',
+        //credentials: 'include', // Include credentials for cross-origin requests
     }),
     endpoints : (builder) => ({
         findAllW2s: builder.query<W2[], void>({
