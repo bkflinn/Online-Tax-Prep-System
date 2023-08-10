@@ -1,48 +1,41 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Provider } from 'react-redux';
-import store from '../../store/store';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import NECForm from './NECForm';
-import { mockUseFindNECBySocialQuery, mockUseUpdateNECMutation, mockNECData } from '../../api/necApi.mock'; // Corrected import path
+import { mockUseFindNECBySocialQuery, mockUseUpdateNECMutation, mockNECData } from '../../api/necApi.mock';
 
-// Mock the react-i18next useTranslation hook
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-  }),
-}));
-
-// Mock the necApi module before importing the store (or any module that may use it)
 jest.mock('../../api/necApi', () => ({
-  useFindNECBySocialQuery: () => ({ data: mockNECData, refetch: jest.fn() }),
+  useFindNECBySocialQuery: mockUseFindNECBySocialQuery,
   useUpdateNECMutation: mockUseUpdateNECMutation,
 }));
 
 describe('NECForm', () => {
-  it('renders NECForm and handles form submission', async () => {
-    // Mock API call results
-    mockUseFindNECBySocialQuery.mockReturnValue({ data: mockNECData, refetch: jest.fn() });
-    mockUseUpdateNECMutation.mockReturnValue([() => {}, {}]);
+  it('renders and submits the form', async () => {
+    const { getByLabelText, getByText } = render(<NECForm />);
+    
+    // Find form inputs and buttons
+    const payerTinInput = getByLabelText('Payer TIN');
+    const compensationInput = getByLabelText('Compensation');
+    const saveButton = getByText('Save');
 
-    render(
-      <Provider store={store}>
-        <NECForm />
-      </Provider>
-    );
+    // Mock data
+    const updatedNECData = { ...mockNECData, payer_tin: 789, compensation: 1000 };
+    
+    // Simulate user input
+    fireEvent.change(payerTinInput, { target: { value: updatedNECData.payer_tin } });
+    fireEvent.change(compensationInput, { target: { value: updatedNECData.compensation } });
 
-    const tinInput = screen.getByLabelText('payer-tin') as HTMLInputElement;
-    const compensationInput = screen.getByLabelText('compensation') as HTMLInputElement;
-    const saveButton = screen.getByText('save');
+    // Mock the update mutation function
+    mockUseUpdateNECMutation.mockReturnValue({
+      mutateAsync: jest.fn().mockResolvedValue(updatedNECData),
+    });
 
-    userEvent.type(tinInput, '54321');
-    userEvent.type(compensationInput, '98765');
-
+    // Submit the form
     fireEvent.click(saveButton);
 
-    await waitFor(() => {
-      // Add assertions here to check if the form submission behavior is correct
-      // For example, you can expect the mock updateNEC to have been called
-      expect(mockUseUpdateNECMutation).toHaveBeenCalledWith(expect.any(Object));
-    });
+    // Wait for async operations to complete
+    await waitFor(() => {});
+
+    // Expectations
+    expect(mockUseUpdateNECMutation).toHaveBeenCalledWith();
+    expect(mockUseUpdateNECMutation().mutateAsync).toHaveBeenCalledWith(expect.objectContaining(updatedNECData));
   });
 });
