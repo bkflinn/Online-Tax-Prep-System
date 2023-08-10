@@ -20,6 +20,7 @@ import deTranslations from './languages/de.json';
 import frTranslations from './languages/fr.json';
 import itTranslations from './languages/it.json';
 import {Grid, GridContainer, Header, Icon, Title } from "@trussworks/react-uswds";
+import LoginPageSS from "./pages/LoginPageSS";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -74,12 +75,12 @@ export default function App() {
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<HomePage/>} />
+            <Route path="/" element={<LoginPageSS />} />
 
             {/* Other routes */}
             <Route path="/homepage" element = {<HomePage/>} />
             <Route path="/create-account" element={<CreateAccountPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPageSS />} />
             <Route path="/personal-info" element={<PersonalInfoPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/review" element={<ReviewPage />} />
