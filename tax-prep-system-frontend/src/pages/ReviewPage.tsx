@@ -49,15 +49,6 @@ const ReviewPage = (): React.ReactNode =>{
    
     return (
         <>
-             <Header extended className='bg-primary-dark'>
-                <div className="usa-navbar">
-                    <h3 className='margin-0'>
-                        <a href="/homepage" title="Home" aria-label="Home" className='text-base-lightest usa-footer__primary-link'>
-                            {t("home")}
-                        </a>
-                    </h3>
-                </div>
-            </Header>
 
             <main id="main-content">
                 <div className="bg-base-lightest">
