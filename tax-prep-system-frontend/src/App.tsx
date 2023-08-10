@@ -65,7 +65,7 @@ export default function App() {
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<HomePage/>} />
+            <Route path="/" element={<LoginPage />} />
 
             {/* Other routes */}
             <Route path="/homepage" element = {<HomePage/>} />
