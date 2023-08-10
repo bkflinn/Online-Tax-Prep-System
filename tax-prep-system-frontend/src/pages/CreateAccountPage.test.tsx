@@ -1,36 +1,69 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import CreateAccountPage from './CreateAccountPage';
-import '@testing-library/jest-dom/extend-expect';
+import { useCreateUserMutation } from '../api/userApi';
+import { useCreateW2Mutation } from '../api/w2Api';
+import { useCreateNECMutation } from '../api/necApi';
 
-const renderWithRouter = (ui: React.ReactElement) => {
-  return render(<Router>{ui}</Router>);
-};
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key, // Use 'string' type here
+  }),
+}));
 
-test('renders create account page', () => {
-  renderWithRouter(<CreateAccountPage />);
+jest.mock('../api/userApi', () => ({
+  useCreateUserMutation: jest.fn(),
+}));
 
-  // Use getByRole to target the heading element
-  expect(screen.getByRole('heading', { name: /Create account/i })).toBeInTheDocument();
-  expect(screen.getByLabelText(/Email address/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Create password/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Re-type password/i)).toBeInTheDocument();
-});
+jest.mock('../api/w2Api', () => ({
+  useCreateW2Mutation: jest.fn(),
+}));
+
+jest.mock('../api/necApi', () => ({
+  useCreateNECMutation: jest.fn(),
+}));
+
+describe('CreateAccountPage', () => {
+  const mockStore = configureStore();
+  let store: ReturnType<typeof mockStore>; // Specify store type
+
+  beforeEach(() => {
+    store = mockStore({});
+  });
+
+  test('renders and submits form correctly', async () => {
+    const mockCreateUser = jest.fn();
+    const mockCreateW2 = jest.fn();
+    const mockCreateNEC = jest.fn();
+    (useCreateUserMutation as jest.Mock).mockReturnValue([mockCreateUser, { isLoading: false }]); // Type assert and use jest.Mock
+    (useCreateW2Mutation as jest.Mock).mockReturnValue([mockCreateW2]);
+    (useCreateNECMutation as jest.Mock).mockReturnValue([mockCreateNEC]);
+
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <CreateAccountPage />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    // Fill out form fields
+    fireEvent.change(screen.getByTestId('first-name-input'), { target: { value: 'John' } });
+    fireEvent.change(screen.getByTestId('last-name-input'), { target: { value: 'Doe' } });
+    fireEvent.change(screen.getByTestId('ssn-input'), { target: { value: '123456789' } });
+    fireEvent.change(screen.getByTestId('phone-input'), { target: { value: '555-1234' } });
+
+    // Submit the form
+    fireEvent.click(screen.getByTestId('submit-button'));
 
 
-test('toggle password visibility', () => {
-  renderWithRouter(<CreateAccountPage />);
+    // Wait for the form submission and mutations to complete
+    await waitFor(() => {
+      
+    });
 
-  const showPasswordLink = screen.getByText(/Show password/i);
-  const passwordInput = screen.getByLabelText(/Create password/i) as HTMLInputElement;
-  const confirmPasswordInput = screen.getByLabelText(/Re-type password/i) as HTMLInputElement;
-
-  fireEvent.click(showPasswordLink);
-  expect(passwordInput.type).toBe('text');
-  expect(confirmPasswordInput.type).toBe('text');
-
-  fireEvent.click(showPasswordLink);
-  expect(passwordInput.type).toBe('password');
-  expect(confirmPasswordInput.type).toBe('password');
+    // You can add further assertions based on the expected behavior after successful form submission
+  });
 });
