@@ -13,28 +13,29 @@ public class DocumentDBConf {
 	private MongoProperties properties;
 	
 	public static final String KEY_STORE_TYPE = "/tmp/certs/rds-truststore.jks";
-    	public static final String DEFAULT_KEY_STORE_PASSWORD = "group3password";
+    public static final String DEFAULT_KEY_STORE_PASSWORD = "group3password";
 
-        public DocumentDBConf(final MongoProperties properties) {
-            super();
-            this.properties = properties;
-        }
+    public DocumentDBConf(final MongoProperties properties) {
+        super();
+        this.properties = properties;
+    }
 
-        @Bean
-        public MongoClientSettings mongoClientSettings() { 
-             setSslProperties();
-	     return MongoClientSettings.builder()
-                    .applyToSslSettings(builder -> builder.enabled(true))
-                    .build();
+    @Bean
+    public MongoClientSettings mongoClientSettings() { 
+        setSslProperties();
+        
+        return MongoClientSettings.builder()
+                .applyToSslSettings(builder -> builder.enabled(true))
+                .build();
 	}
 
-        private static void setSslProperties() { 
-    	      System.setProperty("javax.net.ssl.trustStore", KEY_STORE_TYPE);
-    	      System.setProperty("javax.net.ssl.trustStorePassword",           
-                    DEFAULT_KEY_STORE_PASSWORD);
-        }
+    private static void setSslProperties() { 
+            System.setProperty("javax.net.ssl.trustStore", KEY_STORE_TYPE);
+            System.setProperty("javax.net.ssl.trustStorePassword", DEFAULT_KEY_STORE_PASSWORD);
+    }
+
 	@Bean
-        public MongoPropertiesClientSettingsBuilderCustomizer mongoPropertiesCustomizer(final MongoProperties properties) {
-			return new MongoPropertiesClientSettingsBuilderCustomizer(properties, null);
+    public MongoPropertiesClientSettingsBuilderCustomizer mongoPropertiesCustomizer(final MongoProperties properties) {
+        return new MongoPropertiesClientSettingsBuilderCustomizer(properties, null);
 	}
 }

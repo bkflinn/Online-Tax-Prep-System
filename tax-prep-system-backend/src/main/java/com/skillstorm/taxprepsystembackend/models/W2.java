@@ -1,6 +1,8 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+
+//import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,8 +12,7 @@ public class W2 {
     // _id used by MongoDB
     @Id
     private String _id;
-    
-    @Id
+
     private int social;
 
     private int emp_tin;
