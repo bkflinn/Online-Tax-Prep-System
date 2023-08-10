@@ -77,7 +77,38 @@
     "filing-status": "Filing Status",
     "single": "Single",
     "married": "Married Filing Jointly",
-    "head": "Head of Household"
+    "head": "Head of Household",
+
+    "taxable": "Taxable Income",
+    "witheld": "Witheld Amount",
+    "total": "Total Tax",
+    "refunded": "Amount Refunded",
+    "owed": "Amount Owed",
+    "calc-result": "These are your calculated results",
+    "hover": "Hover over each bar to see an exact breakdown of your tax calculations.",
+    "result-instruc1": " To file your taxes with the IRS visit the ",
+    "filing-page": "IRS filing page",
+    "result-instruc2": ". To check on the status of your refund visit the ",
+    "refund-page": "IRS refund page",
+    "return-home": "Return home",
+
+    "welcome": " Welcome to the Tax Preparation System ",
+    "about": "About",
+    "about1": "Most U.S. citizens – and permanent residents who work in the United States – need to file a tax return if they make more than a certain amount for the year.",
+    "about2": "You may want to file even if you make less than that amount, because you may get money back if you file. This could apply to you if you:",
+    "about-bullet1": "Have had federal income tax withheld from your pay",
+    "about-bullet2": "Made estimated tax payments",
+    "about-bullet3": "Qualify to claim tax credits such as the Earned Income Tax Credit and Child Tax Credit",
+    "filing-req": "Determine your filing requirement",
+    "tax-calc": "Tax Calculator Tool",
+    "calc-info": "Use our tax calculator to get a breakdown of the amount you owe or will be refunded based on your yearly income and filing status.",
+    "what-need": "What you need",
+    "need1": "Address information",
+    "need2": "Filing Status",
+    "need3": "If applicable: your yearly W2 form",
+    "need4": "If applicable: your yearly 1099 form",
+    "begin": "Begin"
+    
 
 
 

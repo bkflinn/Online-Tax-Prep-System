@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 // Create data for the chart
 const createChartData = (totalIncome: number, taxLiability: number, totalWithholding: number, refundOrOwedAmount: number, refundOrOwedLabel: string) => ({
+    
     labels: ['Taxable Income', 'Withheld Amount', 'Total Tax', refundOrOwedLabel],
     datasets: [
         {
@@ -113,7 +114,7 @@ const ResultsPage = (): React.ReactElement =>{
     const refundOrOwedAmountPositive = Math.abs(refundOrOwedAmount);
 
     // Determine the label for the refundOrOwedAmount
-    const refundOrOwedLabel = refundOrOwedAmount >= 0 ? 'Amount Refunded' : 'Amount Owed';
+    const refundOrOwedLabel = refundOrOwedAmount >= 0 ? t("refunded") : t("owed");
 
     // Create data for the chart
     const chartData = createChartData(totalIncome, taxLiability, totalWithholding, refundOrOwedAmountPositive, refundOrOwedLabel);
@@ -176,19 +177,20 @@ const ResultsPage = (): React.ReactElement =>{
                                 </div>
                                 <Card gridLayout={{ tablet: { col: 12 } }} style={{ listStyle: 'none' }} className="margin-top-2">
                                     <CardHeader>
-                                        <h3 className="usa-card__heading">These are your calculated results</h3>
+                                        <h3 className="usa-card__heading">{t("calc-result")}</h3>
                                     </CardHeader>
                                     
                                     <CardBody>
                                         <p>
-                                            Hover over each bar to see an exact breakdown of your tax calculations. To
-                                            file your taxes with the IRS visit the <a href="https://www.irs.gov/filing"> IRS filing page </a>. To check
-                                            on the status of your refund visit the <a href="https://www.irs.gov/refunds"> IRS refund page </a>. 
+                                        {t("hover")}{t("result-instruc1")}
+                                        <a href="https://www.irs.gov/filing">{t("filing-page")}</a>
+                                        {t("result-instruc2")}
+                                        <a href="https://www.irs.gov/refunds"> {t("refund-page")}</a>. 
                                         </p>
                                     </CardBody>
 
                                     <CardFooter>
-                                        <Button type="button" onClick={returnHome} >Return home</Button>
+                                        <Button type="button" onClick={returnHome} >{t("return-home")}</Button>
                                     </CardFooter>
                                 </Card>
                             </Grid>

@@ -26,7 +26,7 @@ const HomePage = (): React.ReactElement => {
                 </div>
             </Header>
             <GridContainer className="usa-header" >
-                <h1 > Welcome to the Tax Preparation System </h1>
+                <h1 > {t("welcome")} </h1>
             </GridContainer>
             <GridContainer className="usa-section padding-top-1">
                 <Grid row className="margin-x-neg-205 flex-justify-center">
@@ -37,20 +37,20 @@ const HomePage = (): React.ReactElement => {
                     desktop={{ col: 6 }}
                     style={{ lineHeight: '1.5' }}
                     className="padding-x-205 margin-bottom-6">
-                        <h1>About</h1>
+                        <h1>{t("about")}</h1>
                         <p> 
-                            Most U.S. citizens – and permanent residents who work in the United States – need to file a tax return if they make more than a certain amount for the year.
+                        {t("about1")}
                             <br/>
                             <br/>
-                            You may want to file even if you make less than that amount, because you may get money back if you file. This could apply to you if you:
+                            {t("about2")}
                         </p>
                         <ul>
-                            <li>Have had federal income tax withheld from your pay</li>
-                            <li>Made estimated tax payments</li>
-                            <li>Qualify to claim tax credits such as the Earned Income Tax Credit and Child Tax Credit</li>
+                            <li>{t("about-bullet1")}</li>
+                            <li>{t("about-bullet2")}</li>
+                            <li>{t("about-bullet3")}</li>
                         </ul>
                         <Button type={"button"} onClick={handleButtonClick}>
-                            Determine your filing requirement 
+                        {t("filing-req")} 
                         </Button> <Icon.Link/>
                     </Grid>
                     <Grid 
@@ -62,34 +62,33 @@ const HomePage = (): React.ReactElement => {
                         <Card gridLayout={{ tablet: { col: 12 } }} style={{ listStyle: 'none' }}>
                             <CardHeader>
                                 <h3 className="usa-card__heading">
-                                    Tax Calculator Tool
+                                {t("tax-calc")}
                                 </h3>
                             </CardHeader>
                             <CardBody>
                                 <p>
-                                    Use our tax calculator to get a breakdown of the amount you owe or will be refunded based on your yearly income
-                                    and filing status.
+                                {t("calc-info")}
                                 </p>
                                 <h3>
-                                    What you need
+                                {t("what-need")}
                                 </h3>
                                 <ul className="usa-list">
                                     <li>
-                                        Address information
+                                    {t("need1")}
                                     </li>
                                     <li>
-                                        Filing Status
+                                    {t("need2")}
                                     </li>
                                     <li>
-                                        If applicable: your yearly W2 form
+                                    {t("need3")}
                                     </li>
                                     <li>
-                                        If applicable: your yearly 1099 form
+                                    {t("need4")}
                                     </li>
                                 </ul>
                             </CardBody>
                             <CardFooter>
-                                <Button type="button" onClick={handleNext}>Begin</Button>
+                                <Button type="button" onClick={handleNext}>{t("begin")}</Button>
                             </CardFooter>
                         </Card>
                     </Grid>

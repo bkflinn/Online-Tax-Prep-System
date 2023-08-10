@@ -75,6 +75,36 @@
     "filing-status": "Estado Civil",
     "single": "Solo",
     "married": "Casado con Declaración Conjunta",
-    "head": "Cabeza de Familia"
+    "head": "Cabeza de Familia",
+
+    "taxable": "Renta Imponible",
+    "witheld": "Importe Retenido",
+    "total": "Impuesto Total",
+    "refunded": "Importe Devuelto",
+    "owed": "Importe Adeudado",
+    "calc-result": "Estos son tus resultados calculados",
+    "hover": "Pasa el ratón por encima de cada barra para ver un desglose exacto de tus cálculos fiscales",
+    "result-instruc1": " Para presentar tus impuestos a Hacienda visita la ",
+    "filing-page": "IRS filing page",
+    "result-instruc2": ". Para comprobar el estado de su reembolso visite la ",
+    "refund-page": "IRS refund page",
+    "return-home": "Volver a casa",
+
+    "welcome": " Bienvenido al sistema de preparación de impuestos ",
+    "about": "Acerca de",
+    "about1": "La mayoría de los ciudadanos estadounidenses -y los residentes permanentes que trabajan en Estados Unidos- necesitan presentar una declaración de impuestos si ganan más de cierta cantidad durante el año.",
+    "about2": "Es posible que desee presentar incluso si usted gana menos de esa cantidad, ya que puede obtener dinero de vuelta si usted presenta. Esto podría aplicarse a usted si:",
+    "about-bullet1": "Le han retenido el impuesto federal sobre la renta de su salario",
+    "about-bullet2": "Realizó pagos estimados de impuestos",
+    "about-bullet3": "Cumplir los requisitos para solicitar créditos fiscales como el crédito fiscal por ingresos del trabajo y el crédito fiscal por hijos",
+    "filing-req": "Determine su requisito de presentación",
+    "tax-calc": "Herramienta de cálculo de impuestos",
+    "calc-info": "Utiliza nuestra calculadora de impuestos para obtener un desglose de la cantidad que debes o te devolverán en función de tus ingresos anuales y tu estado civil.",
+    "what-need": "Lo que necesitas",
+    "need1": "Información de dirección",
+    "need2": "Estado de presentación",
+    "need3": "Si procede: su formulario W2 anual",
+    "need4": "Si procede: su formulario 1099 anual",
+    "begin": "Inicio"
 
 }
