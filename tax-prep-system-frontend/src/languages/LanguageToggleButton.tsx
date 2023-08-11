@@ -10,6 +10,7 @@ const LanguageToggleButton = (): React.ReactElement => {
     i18n.changeLanguage(newLanguage);
   };
 
+  //Selectable English and Spanish buttons to swap language
   return (
     <>
       <div className='text-base-lightest'>

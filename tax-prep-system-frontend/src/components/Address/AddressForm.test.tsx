@@ -6,6 +6,7 @@ import AddressForm from './AddressForm';
 
 const mockStore = configureStore();
 
+//mocked function calls from API
 jest.mock('../../api/userApi', () => ({
   ...jest.requireActual('../../api/userApi'),
   useFindUserBySocialQuery: jest.fn(),
@@ -44,6 +45,7 @@ describe('AddressForm Component', () => {
       </Provider>
     );
 
+    //check values by datatest-id
     const streetInput = getByTestId('street_address') as HTMLInputElement;
     const cityInput = getByTestId('city') as HTMLInputElement;
     const stateDropdown = getByTestId('state') as HTMLSelectElement;

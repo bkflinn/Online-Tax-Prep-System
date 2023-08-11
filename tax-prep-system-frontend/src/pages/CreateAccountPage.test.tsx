@@ -9,10 +9,11 @@ import { useCreateNECMutation } from '../api/necApi';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => key, // Use 'string' type here
+    t: (key: string) => key, 
   }),
 }));
 
+//mocked function calls from needed APIs
 jest.mock('../api/userApi', () => ({
   useCreateUserMutation: jest.fn(),
 }));
@@ -64,6 +65,6 @@ describe('CreateAccountPage', () => {
       
     });
 
-    // You can add further assertions based on the expected behavior after successful form submission
+    
   });
 });
