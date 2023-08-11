@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link} from '@trussworks/react-uswds';
+import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Button} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useFindUserByEmailQuery } from '../api/userApi';
