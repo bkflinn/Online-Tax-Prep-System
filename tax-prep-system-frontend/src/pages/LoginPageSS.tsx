@@ -19,7 +19,7 @@ const LoginPage = (): React.ReactElement => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        
+        navigate("/personal-info") //placeholder
     };
 
     return (
@@ -74,8 +74,7 @@ const LoginPage = (): React.ReactElement => {
                                 </div>
 
                                 <p className="text-center">
-                                    {"Don't have an account? "}
-                                    <Link href="javascript:void();">{t("createAccount")}</Link>
+                                    {t("dontHaveAccount")} <Link href="/create-account">{t("createAccount")}</Link>
                                 </p>
                             </Grid>
                         </Grid>

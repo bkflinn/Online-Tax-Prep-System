@@ -12,7 +12,7 @@ const HomePage = (): React.ReactElement => {
     };
 
     const handleNext = () => {
-        navigate('/personal-info')
+        navigate('/login')
     }
     return(
         <>  

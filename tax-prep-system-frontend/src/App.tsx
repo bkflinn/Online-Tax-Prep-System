@@ -78,11 +78,11 @@ export default function App() {
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<CreateAccountPageSS />} />
+            <Route path="/" element={<HomePage/>} />
 
             {/* Other routes */}
             <Route path="/homepage" element = {<HomePage/>} />
-            <Route path="/create-account" element={<CreateAccountPage />} />
+            <Route path="/create-account" element={<CreateAccountPageSS />} />
             <Route path="/login" element={<LoginPageSS />} />
             <Route path="/personal-info" element={<PersonalInfoPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
