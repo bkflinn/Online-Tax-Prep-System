@@ -32,10 +32,10 @@ const LoginPage = (): React.ReactElement => {
                 
                                 <div className="bg-white padding-y-3 padding-x-5 border border-base-lighter">
                                 
-                                    <h1 className="margin-bottom-0">Sign in</h1>
+                                    <h1 className="margin-bottom-0">{t("sign-in")}</h1>
                                     <Form onSubmit={handleSubmit}>
                                         <Fieldset legend="Access your account" legendStyle="large">
-                                            <Label htmlFor="email">Email address</Label>
+                                            <Label htmlFor="email">{t("email")}</Label>
                                             <TextInput
                                                 id="email"
                                                 name="email"
@@ -45,7 +45,7 @@ const LoginPage = (): React.ReactElement => {
                                                 required={true}
                                             />
 
-                                            <Label htmlFor="email">Password</Label>
+                                            <Label htmlFor="email">{t("password")}</Label>
                                             <TextInput
                                                 id="password-sign-in"
                                                 name="password"
@@ -64,18 +64,18 @@ const LoginPage = (): React.ReactElement => {
                                                     onClick={(): void =>
                                                         setShowPassword((showPassword) => !showPassword)
                                                     }>
-                                                    {showPassword ? 'Hide password' : 'Show password'}
+                                                    {showPassword ? t("hide-password") : t("show-password")}
                                                 </a>
                                             </p>
 
-                                            <Button type="submit">Sign in</Button>
+                                            <Button type="submit">{t("sign-in")}</Button>
                                         </Fieldset>
                                     </Form>
                                 </div>
 
                                 <p className="text-center">
                                     {"Don't have an account? "}
-                                    <Link href="javascript:void();">Create your account now</Link>
+                                    <Link href="javascript:void();">{t("createAccount")}</Link>
                                 </p>
                             </Grid>
                         </Grid>
