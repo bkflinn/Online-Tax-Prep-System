@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+//stores authentication
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
