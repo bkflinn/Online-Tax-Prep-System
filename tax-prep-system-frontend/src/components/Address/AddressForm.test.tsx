@@ -52,6 +52,7 @@ describe('AddressForm Component', () => {
     const zipInput = getByTestId('zip') as HTMLInputElement;
     const saveButton = getByRole('button', { name: 'save' });
 
+    //values to be tested for
     fireEvent.change(streetInput, { target: { value: '456 New St' } });
     fireEvent.change(cityInput, { target: { value: 'New City' } });
     fireEvent.change(stateDropdown, { target: { value: 'NY' } });

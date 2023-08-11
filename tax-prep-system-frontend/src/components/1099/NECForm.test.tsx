@@ -6,6 +6,7 @@ import { useFindNECBySocialQuery, useUpdateNECMutation } from '../../api/necApi'
 
 const mockStore = configureStore();
 
+//mock functions from API
 jest.mock('../../api/necApi', () => ({
   ...jest.requireActual('../../api/necApi'),
   useFindNECBySocialQuery: jest.fn(),
@@ -13,6 +14,7 @@ jest.mock('../../api/necApi', () => ({
 }));
 
 describe('NECForm Component', () => {
+  //input mock data and refetch valuesS
   const mockNEC = {
     social: 123456789,
     payer_tin: 123,
@@ -35,7 +37,7 @@ describe('NECForm Component', () => {
           social: 123456789,
           payer_tin: 123,
           compensation: 5000,
-          fed_withheld: 100, // Provide the required state here
+          fed_withheld: 100, 
         },
       },
     };
@@ -47,17 +49,19 @@ describe('NECForm Component', () => {
       </Provider>
     );
 
+    //bring in values based on datatest-id
     const payerTinInput = getByTestId('textInput-payer_tin') as HTMLInputElement;
     const compensationInput = getByTestId('textInput-compensation') as HTMLInputElement;
     const saveButton = getByRole('button', { name: 'save' });
 
+    //values to be tested for
     fireEvent.change(payerTinInput, { target: { value: '456' } });
     fireEvent.change(compensationInput, { target: { value: '7000' } });
 
     fireEvent.click(saveButton);
 
     await waitFor(() => {
-      expect(useUpdateNECMutation).toHaveBeenCalledWith(); // You can add more expectations here
+      expect(useUpdateNECMutation).toHaveBeenCalledWith(); // add more expectations here based on needs
     });
   });
 });
