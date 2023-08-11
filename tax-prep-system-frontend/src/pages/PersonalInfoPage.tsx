@@ -4,6 +4,7 @@ import AddressForm from '../components/Address/AddressForm';
 import FilingStatusForm from '../components/Status/FilingStatusForm';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import NavHeader from '../components/NavHeader';
 
 const PersonalInfoPage = (): React.ReactElement =>{
 
@@ -34,7 +35,8 @@ const PersonalInfoPage = (): React.ReactElement =>{
     }
 
     return (
-        <>
+        <>  
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">

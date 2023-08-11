@@ -6,6 +6,7 @@ import { useFindUserByEmailQuery } from '../api/userApi';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
+import NavHeader from '../components/NavHeader';
 
 
 const LoginPage = (): React.ReactElement => {
@@ -49,6 +50,7 @@ const LoginPage = (): React.ReactElement => {
 
     return (
         <>  
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">

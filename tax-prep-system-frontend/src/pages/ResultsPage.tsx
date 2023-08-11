@@ -11,6 +11,7 @@ import 'chart.js/auto';
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { useNavigate } from "react-router-dom";
+import NavHeader from "../components/NavHeader";
 
 // Create data for the chart
 const createChartData = (totalIncome: number, taxLiability: number, totalWithholding: number, refundOrOwedAmount: number, refundOrOwedLabel: string) => ({
@@ -122,7 +123,7 @@ const ResultsPage = (): React.ReactElement =>{
 
     return (
         <>
-
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">

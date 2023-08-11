@@ -7,6 +7,7 @@ import { useCreateW2Mutation } from '../api/w2Api';
 import { useCreateNECMutation } from '../api/necApi';
 import {useState} from 'react';
 import { useCreateUserMutation } from '../api/userApi';
+import NavHeader from '../components/NavHeader';
 
 const CreateAccountPage = (): React.ReactElement => {
     const dispatch = useDispatch();
@@ -81,7 +82,8 @@ const CreateAccountPage = (): React.ReactElement => {
     const checkboxLabel = t("agree");
 
     return (
-        <>    
+        <>  
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                 <GridContainer className="usa-section">

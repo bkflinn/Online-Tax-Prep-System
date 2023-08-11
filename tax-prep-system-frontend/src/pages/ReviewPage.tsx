@@ -9,6 +9,7 @@ import { useFindW2BySocialQuery } from "../api/w2Api";
 import W2Table from "../components/W2/W2Table";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import NavHeader from "../components/NavHeader";
 
 
 const ReviewPage = (): React.ReactNode =>{
@@ -49,7 +50,7 @@ const ReviewPage = (): React.ReactNode =>{
    
     return (
         <>
-
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">

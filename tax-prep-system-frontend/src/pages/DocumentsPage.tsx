@@ -4,6 +4,7 @@ import W2Form from '../components/W2/W2Form';
 import NECForm from '../components/1099/NECForm';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import NavHeader from '../components/NavHeader';
 
 
 const DocumentsPage = (): React.ReactElement =>{
@@ -36,7 +37,8 @@ const DocumentsPage = (): React.ReactElement =>{
     }
     
     return (
-        <>
+        <>  
+            <NavHeader/>
             <main id="main-content">
                 <div className="bg-base-lightest">
                     <GridContainer className="usa-section">
