@@ -1,18 +1,20 @@
 package com.skillstorm.taxprepsystembackend.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.mongodb.repository.MongoRepository;
+//import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 import com.skillstorm.taxprepsystembackend.models.Result;
 
-public interface ResultRepository extends JpaRepository<Result, Integer>{
+@Repository
+public interface ResultRepository extends MongoRepository<Result, Integer>{
 
-    @Transactional
+    //@Transactional
     public Result getBySocial(int social);
 
-    @Modifying
-    @Transactional
+    //@Modifying
+    //@Transactional
     public void deleteAllBySocial(int social);
     
 }

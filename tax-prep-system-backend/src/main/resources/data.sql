@@ -20,16 +20,16 @@ insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (8, 16434
 insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (9, 684432578, 'Browseblab', 9000.00, 9000.00);
 insert into W2 (social, emp_tin, employer, wages, fed_withheld) values (10, 206783731, 'Kwilith', 10000.00, 10000.00);
 
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (1, 878036208, 1000.00, 1000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (2, 138904458, 2000.00, 2000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (3, 315445839, 3000.00, 3000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (4, 747924151, 4000.00, 4000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (5, 732247062, 5000.00, 5000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (6, 664877418, 6000.00, 6000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (7, 233834398, 7000.00, 7000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (8, 368199704, 8000.00, 8000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (9, 707623797, 9000.00, 9000.00);
-insert into NEC (social, payer_tin, compensation, fed_withheld) values (10, 778633861, 10000.00, 10000.00);
+insert into NEC (social, payer_tin, compensation) values (1, 878036208, 1000.00);
+insert into NEC (social, payer_tin, compensation) values (2, 138904458, 2000.00);
+insert into NEC (social, payer_tin, compensation) values (3, 315445839, 3000.00);
+insert into NEC (social, payer_tin, compensation) values (4, 747924151, 4000.00);
+insert into NEC (social, payer_tin, compensation) values (5, 732247062, 5000.00);
+insert into NEC (social, payer_tin, compensation) values (6, 664877418, 6000.00);
+insert into NEC (social, payer_tin, compensation) values (7, 233834398, 7000.00);
+insert into NEC (social, payer_tin, compensation) values (8, 368199704, 8000.00);
+insert into NEC (social, payer_tin, compensation) values (9, 707623797, 9000.00);
+insert into NEC (social, payer_tin, compensation) values (10, 778633861, 10000.00);
 
 insert into RESULTS (social, owed) values (1, 1000.00);
 insert into RESULTS (social, owed) values (2, 2000.00);

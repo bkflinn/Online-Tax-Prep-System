@@ -1,44 +1,30 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "USERS")
+//import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "USERS")
 public class User {
-    
+
+    // _id used by MongoDB
     @Id
-    @Column
+    private String _id;
+    
     private int social;
 
-    @Column
     private String first_name;
-
-    @Column
     private String last_name;
-
-    @Column
     private String email;
-
-    @Column
     private String phone;
-
-    @Column
     private String street_address;
-
-    @Column
     private String city;
-
-    @Column
     private String state;
-
-    @Column
     private int zip;
-
-    @Column
     private char status;
+    private String password;
 
     public User() {
     }
@@ -55,6 +41,14 @@ public class User {
         this.state = state;
         this.zip = zip;
         this.status = status;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {
@@ -135,6 +129,14 @@ public class User {
 
     public void setStatus(char status) {
         this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

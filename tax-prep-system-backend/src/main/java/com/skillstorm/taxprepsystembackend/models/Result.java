@@ -1,20 +1,20 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "RESULTS")
+//import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "RESULTS")
 public class Result {
-    
+
+    // _id used by MongoDB
     @Id
-    @JoinColumn
+    private String _id;
+    
     private int social;
 
-    @Column
     private double owed;
 
     public Result() {
@@ -23,6 +23,14 @@ public class Result {
     public Result(int social, double owed) {
         this.social = social;
         this.owed = owed;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {

@@ -1,29 +1,23 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table
+//import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "W2")
 public class W2 {
-    
+
+    // _id used by MongoDB
     @Id
-    @JoinColumn
+    private String _id;
+    
     private int social;
 
-    @Column
     private int emp_tin;
-
-    @Column
     private String employer;
-
-    @Column
     private double wages;
-
-    @Column
     private double fed_withheld;
 
     public W2() {
@@ -35,6 +29,14 @@ public class W2 {
         this.employer = employer;
         this.wages = wages;
         this.fed_withheld = fed_withheld;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getSocial() {

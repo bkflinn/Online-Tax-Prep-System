@@ -42,6 +42,13 @@ public class UserController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
+    @GetMapping("user/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.getUserByEmail(email);
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User newUser = userService.saveUser(user);
@@ -60,6 +67,21 @@ public class UserController {
     public ResponseEntity<User> DeleteUser(@RequestBody User user) {
         userService.deleteUser(user);
         return ResponseEntity.noContent().build();
+    }
+
+    // register
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(@RequestBody User user) {
+        userService.register(user);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    // login
+    @GetMapping("/login/{email}/{password}")
+    public Boolean login(@PathVariable String email, @PathVariable String password) {
+        Boolean login = userService.login(email, password);
+
+        return login;
     }
     
 }
