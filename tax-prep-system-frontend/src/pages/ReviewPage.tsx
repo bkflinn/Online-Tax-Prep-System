@@ -81,14 +81,14 @@ const ReviewPage = (): React.ReactNode =>{
                                         <AddressTable user={user}></AddressTable>
                                     }
 
-                                    <h2>Filing Status</h2>
+                                    <h2>{t("filing-status")}</h2>
                                     <p>{user ? getStatusLabel(user.status, t) : ''}</p>
 
-                                    <h2>W2 Form</h2>
+                                    <h2>{t("w2form")}</h2>
                                     {w2 && 
                                         <W2Table w2={w2}></W2Table>
                                     }
-                                    <h2>1099 Form</h2>
+                                    <h2>{t("1099form")}</h2>
                                     {nec && 
                                         <NECTable nec={nec}></NECTable>
                                     }
