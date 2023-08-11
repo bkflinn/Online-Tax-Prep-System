@@ -69,12 +69,14 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    // register
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody User user) {
         userService.register(user);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
+    // login
     @GetMapping("/login/{email}/{password}")
     public Boolean login(@PathVariable String email, @PathVariable String password) {
         Boolean login = userService.login(email, password);

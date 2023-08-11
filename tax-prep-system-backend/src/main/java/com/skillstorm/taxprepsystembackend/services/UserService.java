@@ -58,6 +58,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
+    // register user
     public void register(User user) {
 
         // check if the username is taken
@@ -72,12 +73,14 @@ public class UserService {
 
     }
 
+    // login user
     public Boolean login(String email, String password) {
 
         // check if the username exists
         Optional<User> foundUser = userRepository.findByEmail(email);
         if(foundUser.isPresent()) {
 
+            // email and password match
             if(foundUser.get().getPassword().equals(password)) {
                 return true;
             }
