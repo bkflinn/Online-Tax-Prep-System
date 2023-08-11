@@ -7,22 +7,39 @@ export const authApi = createApi({
   }),
   endpoints: (builder) => ({
     login: builder.mutation<string, { email: string; password: string }>({
-      query: (credentials) => ({
-        method: 'POST',
-        url: '/login',
-        body: credentials,
-      }),
+        query: ({ email, password }) => ({
+            method: 'GET', // Use GET for Basic Authentication
+            url: '/login', // Adjust the URL as needed
+            headers: {
+                Authorization: `Basic ${btoa(`${email}:${password}`)}`,
+            },
+        }),
     }),
 
-    register: builder.mutation<void, { username: string; password: string }>({
+    register: builder.mutation<void, {
+        email: string;
+        password: string;
+        social: number;
+        first_name: string;
+        last_name: string;
+        phone: string;
+      }>({
         query: (credentials) => ({
           method: 'POST',
           url: '/register',
-          body: credentials,
+          headers: {
+            Authorization: `Basic ${btoa(`${credentials.email}:${credentials.password}`)}`,
+          },
+          body: {
+            ssn: credentials.social,
+            firstName: credentials.first_name,
+            lastName: credentials.last_name,
+            phoneNumber: credentials.phone,
+          },
         }),
-    }),
+      }),
     
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;

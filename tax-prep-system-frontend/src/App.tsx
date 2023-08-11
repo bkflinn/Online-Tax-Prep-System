@@ -1,5 +1,5 @@
 //Pages
-import CreateAccountPage from "./pages/CreateAccountPage";
+//import CreateAccountPage from "./pages/CreateAccountPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import ReviewPage from "./pages/ReviewPage";
 //import LoginPage from "./pages/LoginPage";

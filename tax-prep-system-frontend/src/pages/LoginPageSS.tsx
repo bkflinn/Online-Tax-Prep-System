@@ -7,21 +7,42 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/userSlice';
 
+
 const LoginPage = (): React.ReactElement => {
     const [showPassword, setShowPassword] = useState(false)
-    const [userEmail, setUserEmail] = useState('');
 
     const dispatch = useDispatch();
    
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-        navigate("/personal-info") //placeholder
-    };
 
+        // Capture the email and password input values
+        const enteredEmail = event.currentTarget['email'].value;
+        const enteredPassword = event.currentTarget['password'].value;
+
+        // Use the findUserByEmail query hook
+        const { data: user } = useFindUserByEmailQuery(enteredEmail, { skip: !enteredEmail });
+
+
+        // Check if a user was found with the provided email
+        if (user) {
+            //Verify password
+            if (user.password === enteredPassword) {
+                // Password matches, set the user and navigate
+                dispatch(setUser(user));
+                navigate('/personal-info');
+            } else {
+                // Password does not match, show an error or handle as needed
+                console.log('Incorrect password');
+            }
+        } else {
+            // User not found, show an error or handle as needed
+            console.log('User not found');
+        }
+    };
     return (
         <>  
             <main id="main-content">

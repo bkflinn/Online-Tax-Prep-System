@@ -28,6 +28,7 @@ const CreateAccountPage = (): React.ReactElement => {
             first_name: formData.get("first-name") as string,
             last_name: formData.get("last-name") as string,
             email: '', //placeholder
+            password: '',
             phone: '',
             street_address: '',
             city: '',

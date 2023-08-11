@@ -19,4 +19,8 @@ const authSlice = createSlice({
 });
 
 export const { setAuth, resetAuth } = authSlice.actions;
+
+// Selector to extract the authentication token
+export const selectAuthToken = (state: { auth: { token: any; }; }) => state.auth.token;
+
 export default authSlice.reducer;

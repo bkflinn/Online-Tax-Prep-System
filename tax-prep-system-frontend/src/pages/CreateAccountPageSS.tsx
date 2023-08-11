@@ -1,12 +1,12 @@
 import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Checkbox, Button} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { useCreateUserMutation } from '../api/userApi';
 import { setUser } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
 import { useCreateW2Mutation } from '../api/w2Api';
 import { useCreateNECMutation } from '../api/necApi';
 import {useState} from 'react';
+import { useRegisterMutation } from '../api/authApi';
 
 const CreateAccountPage = (): React.ReactElement => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const CreateAccountPage = (): React.ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const [createUser, { isLoading: isCreating }] = useCreateUserMutation();
+    const [register, { isLoading: isCreating }] = useRegisterMutation();
     const [createW2] = useCreateW2Mutation();
     const [createNEC] = useCreateNECMutation();
 
@@ -30,9 +30,9 @@ const CreateAccountPage = (): React.ReactElement => {
             social: formData.get("ssn") ? Number(formData.get("ssn")) : 0,
             first_name: formData.get("first-name") as string,
             last_name: formData.get("last-name") as string,
-            email: '',
-            password: '',
-            phone: '',
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
+            phone: formData.get("phone") as string,
             street_address: '',
             city: '',
             state: '',
@@ -58,9 +58,7 @@ const CreateAccountPage = (): React.ReactElement => {
 
         try {
             // Use the createUser mutation to create a new user
-            const userResult = await createUser(newUser);
-            await createW2(newW2);
-            await createNEC(newNEC);
+            const userResult = await register(newUser);
     
             // Check if the userResult contains an error
             if ('error' in userResult) {
@@ -68,8 +66,10 @@ const CreateAccountPage = (): React.ReactElement => {
             } else {
                 // Handle success (e.g., show success message, navigate to next page)
                 console.log("User created successfully:", userResult.data);
+                await createW2(newW2); // generate the W2 for the user
+                await createNEC(newNEC); // generate the 1099 for the user
                 dispatch(setUser(userResult.data)); // Dispatch action to update the store
-                navigate('/personal-info');
+                navigate('/login');
             }
         } catch (error) {
             // Handle unexpected error
