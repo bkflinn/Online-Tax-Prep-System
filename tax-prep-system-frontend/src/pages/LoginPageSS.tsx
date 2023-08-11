@@ -22,6 +22,10 @@ const LoginPage = (): React.ReactElement => {
         password: ''
     });
 
+    const handleCreate = () => {
+        navigate('/create-account')
+    }
+
     const { data: user} = useFindUserByEmailQuery(formData.email, { skip: !formData.email });
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -103,7 +107,9 @@ const LoginPage = (): React.ReactElement => {
                                 </div>
 
                                 <p className="text-center">
-                                    {t("dontHaveAccount")} <Link href="/create-account">{t("createAccount")}</Link>
+                                    {t("dontHaveAccount")}  <Button type={'button'} unstyled onClick={handleCreate}>
+                                        {t("createAccount")}
+                                    </Button>
                                 </p>
                             </Grid>
                         </Grid>
