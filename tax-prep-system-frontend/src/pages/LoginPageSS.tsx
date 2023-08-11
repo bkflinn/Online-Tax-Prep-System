@@ -16,33 +16,37 @@ const LoginPage = (): React.ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { data: user} = useFindUserByEmailQuery(formData.email, { skip: !formData.email });
+
+    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const { name, value } = event.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-
-        // Capture the email and password input values
-        const enteredEmail = event.currentTarget['email'].value;
-        const enteredPassword = event.currentTarget['password'].value;
-
-        // Use the findUserByEmail query hook
-        const { data: user } = useFindUserByEmailQuery(enteredEmail, { skip: !enteredEmail });
-
-
-        // Check if a user was found with the provided email
+        
         if (user) {
-            //Verify password
-            if (user.password === enteredPassword) {
-                // Password matches, set the user and navigate
+            if (user.password === formData.password) {
                 dispatch(setUser(user));
                 navigate('/personal-info');
             } else {
-                // Password does not match, show an error or handle as needed
                 console.log('Incorrect password');
             }
         } else {
-            // User not found, show an error or handle as needed
             console.log('User not found');
         }
     };
+
+
     return (
         <>  
             <main id="main-content">
@@ -64,6 +68,7 @@ const LoginPage = (): React.ReactElement => {
                                                 autoCorrect="off"
                                                 autoCapitalize="off"
                                                 required={true}
+                                                onChange={handleFormChange}
                                             />
 
                                             <Label htmlFor="email">{t("password")}</Label>
@@ -74,6 +79,7 @@ const LoginPage = (): React.ReactElement => {
                                                 autoCorrect="off"
                                                 autoCapitalize="off"
                                                 required={true}
+                                                onChange={handleFormChange}
                                             />
 
                                             <p className="usa-form__note">
