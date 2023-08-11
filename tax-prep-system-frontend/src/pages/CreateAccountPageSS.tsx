@@ -218,7 +218,6 @@ const CreateAccountPage = (): React.ReactElement => {
                                     name="phone"
                                     type="number"
                                     data-testid="phone-input"
-                                    required={true}
                                 />
 
                                 <Checkbox
