@@ -2,10 +2,13 @@
 import CreateAccountPage from "./pages/CreateAccountPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import ReviewPage from "./pages/ReviewPage";
-import LoginPage from "./pages/LoginPage";
+//import LoginPage from "./pages/LoginPage";
 import PersonalInfoPage from "./pages/PersonalInfoPage";
 import ResultsPage from "./pages/ResultsPage";
 import HomePage from "./pages/HomePage";
+import LoginPageSS from "./pages/LoginPageSS";
+import CreateAccountPageSS from "./pages/CreateAccountPageSS";
+
 
 //router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -20,7 +23,7 @@ import deTranslations from './languages/de.json';
 import frTranslations from './languages/fr.json';
 import itTranslations from './languages/it.json';
 import {Grid, GridContainer, Header, Icon, Title } from "@trussworks/react-uswds";
-import LoginPageSS from "./pages/LoginPageSS";
+
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -75,7 +78,7 @@ export default function App() {
           <Routes>
             {/* Default route to LoginPage */}
             {/**<Route path="/" element={<LoginPage />} /> */}
-            <Route path="/" element={<LoginPageSS />} />
+            <Route path="/" element={<CreateAccountPageSS />} />
 
             {/* Other routes */}
             <Route path="/homepage" element = {<HomePage/>} />

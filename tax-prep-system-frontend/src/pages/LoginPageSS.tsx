@@ -16,39 +16,10 @@ const LoginPage = (): React.ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    function getUserEmail() {
-        return fetch(' http://75.101.219.66.nip.io:8080/userEmail', { method: 'GET' })
-            .then(data => data.text())
-            .then(userEmail => {
-                setUserEmail(userEmail);
-                return userEmail; // Return the fetched userEmail
-            })
-            .catch(error => {
-                console.error('Error fetching user email:', error);
-                throw error; // Rethrow the error to propagate it
-            });
-    }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        // Fetch the user's email after the OAuth login
-        getUserEmail()
-            .then(() => {
-                // Query user database by email
-                const { data: user } = useFindUserByEmailQuery(userEmail);
-                
-                if (user) {
-                    dispatch(setUser(user)); // Dispatch action to update the store
-                    // Email exists, route to landing page
-                    navigate('/landing'); 
-                } else {
-                    // Email doesn't exist, route to user setup pag
-                }
-            })
-            .catch(error => {
-                // Handle any errors that occurred during fetching email
-                console.error('Error fetching user email:', error);
-        });
+        
     };
 
     return (

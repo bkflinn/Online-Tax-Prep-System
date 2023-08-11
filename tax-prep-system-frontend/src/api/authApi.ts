@@ -13,6 +13,15 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+
+    register: builder.mutation<void, { username: string; password: string }>({
+        query: (credentials) => ({
+          method: 'POST',
+          url: '/register',
+          body: credentials,
+        }),
+    }),
+    
   }),
 });
 
