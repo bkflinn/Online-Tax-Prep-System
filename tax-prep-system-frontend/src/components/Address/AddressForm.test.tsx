@@ -6,6 +6,7 @@ import AddressForm from './AddressForm';
 
 const mockStore = configureStore();
 
+//mocked function calls from API
 jest.mock('../../api/userApi', () => ({
   ...jest.requireActual('../../api/userApi'),
   useFindUserBySocialQuery: jest.fn(),
@@ -44,12 +45,14 @@ describe('AddressForm Component', () => {
       </Provider>
     );
 
+    //check values by datatest-id
     const streetInput = getByTestId('street_address') as HTMLInputElement;
     const cityInput = getByTestId('city') as HTMLInputElement;
     const stateDropdown = getByTestId('state') as HTMLSelectElement;
     const zipInput = getByTestId('zip') as HTMLInputElement;
     const saveButton = getByRole('button', { name: 'save' });
 
+    //values to be tested for
     fireEvent.change(streetInput, { target: { value: '456 New St' } });
     fireEvent.change(cityInput, { target: { value: 'New City' } });
     fireEvent.change(stateDropdown, { target: { value: 'NY' } });

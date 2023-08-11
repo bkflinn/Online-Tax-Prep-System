@@ -6,6 +6,7 @@ import W2Form from './W2Form';
 
 const mockStore = configureStore();
 
+//mock
 jest.mock('../../api/w2Api', () => ({
   ...jest.requireActual('../../api/w2Api'),
   useFindW2BySocialQuery: jest.fn(),
@@ -50,6 +51,7 @@ describe('W2Form Component', () => {
   const withholdingInput = getByTestId('fed-withholding') as HTMLInputElement;
   const saveButton = getByRole('button', { name: 'save' });
 
+  //values to be tested for
   fireEvent.change(empTinInput, { target: { value: '456' } });
   fireEvent.change(employerInput, { target: { value: 'New Employer' } });
   fireEvent.change(wagesInput, { target: { value: '7000' } });
