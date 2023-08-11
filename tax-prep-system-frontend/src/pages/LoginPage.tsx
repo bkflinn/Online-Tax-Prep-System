@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 // import { setUser } from '../store/userSlice';
 
 
+//DEPRECATED DO NOT USE
 const LoginPage = (): React.ReactElement => {
     //const [userEmail, setUserEmail] = useState('');
 

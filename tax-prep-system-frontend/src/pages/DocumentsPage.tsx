@@ -11,6 +11,7 @@ const DocumentsPage = (): React.ReactElement =>{
     const navigate = useNavigate();
     const { t } = useTranslation();
 
+    //accordion contains the needed forms
     const userInfo: AccordionItemProps[] = [
         { 
             title: 'W2 Form', 

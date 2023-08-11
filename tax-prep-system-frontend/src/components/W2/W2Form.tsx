@@ -16,8 +16,10 @@ const W2Form = (): React.ReactNode => {
     // Ensure socialValue is a valid number, or a default value
     const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
 
+    // query w2 by ssn, uses stored value in redux store if present
     const { data : w2, refetch} = useFindW2BySocialQuery(validSocialValue);
 
+    //form state
     const [formData, setFormData] = useState({
         'emp_tin' : '',
         'employer' : '',
@@ -25,8 +27,10 @@ const W2Form = (): React.ReactNode => {
         'fed_withheld' : '',
     });
 
+    //update W2 with API hook
     const [updateW2] = useUpdateW2Mutation();
 
+    //prepopulate form data
     useEffect(() => {
         if (w2) {
             setFormData((prevData) => ({
@@ -39,6 +43,7 @@ const W2Form = (): React.ReactNode => {
         }
     }, [w2]);
 
+    //handle changes to the form
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -47,6 +52,7 @@ const W2Form = (): React.ReactNode => {
         }));
     };
 
+    //handle submitting the form and updating W2 with API hook
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         
@@ -67,6 +73,7 @@ const W2Form = (): React.ReactNode => {
             };
         }
     };
+    
     return w2 ? (
         <>
             <Form onSubmit={handleSubmit} large>

@@ -10,8 +10,8 @@ const PersonalInfoPage = (): React.ReactElement =>{
 
     const navigate = useNavigate();
     const { t } = useTranslation();
-
-
+    
+    //contains the needed forms
     const userInfo: AccordionItemProps[] = [
         { 
             title: t("address"), 

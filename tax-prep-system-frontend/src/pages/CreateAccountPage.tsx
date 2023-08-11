@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import { useCreateW2Mutation } from '../api/w2Api';
 import { useCreateNECMutation } from '../api/necApi';
 
+
+//DEPRACATED
 const CreateAccountPage = (): React.ReactElement => {
     const dispatch = useDispatch();
     

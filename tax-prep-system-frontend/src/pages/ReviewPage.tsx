@@ -34,6 +34,7 @@ const ReviewPage = (): React.ReactNode =>{
         navigate('/results');
     }
 
+    //for translating the status label into the correct string
     const getStatusLabel = (status: string, t: (key: string) => string) => {
         switch (status) {
             case 'S':
@@ -47,7 +48,6 @@ const ReviewPage = (): React.ReactNode =>{
         }
     };
 
-   
     return (
         <>
             <NavHeader/>

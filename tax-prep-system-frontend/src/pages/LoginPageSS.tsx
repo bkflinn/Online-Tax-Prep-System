@@ -17,6 +17,7 @@ const LoginPage = (): React.ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    //form state
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -26,8 +27,10 @@ const LoginPage = (): React.ReactElement => {
         navigate('/create-account')
     }
 
+    //api hook to grab user by email
     const { data: user} = useFindUserByEmailQuery(formData.email, { skip: !formData.email });
 
+    //handle changes to the form
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setFormData(prevData => ({
@@ -36,13 +39,15 @@ const LoginPage = (): React.ReactElement => {
         }));
     };
 
+    //authenticates user information based on form data
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         
+        //checks for valid user
         if (user) {
-            if (user.password === formData.password) {
-                dispatch(setUser(user));
-                navigate('/personal-info');
+            if (user.password === formData.password) { //checks for valid password
+                dispatch(setUser(user)); //set the user state in the redux store
+                navigate('/personal-info'); //application entry point
             } else {
                 console.log('Incorrect password');
             }

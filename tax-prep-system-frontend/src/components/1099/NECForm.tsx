@@ -16,15 +16,19 @@ const NECForm = (): React.ReactNode => {
     // Ensure socialValue is a valid number, or a default value
     const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
 
+    //fetch NEC by ssn, grabs from redux store if exists
     const { data: nec, refetch } = useFindNECBySocialQuery(validSocialValue);
 
+    //form state
     const [formData, setFormData] = useState({
         'payer_tin' : '',
         'compensation' : '',
     });
 
+    //API hook to handle updating NEC
     const [updateNec] = useUpdateNECMutation();
 
+    //prepopulating form data
     useEffect(() => {
         if (nec) {
             setFormData((prevData) => ({
@@ -36,6 +40,7 @@ const NECForm = (): React.ReactNode => {
     }, [nec]);
 
 
+    //handle form changes
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         

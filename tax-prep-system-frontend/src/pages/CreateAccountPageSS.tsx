@@ -9,18 +9,22 @@ import {useState} from 'react';
 import { useCreateUserMutation } from '../api/userApi';
 import NavHeader from '../components/NavHeader';
 
+//USE THIS CREATEACCOUNTPAGE
 const CreateAccountPage = (): React.ReactElement => {
     const dispatch = useDispatch();
     
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    //API hooks
     const [createUser , { isLoading: isCreating }] = useCreateUserMutation();
     const [createW2] = useCreateW2Mutation();
     const [createNEC] = useCreateNECMutation();
 
     const [showPassword, setShowPassword] = useState(false);
 
+
+    //collects form data and submits the various requests to the API to create user, w2, nec
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         
@@ -48,7 +52,6 @@ const CreateAccountPage = (): React.ReactElement => {
             wages : 0,
             fed_withheld : 0,
         };
-
 
         const newNEC = {
             social : formData.get("ssn") ? Number(formData.get("ssn")) : 0,

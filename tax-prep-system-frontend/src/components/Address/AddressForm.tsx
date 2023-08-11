@@ -10,17 +10,16 @@ import { RootState } from "../../store/store";
 const AddressForm = (): React.ReactNode => {
     const { t } = useTranslation();
     
-
     // Retrieve the user's social security number from the Redux store
     const socialValue = useSelector((state: RootState) => state.user.user?.social);
 
     // Ensure socialValue is a valid number, or a default value
     const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
 
+    //query for user by ssn, grabs from redux store if exists
     const { data: user, refetch } = useFindUserBySocialQuery(validSocialValue);
 
-    //console.log(user)
-
+    //form state
     const [formData, setFormData] = useState({
         'street_address': '',
         'city': '',
@@ -28,8 +27,10 @@ const AddressForm = (): React.ReactNode => {
         'zip': '',
     });
 
+    //update user API request
     const [updateUser] = useUpdateUserMutation();
 
+    //prepopulating data
     useEffect(() => {
         if (user) {
             setFormData((prevData) => ({
@@ -42,6 +43,7 @@ const AddressForm = (): React.ReactNode => {
         }
     }, [user]);
 
+    //handle form changes
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({

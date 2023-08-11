@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 //import { Select } from '@trussworks/react-uswds';
 
+//supports 5 languages, but only 2 enabled
 const LanguageToggleButton = (): React.ReactElement => {
   const { i18n } = useTranslation();
 

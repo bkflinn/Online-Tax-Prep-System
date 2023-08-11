@@ -13,14 +13,19 @@ const FilingStatusForm = (): React.ReactNode => {
 
     // Ensure socialValue is a valid number, or a default value
     const validSocialValue = socialValue || 0; // Use a default value of 0 or adjust as needed
+
+    //query for user based on ssn, grabs from redux store if present
     const { data: user, refetch} = useFindUserBySocialQuery(validSocialValue);
 
+    //form state
     const [formData, setFormData] = useState({
         'filing-status': user?.status || '',
     });
 
+    //update user API request
     const [updateUser] = useUpdateUserMutation();
 
+    //prepopulate form data
     useEffect(() => {
         if (user) {
           setFormData((prevData) => ({
@@ -30,6 +35,7 @@ const FilingStatusForm = (): React.ReactNode => {
         }
     }, [user]);
 
+    //handle form changes
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ({
@@ -38,10 +44,10 @@ const FilingStatusForm = (): React.ReactNode => {
         }));
     };
 
+    //handle submitting of the form and updating filing status
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
-
-
+        
         if (user) {
             console.log(user)
             const updatedUser = {
