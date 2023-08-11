@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useCreateW2Mutation } from '../api/w2Api';
 import { useCreateNECMutation } from '../api/necApi';
 import {useState} from 'react';
-import { useRegisterMutation } from '../api/authApi';
+import { useCreateUserMutation } from '../api/userApi';
 
 const CreateAccountPage = (): React.ReactElement => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const CreateAccountPage = (): React.ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const [register, { isLoading: isCreating }] = useRegisterMutation();
+    const [createUser , { isLoading: isCreating }] = useCreateUserMutation();
     const [createW2] = useCreateW2Mutation();
     const [createNEC] = useCreateNECMutation();
 
@@ -58,7 +58,7 @@ const CreateAccountPage = (): React.ReactElement => {
 
         try {
             // Use the createUser mutation to create a new user
-            const userResult = await register(newUser);
+            const userResult = await createUser(newUser);
     
             // Check if the userResult contains an error
             if ('error' in userResult) {
