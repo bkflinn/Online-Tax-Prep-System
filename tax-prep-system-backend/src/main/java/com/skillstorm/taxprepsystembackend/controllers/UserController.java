@@ -1,6 +1,7 @@
 package com.skillstorm.taxprepsystembackend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -67,6 +68,12 @@ public class UserController {
     public ResponseEntity<User> DeleteUser(@RequestBody User user) {
         userService.deleteUser(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(@RequestBody User user) {
+        userService.register(user);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
 }

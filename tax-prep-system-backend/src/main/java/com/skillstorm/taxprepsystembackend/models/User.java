@@ -1,17 +1,25 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Id;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.data.annotation.Id;
+
+//import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Document(collection = "USERS")
-public class User {
+public class User implements UserDetails{
 
     // _id used by MongoDB
     @Id
     private String _id;
     
-    @Id
     private int social;
 
     private String first_name;
@@ -23,6 +31,7 @@ public class User {
     private String state;
     private int zip;
     private char status;
+    private String password;
 
     public User() {
     }
@@ -129,6 +138,10 @@ public class User {
         this.status = status;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -204,6 +217,43 @@ public class User {
         return "User [social=" + social + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
                 + ", phone=" + phone + ", street_address=" + street_address + ", city=" + city + ", state=" + state
                 + ", zip=" + zip + ", status=" + status + "]";
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
 }
