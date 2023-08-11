@@ -11,7 +11,7 @@ import CreateAccountPageSS from "./pages/CreateAccountPageSS";
 
 
 //router
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 
 //i18n
 import { initReactI18next, useTranslation } from 'react-i18next';
@@ -22,8 +22,7 @@ import esTranslations from './languages/es.json';
 import deTranslations from './languages/de.json';
 import frTranslations from './languages/fr.json';
 import itTranslations from './languages/it.json';
-import {Grid, GridContainer, Header, Icon, Title } from "@trussworks/react-uswds";
-
+import {Grid, GridContainer, Header, Icon, Title} from "@trussworks/react-uswds";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -52,6 +51,7 @@ i18n.use(initReactI18next).init({
 
 export default function App() {
   const { t } = useTranslation();
+  
   return (
     <>
       <Header extended className='bg-primary'>
@@ -64,16 +64,6 @@ export default function App() {
               </Grid>
           </GridContainer>
       </Header>
-      <Header extended className='bg-primary-dark'>
-                <div className="usa-navbar">
-                    <h3 className='margin-0'>
-                        <a href="/homepage" title="Home" aria-label="Home" className='text-base-lightest usa-footer__primary-link'>
-                            {t("home")}
-                        </a>
-                    </h3>
-                </div>
-            </Header>
-
       <Router>
           <Routes>
             {/* Default route to LoginPage */}

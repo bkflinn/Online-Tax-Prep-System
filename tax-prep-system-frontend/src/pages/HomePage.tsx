@@ -2,6 +2,7 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Grid, GridContainer, Ic
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import {} from '@trussworks/react-uswds';
+import NavHeader from "../components/NavHeader";
 
 const HomePage = (): React.ReactElement => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const HomePage = (): React.ReactElement => {
         navigate('/login')
     }
     return(
-        <>  
+        <>  <NavHeader/>
             <GridContainer className="usa-header" >
                 <h1 > {t("welcome")} </h1>
             </GridContainer>
