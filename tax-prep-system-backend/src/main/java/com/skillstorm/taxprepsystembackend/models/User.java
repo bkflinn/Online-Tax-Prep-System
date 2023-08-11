@@ -1,6 +1,8 @@
 package com.skillstorm.taxprepsystembackend.models;
 
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+
+//import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +13,6 @@ public class User {
     @Id
     private String _id;
     
-    @Id
     private int social;
 
     private String first_name;
@@ -23,6 +24,7 @@ public class User {
     private String state;
     private int zip;
     private char status;
+    private String password;
 
     public User() {
     }
@@ -127,6 +129,14 @@ public class User {
 
     public void setStatus(char status) {
         this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

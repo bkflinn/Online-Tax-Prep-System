@@ -1,8 +1,11 @@
 package com.skillstorm.taxprepsystembackend.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.taxprepsystembackend.models.User;
@@ -53,6 +56,36 @@ public class UserService {
         necRepository.deleteAllBySocial(user.getSocial());
         resultRepository.deleteAllBySocial(user.getSocial());
         userRepository.delete(user);
+    }
+
+    public void register(User user) {
+
+        // check if the username is taken
+        Optional<User> foundUser = userRepository.findByEmail(user.getEmail());
+        if(foundUser.isPresent()) {
+
+            throw new RuntimeException("That username already exists.");
+        }
+
+        // save user to db
+        userRepository.save(user);
+
+    }
+
+    public Boolean login(String email, String password) {
+
+        // check if the username exists
+        Optional<User> foundUser = userRepository.findByEmail(email);
+        if(foundUser.isPresent()) {
+
+            if(foundUser.get().getPassword().equals(password)) {
+                return true;
+            }
+
+        }
+
+        return false;
+
     }
     
 }

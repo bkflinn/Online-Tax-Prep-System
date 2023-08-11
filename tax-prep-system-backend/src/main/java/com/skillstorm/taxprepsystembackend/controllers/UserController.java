@@ -68,5 +68,18 @@ public class UserController {
         userService.deleteUser(user);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<Void> register(@RequestBody User user) {
+        userService.register(user);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/login/{email}/{password}")
+    public Boolean login(@PathVariable String email, @PathVariable String password) {
+        Boolean login = userService.login(email, password);
+
+        return login;
+    }
     
 }
