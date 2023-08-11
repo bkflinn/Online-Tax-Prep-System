@@ -110,7 +110,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                 </p>
 
                                 <Label htmlFor="email">
-                                    Email address{' '}
+                                    {t("email")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -125,7 +125,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                 />
 
                                 <Label htmlFor="password-create-account">
-                                    Create password{' '}
+                                 {t("create-password")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -148,12 +148,12 @@ const CreateAccountPage = (): React.ReactElement => {
                                     onClick={(): void =>
                                         setShowPassword((showPassword) => !showPassword)
                                     }>
-                                    {showPassword ? 'Hide password' : 'Show password'}
+                                    {showPassword ? t("hide-password") :  t("show-password")}
                                     </a>
                                 </p>
 
                                 <Label htmlFor="password-create-account-confirm">
-                                    Re-type password{' '}
+                                    {t("retype-password")}{' '}
                                     <abbr title="required" className="usa-label--required">
                                     *
                                     </abbr>
@@ -171,7 +171,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                  <Grid row gap>
                                     <Grid col tablet={{ col: 6 }}>
                                         <Label htmlFor="first-name">
-                                            First Name
+                                            {t("fname")}
                                             {' '}
                                             <abbr title="required" className="usa-label--required">
                                                 *
@@ -181,7 +181,7 @@ const CreateAccountPage = (): React.ReactElement => {
                                     </Grid>
                                     <Grid col tablet={{ col: 6 }}>
                                         <Label htmlFor="last-name">
-                                            Last Name
+                                            {t("lname")}
                                             {' '}
                                             <abbr title="required" className="usa-label--required">
                                                 *

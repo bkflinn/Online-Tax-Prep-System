@@ -24,6 +24,8 @@
     "convienient": "Conveniently store and access your information.",
     "convienient-desc": "Create a user profile to securely store and access your personal and tax information. Change your information at any time and get fast and easy access to your tax preparation.",
     "have-account": "Already have an account?",
+    "fname" : "First Name",
+    "lname" : "Last Name",
 
     "documents": "Documents",
     "instructions": "Instructions",
@@ -79,6 +81,8 @@
     "single": "Single",
     "married": "Married Filing Jointly",
     "head": "Head of Household",
+    "w2form" : "W2 Form",
+    "1099form" : "1099 Form",
 
     "taxable": "Taxable Income",
     "witheld": "Witheld Amount",

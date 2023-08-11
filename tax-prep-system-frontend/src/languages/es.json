@@ -1,5 +1,5 @@
 {
-    "title": "Sistema de preparación de impuestos",
+    "title": "Sistema de Preparación de Impuestos",
     "home" : "Inicio",
     "sign-in": "Iniciar sesión",
     "access": "Acceder a su cuenta",
@@ -9,6 +9,8 @@
     "hide-password": "Ocultar contraseña",
     "dontHaveAccount": "¿No tiene cuenta?",
     "createAccount": "Cree su cuenta ahora",
+    "fname" : "Nombre",
+    "lname" : "Apellido",
 
     "ssn" : "Número de Seguro Social",
     "phone" : "Número de teléfono",
@@ -77,6 +79,8 @@
     "single": "Solo",
     "married": "Casado con Declaración Conjunta",
     "head": "Cabeza de Familia",
+    "w2form" : "Formulario W2",
+    "1099form" : "Formulario 1099",
 
     "taxable": "Renta Imponible",
     "witheld": "Importe Retenido",
