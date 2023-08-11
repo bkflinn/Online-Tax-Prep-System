@@ -1,4 +1,4 @@
-import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Button, Link} from '@trussworks/react-uswds';
+import {GridContainer, Grid, Form, Fieldset, Label, TextInput, Button} from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useFindUserByEmailQuery } from '../api/userApi';
@@ -21,6 +21,10 @@ const LoginPage = (): React.ReactElement => {
         email: '',
         password: ''
     });
+
+    const handleCreate = () => {
+        navigate('/create-account')
+    }
 
     const { data: user} = useFindUserByEmailQuery(formData.email, { skip: !formData.email });
 
@@ -103,7 +107,9 @@ const LoginPage = (): React.ReactElement => {
                                 </div>
 
                                 <p className="text-center">
-                                    {t("dontHaveAccount")} <Link href="/create-account">{t("createAccount")}</Link>
+                                    {t("dontHaveAccount")}  <Button type={'button'} unstyled onClick={handleCreate}>
+                                        {t("createAccount")}
+                                    </Button>
                                 </p>
                             </Grid>
                         </Grid>
